@@ -17,7 +17,7 @@ fix/user-login-request
 
 ## commits -  ideia mais específica da tarefa
 
-<tipo>: (Se aplicado esse commit...) <resumo>
+{tipo}: (Se aplicado esse commit...) {resumo}
 
 
 sigam as boas práticas!
