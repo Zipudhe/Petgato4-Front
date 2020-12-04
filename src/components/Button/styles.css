@@ -1,0 +1,54 @@
+.btn {
+    border: none;
+    outline: none;
+    text-decoration: 0;
+    margin: 0;
+    padding: 0;
+    cursor: pointer;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 400;
+}
+
+.btn1 {
+    background-color: #FFF;
+    color: #444143;
+    border: 1.8px solid #BA66A3;
+    border-radius: 3px;
+    width: 110px;
+    height: 30px;
+}
+
+.btn1:hover {
+    background-color: #FBE9F6;
+}
+
+.btn2 {
+    background-color: #BA66A3;
+    color: white;
+    width: 140px;
+    height: 50px;
+    font-size: 16px;
+    box-shadow: 0 2.5px 5px 1.5px rgba(0, 0, 0, .2);
+    border-radius: 1px;
+}
+
+.btn2:hover {
+    color: #FBE9F6;
+}
+
+.btn3 {
+    background-color: #C882B4;
+    color: white;
+    font-weight: 500;
+    width: 110px;
+    height: 40px;
+    font-size: 14px;
+    font-weight: 600;
+    padding-top: 2.5px;
+    border-radius: 4px;
+}
+
+.btn3:hover {
+    background-color: #BA66A3;
+}
