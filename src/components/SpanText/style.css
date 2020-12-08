@@ -1,0 +1,15 @@
+.texto{
+    color: #707070;
+    font-weight: 300;
+    font-size: 1.6rem;
+
+    margin-bottom: 0.2rem;
+}
+
+.link{
+    color: #BA66A3;
+    font-weight: 500;
+
+    text-decoration: none;
+    margin-left: 0.5rem;
+}
