@@ -1,0 +1,32 @@
+.input{
+    margin-top: 1rem;
+}
+
+.input input, label{
+    display: block;
+}
+
+#form-label{
+    color: #C882B4;
+    font-size: 1.3rem;
+    font-weight: 300;
+
+    margin-bottom: -0.9rem;
+}
+
+#form-input{
+    margin-top: 0;
+
+    height: 3.6rem;
+    width: 25rem;
+
+    font-size: 1.5rem;
+    font-weight: 300;
+    color: #707070;
+
+    padding-left: 1rem;
+
+
+    border-radius: 0;
+    border: 1px solid #C882B4;
+}
