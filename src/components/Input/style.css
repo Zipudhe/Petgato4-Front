@@ -1,5 +1,6 @@
 .input{
-    margin-top: 1rem;
+    margin: 1rem auto 0 auto;
+    width: min-content;
 }
 
 .input input, label{
@@ -11,12 +12,10 @@
     font-size: 1.3rem;
     font-weight: 300;
 
-    margin-bottom: -0.9rem;
+    text-align: left;
 }
 
 #form-input{
-    margin-top: 0;
-
     height: 3.6rem;
     width: 25rem;
 
@@ -26,7 +25,13 @@
 
     padding-left: 1rem;
 
-
     border-radius: 0;
     border: 1px solid #C882B4;
+}
+
+@media (max-width: 425px) {
+    #form-input{
+        height: 3.2rem;
+        width: 20rem;
+    }
 }

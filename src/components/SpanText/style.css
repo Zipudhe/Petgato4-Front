@@ -13,3 +13,8 @@
     text-decoration: none;
     margin-left: 0.5rem;
 }
+
+@media (max-width: 425px){
+    .texto{
+        font-size: 1.3rem;
+    }
