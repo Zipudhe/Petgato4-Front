@@ -1,12 +1,17 @@
 import React from 'react';
-import { BrowserRouter, Switch, Route } from 'react-router-dom';
+
+import { Router } from "@reach/router";
+
+import Cadastro from "./pages/Cadastro";
+import Recover from "./pages/recover";
+import App from "./App";
 
 const Routes = () => (
-    <BrowserRouter>
-        <Switch>
-            <Route exact path="/" />
-        </Switch>
-    </BrowserRouter>
+    <Router>
+        <App path="/" />
+        <Cadastro path="/signIn" />
+        <Recover path="/recover" />
+    </Router>
 );
 
 export default Routes

@@ -2,6 +2,7 @@ import React from 'react';
 import Button from '../../components/Button';
 import GatinhoPetgato from '../../assets/images/gatinho_petgato.svg';
 
+// eslint-disable-next-line no-unused-vars
 import style from './styles.css';
 
 const Cadastro = () => (
@@ -20,10 +21,10 @@ const Cadastro = () => (
             <input></input>
             
             <div className="login-btn">
-                <Button onClick={() => alert('Cadastrar')} style={3}>CADASTRAR</Button>
+                <Button onClick={() => alert('Cadastrar')} styles="3">CADASTRAR</Button>
             </div>
 
-            <p className="temp">Já possui conta? <a>Faça login</a></p>
+            <p className="temp">Já possui conta? <a href="a" target="_blank" rel="noreferrer noopener" >Faça login</a></p>
 
         </div>
     </div>
