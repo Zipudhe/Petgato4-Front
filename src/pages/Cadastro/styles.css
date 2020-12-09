@@ -1,0 +1,48 @@
+.container-img {
+    width: 50%;
+    min-height: 100vh;
+    float: left;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url('../../assets/images/login_cat.jpg');
+    background-size: cover;
+
+    background-color: blue;
+}
+
+.container-login {
+    width: 50%;
+    min-height: 100vh;
+    float: right;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    background-color: #FBE9F6;
+}
+
+.login-btn {
+    margin: 25px;
+}
+
+.logo-petgato {
+    width: 150px;
+    margin: 25px;
+}
+
+.temp {
+    margin: 0;
+}
+
+/* Mobile */
+@media screen and (max-width: 718px) {
+    .container-login {
+        width: 100%;
+    }
+
+    .container-img {
+        width: 0;
+    }
+}
