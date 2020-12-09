@@ -14,7 +14,7 @@ export default function PageRecover(){
                 <div className="content">
                     <img className="icon" alt="PetGato Icon" src={PetIcon} />
                     <Input name="Email"/>
-                    <p className="inst">Insira seu email para recuperar a senha</p>
+                    <p className="intxt">Insira seu email para recuperar a senha</p>
                     <button>Recuperar Senha</button>
                     <SpanText text="Lembrou a senha?" link="Faça Login" path="#"/>
                     <SpanText text="Ainda não tem conta?" link="Cadastre-se aqui" path="#" />
