@@ -27,10 +27,6 @@
     justify-content: center;
 }
 
-.content{
-    width: min-content;
-}
-
 .icon{
     display: block;
     margin: 0 auto 3rem auto;
