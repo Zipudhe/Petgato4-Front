@@ -7,10 +7,10 @@ export default function Header(){
         <div className="header">
             <img alt="icon petgato" src={Icon}/>
             <div className="links">
-                <a href="#">Página Inicial</a>
-                <a href="#">Sobre Nós</a>
-                <a href="#">Fale Conosco</a>
-                <a href="#">Entrar</a>
+                <a href="/#">Página Inicial</a>
+                <a href="/#">Sobre Nós</a>
+                <a href="/#">Fale Conosco</a>
+                <a href="/#">Entrar</a>
             </div>
         </div>
     )
