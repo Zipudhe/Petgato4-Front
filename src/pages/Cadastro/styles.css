@@ -7,8 +7,6 @@
     align-items: center;
     background-image: url('../../assets/images/login_cat.jpg');
     background-size: cover;
-
-    background-color: blue;
 }
 
 .container-login {
@@ -28,7 +26,7 @@
 }
 
 .logo-petgato {
-    width: 150px;
+    width: 180px;
     margin: 25px;
 }
 
