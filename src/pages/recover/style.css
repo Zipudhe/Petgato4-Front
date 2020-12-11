@@ -5,7 +5,7 @@
     display: flex;
 }
 
-#image{
+#backgroundimg-recover{
     width: 50vw;
     height: 100vh;
 
@@ -43,8 +43,13 @@
     font-weight: 300;
 }
 
+.recover-button{
+    width: 15rem;
+    margin: 3rem auto 4rem auto;
+}
+
 @media (max-width: 1120px){
-    #image{
+    #backgroundimg-recover{
         display: none;
     }
 
