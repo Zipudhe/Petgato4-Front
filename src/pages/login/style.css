@@ -39,6 +39,11 @@
     font-weight: 300;
 }
 
+.login-btn{
+    width: 8rem;
+    margin: 3rem auto 4rem auto;
+}
+
 @media (max-width: 1120px){
     #image{
         display: none;
