@@ -1,0 +1,43 @@
+.post-frame{
+    display: flex;
+
+    width: 52rem;
+}
+
+.post-img{
+    width: 16rem;
+    height: 16rem;
+
+    margin-right: 1.5rem;
+}
+
+.post-info{
+    text-align: left;
+
+    width: 35rem;
+}
+
+.post-tags{
+    font-weight: 300;
+    font-style: italic;
+}
+
+.post-title{
+    color: #C882B4;
+    font-size: 1.6rem;
+    font-weight: 600;
+}
+
+.post-content{
+    color: #707070;
+}
+
+.post-details{
+    display: flex;
+    justify-content: space-between;
+    width: 15rem;
+}
+
+.post-button{
+    margin-right: 2rem;
+}
