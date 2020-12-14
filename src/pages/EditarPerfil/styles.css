@@ -1,0 +1,82 @@
+.container-editar-perfil {
+    width: 100%;
+    min-height: 75vh;
+    font-family: 'Montserrat';
+}
+
+.container-editar-perfil .user-image {
+    width: 40%;
+    float: left;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding-top: 100px;
+}
+
+.container-editar-perfil .user-info {
+    padding-top: 100px;
+    width: 60%;
+    float: right;
+}
+
+.container-editar-perfil .input-left {
+    display: flex;
+    flex-direction: column;
+    float: left;
+}
+
+.container-editar-perfil .input-right {
+    display: flex;
+    flex-direction: column;
+    float: left;
+    padding-left: 30px;
+}
+
+.container-editar-perfil .container-button {
+    padding-top: 30px;
+    width: 120px;
+}
+
+.user-info h1 {
+    font-size: 45px;
+    color: #BA66A3;
+    padding: 0;
+    margin: 0;
+    font-weight: 600;
+}
+
+.user-info h2 {
+    font-size: 25px;
+    color: #444143;
+    padding: 0;
+    margin: 0;
+    font-weight: 200;
+}
+
+.user-info p {
+    font-weight: 100;
+    color: #444143;
+    margin-top: 5px;
+}
+
+.container-alterar-foto {
+    cursor: pointer;
+    display: flex;
+    justify-content: cente;
+    align-items: center;
+    
+    font-size: 20px;
+    color: #BA66A3;
+    padding: 0;
+    margin: 0;
+    font-weight: 600;
+    outline: none;
+    text-decoration: none;
+    margin-top: 15px;
+}
+
+.container-alterar-foto img {
+    margin-top: -5px;
+    padding-right: 8px;
+}
