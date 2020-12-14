@@ -1,0 +1,53 @@
+.main-frame{
+    background-color:  #FBE9F6;
+
+    width: 25rem;
+    height: 40rem;
+
+    margin: 10rem auto;
+    text-align: center;
+}
+
+.autor-pic{
+    width: 14rem;
+    height: 14rem;
+    border-radius: 50%;
+    
+    margin-top: -4rem;
+}
+
+p{
+    font-size: 1.3rem;
+    font-weight: 300;
+    margin: 1.2rem 0 0 0;
+}
+
+.name-link{
+    text-decoration: none;
+    font-size: 2.4rem;
+
+    color: #BA66A3;
+
+    margin-top: 0px;
+}
+
+.about{
+    margin-top: 1.2rem;
+    color: #707070;
+    font-size: 1.6rem;
+    font-weight: 200;
+}
+
+.social-media-icons{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 0.5rem;
+}
+
+.social-media-icons img{
+    background: #ffffff;
+    margin: 1rem;
+    padding: 0.8rem;
+    border-radius: 0.8rem;
+}
