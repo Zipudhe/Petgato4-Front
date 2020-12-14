@@ -1,0 +1,39 @@
+.header{
+    background-color:  #BA66A3;
+    height: 5rem;
+    max-width: 100vw;
+    padding: 0 3rem;
+
+    box-shadow: 0 0 0.3rem 0.2rem #797979;
+}
+
+.header,
+.links{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.links *{
+    color: #ffffff;
+    font-size: 1.3rem;
+    font-weight: 300;
+
+    margin: 0 1rem;
+
+    text-decoration: none;
+}
+
+.header img{
+    height: 3rem;
+}
+
+@media (max-width: 768px){
+    .links *{
+        display: none;
+    }
+
+    .header{
+        justify-content: center;
+    }
+}
