@@ -5,13 +5,13 @@
     display: flex;
 }
 
-.image{
+#image{
     width: 50vw;
     height: 100vh;
 
     border-right: 1px solid #707070;
 
-    background: url('../../assets/images/Esqueciminhasenha.jpg'); 
+    background: url('../../assets/images/Login.jpg'); 
     background-position: center;
     background-size: cover;
 }
@@ -27,10 +27,6 @@
     justify-content: center;
 }
 
-.content{
-    width: min-content;
-}
-
 .icon{
     display: block;
     margin: 0 auto 3rem auto;
@@ -41,6 +37,11 @@
 
     font-size: 1.2rem;
     font-weight: 300;
+}
+
+.login-btn{
+    width: 8rem;
+    margin: 3rem auto 4rem auto;
 }
 
 @media (max-width: 1120px){

@@ -8,7 +8,7 @@ import PetIcon from '../../assets/gatinho_petgato.svg';
 export default function PageRecover(){
     return(
         <div className="pagebody">
-            <div id="image">
+            <div className="image">
             </div>
             <div className="info-text">
                 <div className="content">
