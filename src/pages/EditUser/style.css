@@ -1,0 +1,75 @@
+.edit-user{
+    border: 1px solid black;
+
+    width: 90vw;
+    margin: 0 auto;
+}
+
+p{
+    text-align: left;
+}
+
+.backoffice{
+    font-size: 1.9rem;
+    font-weight: 300;
+    margin: 2rem 0 0.8rem 0;
+}
+
+.edit-title{
+    color: #C882B4;
+    font-size: 3rem;
+    font-weight: bold;
+
+    margin: 0;
+}
+
+.edit-inputs{
+    width: 60vw;
+    display: grid;
+    grid-template-columns: auto auto;
+    margin: 0 auto; 
+
+    border: 1px solid black;
+}
+
+.role-selector{
+    width: min-content;
+    margin: 1rem auto 0 auto;
+}
+
+#user-role-label{
+    color: #C882B4;
+    font-size: 1.3rem;
+    font-weight: 300;
+
+    text-align: left;
+}
+
+#user-role{
+    height: 3.82rem;
+    width: 26.4rem;
+
+    font-size: 1.5rem;
+    font-weight: 300;
+    color: #707070;
+
+    padding-left: 1rem;
+
+    border-radius: 0;
+    border: 1px solid #C882B4;
+}
+
+.edit-buttons{
+    display: flex;
+    width: 26rem;
+    margin: 3rem auto;
+}
+
+.save-button{
+    width: min-content;
+    margin-right: 2rem;
+}
+
+.return-button{
+    width: min-content;
+}
