@@ -1,6 +1,4 @@
 .edit-user{
-    border: 1px solid black;
-
     width: 90vw;
     margin: 0 auto;
 }
@@ -24,12 +22,11 @@ p{
 }
 
 .edit-inputs{
-    width: 60vw;
+    width: fit-content;
     display: grid;
     grid-template-columns: auto auto;
+    column-gap: 3rem;
     margin: 0 auto; 
-
-    border: 1px solid black;
 }
 
 .role-selector{
