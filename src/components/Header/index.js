@@ -1,16 +1,17 @@
 import "./style.css";
 
 import Icon from '../../assets/gatinho_petgato_branco.svg';
+import { Link } from "@reach/router";
 
 export default function Header(){
     return(
         <div className="header">
             <img alt="icon petgato" src={Icon}/>
             <div className="links">
-                <a href="/#">Página Inicial</a>
-                <a href="/#">Sobre Nós</a>
-                <a href="/#">Fale Conosco</a>
-                <a href="/#">Entrar</a>
+                <Link to="/">Página Inicial</Link>
+                <Link to="/about">Sobre Nós</Link>
+                <Link to="/contact">Fale Conosco</Link>
+                <Link to="/login">Entrar</Link>
             </div>
         </div>
     )
