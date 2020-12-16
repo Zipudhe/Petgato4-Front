@@ -16,8 +16,8 @@ export default function PageRecover(){
                     <Input name="Email"/>
                     <p className="intxt">Insira seu email para recuperar a senha</p>
                     <button>Recuperar Senha</button>
-                    <SpanText text="Lembrou a senha?" link="Faça Login" path="#"/>
-                    <SpanText text="Ainda não tem conta?" link="Cadastre-se aqui" path="#" />
+                    <SpanText text="Lembrou a senha?" link="Faça Login" path="/login"/>
+                    <SpanText text="Ainda não tem conta?" link="Cadastre-se aqui" path="/signIn" />
                 </div>
             </div>
         </div>
