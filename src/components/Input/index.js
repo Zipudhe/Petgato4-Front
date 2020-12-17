@@ -1,10 +1,10 @@
 import './style.css';
 
-export default function Input({name, disabled=false, textholder}){
+export default function Input({name, disabled=false, textholder, inputId}){
     return (
         <div className="input">
-            <label id="form-label" htmlFor="form-input">{name}</label>
-            <input placeholder={textholder} disabled={disabled} id="form-input" />
+            <label className="form-label" htmlFor="{inputId}" >{name}</label>
+            <input placeholder={textholder} disabled={disabled} id={inputId} className="form-input"/>
         </div>
     )
 }
