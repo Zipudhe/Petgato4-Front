@@ -1,0 +1,31 @@
+.backoffice-criartag {
+    font-family: 'Montserrat';
+    margin: 0 5%;
+    float: left;
+}
+
+.backoffice-criartag h2 {
+    font-weight: 100;
+    color: #444143;
+    margin: 50px 0 0 0;
+
+}
+
+.backoffice-criartag h1 {
+    font-weight: 600;
+    color: #BA66A3;
+    margin: 0 0 25px 0;
+}
+
+.backoffice-criartag .container-buttons {
+    float: left;
+    padding: 50px 0 20px 0;
+}
+
+.backoffice-criartag .btn {
+    width: 110px;
+    height: 40px;
+    float: left;
+    padding: 0;
+    margin-right: 20px;
+}
