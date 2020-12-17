@@ -6,21 +6,21 @@ import Button from '../../components/Button';
 
 import PetIcon from '../../assets/gatinho_petgato.svg';
 
-export default function PageRecover(){
+export default function PageLogin(){
     return(
         <div className="pagebody">
-            <div id="backgroundimg-recover">
+            <div id="image">
             </div>
             <div className="info-text">
                 <div className="content">
                     <img className="icon" alt="PetGato Icon" src={PetIcon} />
                     <Input name="Email"/>
-                    <p className="intxt">Insira seu email para recuperar a senha</p>
-                    <div className="recover-button">
-                    <Button styles="3">RECUPERAR SENHA</Button>
+                    <Input name="Senha" />
+                    <div className="login-btn">
+                        <Button onClick={() => alert('Login')} styles="3">ENTRAR</Button>
                     </div>
-                    <SpanText text="Lembrou a senha?" link="Faça Login" path="#"/>
-                    <SpanText text="Ainda não tem conta?" link="Cadastre-se" path="#" />
+                    <SpanText link="Esqueci minha senha" path="/recover"/>
+                    <SpanText text="Ainda não tem conta?" link="Cadastre-se" path="/signIn" />
                 </div>
             </div>
         </div>

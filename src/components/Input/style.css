@@ -27,6 +27,7 @@
 
     border-radius: 0;
     border: 1px solid #C882B4;
+    outline: none;
 }
 
 @media (max-width: 425px) {
@@ -34,4 +35,9 @@
         height: 3.2rem;
         width: 20rem;
     }
+}
+
+input:disabled {
+    cursor: not-allowed;
+    background-color: #F0F0F0;
 }

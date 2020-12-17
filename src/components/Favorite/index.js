@@ -9,9 +9,9 @@ const Favorite = ({ number=0, enabled=false }) => {
         <div className="container-favorite">
             <i></i>
         {enabled ? 
-            <img className="favorite-icon" src={favorite_icon_enabled} alt="Favoritar" />
+            <img className="favorite-icon" src={favorite_icon_enabled} alt="Favoritados" />
             :
-            <img className="favorite-icon" src={favorite_icon_disabled} alt="Favoritar" />
+            <img className="favorite-icon" src={favorite_icon_disabled} alt="Favoritados" />
         }
         <p className="favorite-number">{number}</p>
         </div>
