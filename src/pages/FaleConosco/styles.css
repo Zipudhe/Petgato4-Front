@@ -1,0 +1,111 @@
+.container-enviar-mensagem {
+    width: 100%;
+    min-height: 75vh;
+    font-family: 'Montserrat';
+}
+
+.container-enviar-mensagem .dog-image {
+    width: 40%;
+    float: left;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding-top: 100px;
+}
+
+.container-enviar-mensagem .user-info {
+    display: flex;
+    flex-wrap: wrap;
+    padding-top: 100px;
+    width: 50%;
+    float: left;
+}
+
+.container-enviar-mensagem .container-input {
+    display: flex;
+    flex-wrap: nowrap;
+}
+
+.container-enviar-mensagem .container-input .name {
+    padding-right: 25px;
+}
+
+.container-enviar-mensagem .input-right {
+    display: flex;
+    flex-direction: column;
+    float: left;
+    padding-left: 30px;
+}
+
+.user-info h1 {
+    font-size: 45px;
+    color: #BA66A3;
+    padding: 0;
+    margin: 0;
+    font-weight: 600;
+    padding-bottom: 15px;
+}
+
+.user-info h2 {
+    font-size: 25px;
+    color: #444143;
+    padding: 0;
+    margin: 0;
+    font-weight: 200;
+}
+
+.user-info p {
+    font-weight: 100;
+    color: #444143;
+    margin-top: 5px;
+}
+
+.container-alterar-foto {
+    cursor: pointer;
+    display: flex;
+    justify-content: cente;
+    align-items: center;
+    
+    font-size: 20px;
+    color: #BA66A3;
+    padding: 0;
+    margin: 0;
+    font-weight: 600;
+    outline: none;
+    text-decoration: none;
+    margin-top: 15px;
+}
+
+.input-message .container-button {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.input-message {
+    display: inline-block;
+    float: left;
+    padding: 0;
+    margin: 0; 
+    width: 93%;
+}
+
+.input-message .message {
+    float: left;
+}
+
+.container-enviar-mensagem .container-button {
+    padding-top: 25px;
+    width: 120px;
+    float: right;
+    padding-right: 200px;
+}
+
+.container-enviar-mensagem .footer-button {
+    display: inline-block;
+    width: 100%;
+    background-color: purple;
+    float: right;
+
+}

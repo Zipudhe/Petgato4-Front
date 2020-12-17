@@ -1,0 +1,24 @@
+.container-views-icon {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.views-number {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Montserrat';
+    font-size: 15px;
+    color: #707070;
+    padding: 0 5px;
+    margin: 0;
+    float: right;
+}
+
+.views-icon {
+    width: 20px;
+    height: 20px;
+    float: left;
+}
