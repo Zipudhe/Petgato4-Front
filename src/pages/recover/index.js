@@ -1,23 +1,26 @@
 import './style.css';
 
 import SpanText from '../../components/SpanText';
-import Input from '../../components/Input'; 
+import Input from '../../components/Input';
+import Button from '../../components/Button';
 
 import PetIcon from '../../assets/gatinho_petgato.svg';
 
 export default function PageRecover(){
     return(
         <div className="pagebody">
-            <div className="image">
+            <div id="backgroundimg-recover">
             </div>
             <div className="info-text">
                 <div className="content">
                     <img className="icon" alt="PetGato Icon" src={PetIcon} />
                     <Input name="Email"/>
                     <p className="intxt">Insira seu email para recuperar a senha</p>
-                    <button>Recuperar Senha</button>
+                    <div className="recover-button">
+                    <Button styles="3">RECUPERAR SENHA</Button>
+                    </div>
                     <SpanText text="Lembrou a senha?" link="Faça Login" path="#"/>
-                    <SpanText text="Ainda não tem conta?" link="Cadastre-se aqui" path="#" />
+                    <SpanText text="Ainda não tem conta?" link="Cadastre-se" path="#" />
                 </div>
             </div>
         </div>
