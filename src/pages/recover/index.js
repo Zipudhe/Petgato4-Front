@@ -19,8 +19,8 @@ export default function PageRecover(){
                     <div className="recover-button">
                     <Button styles="3">RECUPERAR SENHA</Button>
                     </div>
-                    <SpanText text="Lembrou a senha?" link="Faça Login" path="#"/>
-                    <SpanText text="Ainda não tem conta?" link="Cadastre-se" path="#" />
+                    <SpanText text="Lembrou a senha?" link="Faça Login" path="/login"/>
+                    <SpanText text="Ainda não tem conta?" link="Cadastre-se aqui" path="/signIn" />
                 </div>
             </div>
         </div>
