@@ -12,14 +12,14 @@ export default function ListPublications({page}){
     }
 
     useEffect(() => {
-        axios.get(`http://127.0.0.1:3000/posts?page=${page}`)
+        axios.get(`http://localhost:3000/posts?page=${page}`)
         .then((response) => response.data)
         .then((data) => setPosts(data));
     }, [page]);
     
     function handleDelete(post_id){
         if(window.confirm("Tem certeza?")){
-            axios.delete(`http://127.0.0.1:3000/posts/${post_id}`)
+            axios.delete(`http://localhost:3000/posts/${post_id}`)
             .then();
         }
     }
@@ -35,9 +35,9 @@ export default function ListPublications({page}){
             </tr>
             {posts.map((post) => 
                 (
-                    <tr>
+                    <tr key={post.id}>
                         <td>{post.id}</td>
-                        <td>{post.created_at.slice(0, 10)}</td>
+                        <td>{converteData(post.created_at)}</td>
                         <td><a href="/#">{post.name}</a></td>
                         <td><p>Editar</p></td>
                         <td><p onClick={() => handleDelete(post.id)}>Excluir</p></td>
