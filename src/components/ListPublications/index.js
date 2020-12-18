@@ -1,7 +1,7 @@
 import './styles.css';
 
 import axios from 'axios';
-import { useEffect, useState, use } from 'react';
+import { useEffect, useState } from 'react';
 
 export default function ListPublications({pageRef}){
     const [page, setPage] = useState(pageRef);
@@ -20,7 +20,7 @@ export default function ListPublications({pageRef}){
 
     function handleDelete(post_id){
         if(window.confirm("Tem certeza?")){
-            axios.delete(`http://localhost:3000/posts/${post_id}`)
+            axios.delete(`http://localhost:3000/posts/${post_id}?page=${page}`)
                 .then((response) => response.data)
                 .then((data) => setPosts(data))
                 .catch((error) => console.error(error));
