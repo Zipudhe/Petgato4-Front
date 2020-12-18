@@ -26,9 +26,11 @@
 	background-color: #f2f2f2;   
 }
 
-.all-publications a {
+.all-publications a, p {
     color: #BA66A3;
     font-weight: bold;
     cursor: pointer;
     text-decoration: none;
+    margin: 0.5rem;
 }
+

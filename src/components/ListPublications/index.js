@@ -3,16 +3,13 @@ import './styles.css';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 
-
 export default function ListPublications({page}){
     const [posts, setPosts] = useState([]);
 
-    let temp = "2020-12-17T20:44:08.232Z";
     function converteData(data){
         data = data.split('T')[0].split('-').reverse()
         return data.join('/');
     }
-    console.log(converteData(temp))
 
     useEffect(() => {
         axios.get(`http://127.0.0.1:3000/posts?page=${page}`)
@@ -20,6 +17,13 @@ export default function ListPublications({page}){
         .then((data) => setPosts(data));
     }, [page]);
     
+    function handleDelete(post_id){
+        if(window.confirm("Tem certeza?")){
+            axios.delete(`http://127.0.0.1:3000/posts/${post_id}`)
+            .then();
+        }
+    }
+
     return (
         <table className="all-publications">
             <tr>
@@ -35,8 +39,8 @@ export default function ListPublications({page}){
                         <td>{post.id}</td>
                         <td>{post.created_at.slice(0, 10)}</td>
                         <td><a href="/#">{post.name}</a></td>
-                        <td><a href="/#">Editar</a></td>
-                        <td><a href="/#">Excluir</a></td>
+                        <td><p>Editar</p></td>
+                        <td><p onClick={() => handleDelete(post.id)}>Excluir</p></td>
                     </tr>
                 )
             )}
