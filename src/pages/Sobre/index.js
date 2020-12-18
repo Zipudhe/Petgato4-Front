@@ -1,12 +1,12 @@
-import { Link } from 'react-router-dom';
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
-import Input from '../../components/Input';
-import Button from '../../components/Button';
 import facebook_icon from '../../assets/awesome-facebook-square.svg';
 import instagram_icon from '../../assets/awesome-instagram.svg';
 import twitter_icon from '../../assets/awesome-twitter-square.svg';
-import cintia_lorenzzo from '../../assets/images/Cíntia Lorenzzo.jpg';
+import cintia_lorenzzo from '../../assets/images/cintialorenzzo.jpeg';
+import passaralho from '../../assets/images/Mandragora.jpg';
+import dogao from '../../assets/images/Floquinho.jpg';
+
 
 import './styles.css';
 
@@ -15,11 +15,14 @@ export default function Sobre(){
         <div>
             <Header />
             <div className="container-sobre">
-                <div className="img1">
-                    <img src={cintia_lorenzzo} className="temp"/>
-                </div>
-                <div className="sobre-images">
-                    
+                <div className="images-sobre">
+                    <div className="img1">
+                        <img src={cintia_lorenzzo} className="temp"/>
+                    </div>
+                    <div className="sobre-images">
+                        <img className="img-b" src={passaralho}></img>
+                        <img className="img-c" src={dogao}/>
+                    </div>
                 </div>
                 <div className="sobre-info">
                     <h2>SOBRE NÓS</h2>

@@ -2,17 +2,41 @@
     display: flex;
     flex-wrap: nowrap;
     font-family: 'Montserrat';
-    margin: 20px 5%;
+    border: 1px solid black;
+    width: fit-content;
+    margin: 20px;
+}
+
+.images-sobre{
+    height: fit-content;
+    margin-top: 5rem;
+    width: fit-content;
 }
 
 .sobre-images {
-    width: 100px;
-    background-color: blue;
+    width: fit-content;
+    display: flex;
+    margin: 0 auto;
+}
+.img-b{
+    height: 13rem;
+    width: 13rem;
+}
+
+.img-c{
+    
+    width: 11rem;
+    height: 13rem;
+
+    margin-left: 1rem;
 }
 
 .img1 {
-    background-image: url('../../assets/images/Cíntia Lorenzzo.jpg');
-    background-color: #cccccc;
+    width: 25rem;
+    height: 12rem;
+    margin: 0 auto 1rem auto;
+
+    object-fit: cover;
 }
 
 .temp {
@@ -27,7 +51,7 @@
     text-align: left;
     color: #707070;
     font-size: 16px;
-    width: 100%;
+    width: 50%;
 }
 
 .sobre-info h2 {
