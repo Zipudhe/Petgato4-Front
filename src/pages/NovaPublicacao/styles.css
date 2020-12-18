@@ -1,0 +1,46 @@
+.backoffice-publicacao {
+    font-family: 'Montserrat';
+    margin: 0 5%;
+    min-height: 74vh;
+    float: left;
+    color: #707070;
+}
+
+.backoffice-publicacao h2 {
+    font-weight: 100;
+    color: #444143;
+    margin: 50px 0 0 0;
+}
+
+.backoffice-publicacao h1 {
+    font-weight: 600;
+    color: #BA66A3;
+    margin: 0 0 25px 0;
+}
+
+.backoffice-publicacao h3 {
+    color: #BA66A3;
+    padding-top: 15px;
+}
+
+.backoffice-publicacao .container-tags {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+}
+
+.backoffice-publicacao label {
+    margin-left: 2px;
+}
+
+.backoffice-publicacao .gerenciar-tags {
+    width: 160px;
+    height: 45px;
+    margin-top: 25px;
+}
+
+.backoffice-publicacao .footer-buttons {
+    background-color: blue;
+    margin: 0;
+    padding: 0;
+}
