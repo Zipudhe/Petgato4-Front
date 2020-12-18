@@ -2,8 +2,9 @@
     font-family: 'Montserrat';
     margin: 0 5%;
     min-height: 74vh;
-    float: left;
     color: #707070;
+    width: 100%;
+    align-content: left;
 }
 
 .backoffice-publicacao h2 {
@@ -21,6 +22,11 @@
 .backoffice-publicacao h3 {
     color: #BA66A3;
     padding-top: 15px;
+}
+
+.backoffice-publicacao .input-title {
+    width: fit-content;
+    margin-left: 0;
 }
 
 .backoffice-publicacao .container-tags {
@@ -43,4 +49,12 @@
     background-color: blue;
     margin: 0;
     padding: 0;
+}
+
+.texto-publicacao {
+    width: 100%;
+    margin-top: 30px;
+    border-radius: 0;
+    border: 1px solid #C882B4;
+    outline: none;
 }
