@@ -58,3 +58,7 @@
     border: 1px solid #C882B4;
     outline: none;
 }
+
+.ql-editor {
+    min-height: 350px;
+}
