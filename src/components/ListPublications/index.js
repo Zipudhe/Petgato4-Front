@@ -16,21 +16,14 @@ export default function ListPublications({pageRef}){
             .then((response) => response.data)
             .then((data) => setPosts(data))
             .catch((error) => console.error(error));
-    }, [page, posts.length]);
-    
-    /*function loadPosts(page) {
-        axios.get(`http://localhost:3000/posts?page=${page}`)
-            .then((response) => response.data)
-            .then((data) => setPosts(data))
-            .catch((error) => console.error(error));
-    }*/
+    }, [page]);
 
     function handleDelete(post_id){
         if(window.confirm("Tem certeza?")){
-            axios.delete(`http://localhost:3000/posts/${post_id}`);
-
-            //loadPosts(posts);
-            setPosts(posts);
+            axios.delete(`http://localhost:3000/posts/${post_id}`)
+                .then((response) => response.data)
+                .then((data) => setPosts(data))
+                .catch((error) => console.error(error));
         }
     }
 
