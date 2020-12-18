@@ -1,0 +1,33 @@
+.backoffice-denuncias {
+    font-family: 'Montserrat';
+    margin: 0 5%;
+    min-height: 74vh;
+}
+
+.backoffice-denuncias h2 {
+    font-weight: 100;
+    color: #444143;
+    margin: 50px 0 0 0;
+
+}
+
+.backoffice-denuncias h1 {
+    font-weight: 600;
+    color: #BA66A3;
+    margin: 0 0 25px 0;
+}
+
+.backoffice-footer {
+    margin-top: 8px;
+    width: 100%;
+}
+
+.backoffice-footer .btn {
+    width: 170px;
+    height: 40px;
+    float: left;
+}
+
+.backoffice-footer .menu {
+    float: right;
+}
