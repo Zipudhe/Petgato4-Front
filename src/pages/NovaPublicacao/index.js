@@ -65,16 +65,18 @@ export default function NovaPublicacao(){
         //this.setState({ value: event.target.value });
         console.log(event.target.value);
     }
+    //<div className="texto-publicacao" ref={quillRef}>
+    //<input type='text' onChange={myChangeHandler} />
     return (
         <div>
             <Header />
             <div className="backoffice-publicacao">
                 <h2>BACKOFFICE</h2>
                 <h1>Nova Publicação</h1>
-                <input type='text' onChange={myChangeHandler} />
+                
                 <div className="input-title"><Input name="Título da Publicação" /></div>
-                <div className="texto-publicacao" ref={quillRef}>
-                    
+                <div className="texto-publicacao" >
+                <ReactQuill theme="snow" ref={quill} modules={modules} placeholder={"Escreva a publicação aqui..."}/>
                 </div>
 
                 <h3>Escolha uma imagem de capa:</h3>
@@ -92,7 +94,8 @@ export default function NovaPublicacao(){
 
                 <div className="gerenciar-tags"><Button onClick={handleSave} styles="1">GERENCIAR TAGS</Button></div>
                 <div className="footer-buttons">
-                    oi
+                    <div><Button onClick={() => {alert('PUBLICAR')}} styles="3">PUBLICAR</Button></div>
+                    <div><Button onClick={() => {alert('VOLTAR')}} styles="1">VOLTAR</Button></div>
                 </div>
             </div>
             <Footer />
