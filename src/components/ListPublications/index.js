@@ -1,18 +1,18 @@
 import './styles.css';
 
+import axios from 'axios';
+import { useEffect, useState } from 'react';
+
+
 export default function ListPublications({page}){
-    let posts = [{
-        id: 32, 
-        data:"08/10/2019", 
-        name: "As almofadinhas são importantes", 
-        tags: ["Cuidados", "Cães & Gatos", "Guerreiros de Fé"]
-    },{
-        id: 32, 
-        data:"06/10/2019", 
-        name: "Carro de Malandro", 
-        tags: ["Carros"]
-    }
-    ];
+
+    const [posts, setPosts] = useState([]);
+
+    useEffect(() => {
+        axios.get(`http://127.0.0.1:3000/posts?page=${page}`)
+        .then((response) => response.data)
+        .then((data) => setPosts(data));
+    }, [page]);
     
     return (
         <table className="all-publications">
@@ -20,7 +20,6 @@ export default function ListPublications({page}){
                 <th>#</th>
                 <th>Data</th>
                 <th>Título</th>
-                <th>Tags</th>
                 <th></th>
                 <th></th>
             </tr>
@@ -28,11 +27,10 @@ export default function ListPublications({page}){
                 (
                     <tr>
                         <td>{post.id}</td>
-                        <td>{post.data}</td>
-                        <td><a href="#">{post.name}</a></td>
-                        <td>{post.tags.join(', ')}</td>
-                        <td><a href="#">Editar</a></td>
-                        <td><a href="#">Excluir</a></td>
+                        <td>{post.created_at.slice(0, 10)}</td>
+                        <td><a href="/#">{post.name}</a></td>
+                        <td><a href="/#">Editar</a></td>
+                        <td><a href="/#">Excluir</a></td>
                     </tr>
                 )
             )}
