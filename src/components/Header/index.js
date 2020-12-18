@@ -9,8 +9,8 @@ export default function Header(){
             <img alt="icon petgato" src={Icon}/>
             <div className="links">
                 <Link to="/">Página Inicial</Link>
-                <Link to="/about">Sobre Nós</Link>
-                <Link to="/contact">Fale Conosco</Link>
+                <Link to="/sobre">Sobre Nós</Link>
+                <Link to="/contato">Fale Conosco</Link>
                 <Link to="/login">Entrar</Link>
             </div>
         </div>

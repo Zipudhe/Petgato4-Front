@@ -1,4 +1,5 @@
 import './App.css';
+import Publicacoes from './pages/Publicacoes';
 
 import Routes from "./routes";
 

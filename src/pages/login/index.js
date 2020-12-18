@@ -20,7 +20,7 @@ export default function PageLogin(){
                         <Button onClick={() => alert('Login')} styles="3">ENTRAR</Button>
                     </div>
                     <SpanText link="Esqueci minha senha" path="/recover"/>
-                    <SpanText text="Ainda não tem conta?" link="Cadastre-se" path="/signIn" />
+                    <SpanText text="Ainda não tem conta?" link="Cadastre-se" path="/signUp" />
                 </div>
             </div>
         </div>
