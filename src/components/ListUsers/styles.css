@@ -1,0 +1,34 @@
+.all-users {
+    font-family: 'Montserrat';
+    border-collapse: collapse;
+    width: 100%;
+    font-size: 15px;
+    color: #707070;
+    white-space: nowrap;
+}
+
+.all-users td, .all-users th {
+    border-top: 1.5px solid #ddd;
+    border-bottom: 1.5px solid #ddd;
+    padding: 10px;
+    min-width: 70px;
+    max-width: 210px;
+    text-align: left;
+    overflow: hidden;
+    text-overflow: ellipsis;
+} 
+
+.all-users tr {
+    color: #444143;
+}
+
+.all-users tr:nth-child(even) {
+	background-color: #f2f2f2;   
+}
+
+.all-users a {
+    color: #BA66A3;
+    font-weight: bold;
+    cursor: pointer;
+    text-decoration: none;
+}
