@@ -20,7 +20,8 @@ export default function ListPublications({page}){
     function handleDelete(post_id){
         if(window.confirm("Tem certeza?")){
             axios.delete(`http://localhost:3000/posts/${post_id}`)
-            .then();
+            .then(alert("Post excluído!"))
+            .then(window.location.reload());
         }
     }
 
