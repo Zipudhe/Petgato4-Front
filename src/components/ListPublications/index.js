@@ -5,8 +5,14 @@ import { useEffect, useState } from 'react';
 
 
 export default function ListPublications({page}){
-
     const [posts, setPosts] = useState([]);
+
+    let temp = "2020-12-17T20:44:08.232Z";
+    function converteData(data){
+        data = data.split('T')[0].split('-').reverse()
+        return data.join('/');
+    }
+    console.log(converteData(temp))
 
     useEffect(() => {
         axios.get(`http://127.0.0.1:3000/posts?page=${page}`)
