@@ -1,0 +1,27 @@
+.container-info {
+    float: left;
+}
+
+.container-home-page {
+    margin: 0 5%;
+    margin-bottom: 73vw;
+}
+
+.container-posts {
+    float: left;
+    margin-left: 50px;
+    margin-top: 100px;
+    width: 70%;
+}
+
+.container-posts h2 {
+    font-weight: 100;
+    color: #444143;
+    font-size: 1.2vw;
+}
+
+.container-posts h1 {
+    font-weight: 600;
+    color: #BA66A3;
+    font-size: 1.8vw;
+}
