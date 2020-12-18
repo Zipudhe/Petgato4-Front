@@ -12,7 +12,7 @@ export default function Publicacoes({page}){
             <div className="backoffice-publicacoes">
                 <h2>BACKOFFICE</h2>
                 <h1>Todas as publicações</h1>
-                <ListPublications />
+                <ListPublications page={page}/>
                 <div className="backoffice-footer">
                     <div className="btn">
                         <Button onClick={() => alert('AQUI NÃO')} styles="1">NOVA PUBLICAÇÃO</Button>
