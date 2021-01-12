@@ -4,7 +4,7 @@ import style from './styles.css';
 
 const Footer = () => (
     <footer className="container-footer">
-        &copy; 2019 - Todos os direitos reservados. Desenvolvido por Trainee Fofinho
+        <p>&copy; 2021 - Todos os direitos reservados. Desenvolvido por <a href="https://cjr.org.br/" target="__blank">CJR</a>.</p>
     </footer>
 );
 
