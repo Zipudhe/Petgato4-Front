@@ -1,0 +1,13 @@
+.loading-cat {
+    width: 20vw;
+    width: 97%;
+    height: 30vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.loading-cat img {
+    width: 9.8vw;
+    height: 12.5vw;
+}
