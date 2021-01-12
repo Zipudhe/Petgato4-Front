@@ -1,27 +1,53 @@
-.container-info {
-    float: left;
+.container-homepage {
+    display: grid;
+    grid-template-areas:
+    'header header header'
+    'menu main main'
+    'footer footer footer';
+    min-height: 100vh;
 }
 
-.container-home-page {
-    margin: 0 5%;
-    margin-bottom: 73vw;
+.container-homepage .homepage-header {
+    grid-area: header;
+    grid-row: 1 / 2;
+    width: 100%;
+
+    color: white;
+    background-color: lightcoral;
 }
 
-.container-posts {
-    float: left;
-    margin-left: 50px;
-    margin-top: 100px;
-    width: 70%;
+.container-homepage .homepage-info {
+    grid-area: menu;
+    grid-row: 2 / 20;
+    width: 100%;
+    border-right: 1px solid #B0B0B0;
 }
 
-.container-posts h2 {
-    font-weight: 100;
-    color: #444143;
-    font-size: 1.2vw;
+.container-homepage .homepage-posts {
+    grid-area: main;
+    width: 75vw;
+    margin-left: 2.3vw;
 }
 
-.container-posts h1 {
+.container-homepage .homepage-posts h1 {
+    font-size: 1.8vw;
     font-weight: 600;
     color: #BA66A3;
-    font-size: 1.8vw;
+    margin: 0;
+    margin-top: 3vw;
+}
+
+.container-homepage .homepage-posts h2 {
+    font-size: 1.2vw;
+    font-weight: 100;
+    color: #606060;
+    margin-top: 5px;
+    margin-bottom: 20px;
+}
+
+.container-homepage .homepage-footer {
+    grid-area: footer;
+    grid-row: 19 / 20;
+    width: 100%;
+    align-self: end;
 }

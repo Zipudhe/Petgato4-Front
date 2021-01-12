@@ -2,10 +2,23 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 50px;
+    height: 3.8vw;
     width: 100%;
     background-color:  #BA66A3;
     color: white;
     font-family: 'Montserrat';
-    font-size: 15px;
+    font-size: 1.2vw;
+}
+
+.container-footer a {
+    color: white;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+@media (max-width: 768px) { /* Mobile Devices */
+    .container-footer {
+        height: 30px;
+        font-size: 8.4px;
+    }
 }

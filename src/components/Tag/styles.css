@@ -1,11 +1,11 @@
 .tag {
-    display: inline;
-    background-color: #FBE9F6;
-    width: 100%;
-    padding: 3px 5px;
-    color: #BA66A3;
-    font-family: Montserrat;
-    font-size: 13px;
-    font-weight: 600;
-    cursor: pointer;
-  }
+  background-color: #FBE9F6;
+  width: fit-content;
+  padding: .25vw .6vw;
+  color: #BA66A3;
+  font-family: 'Montserrat';
+  font-size: 1vw;
+  font-weight: 600;
+  cursor: pointer;
+  height: 1.3vw;
+}

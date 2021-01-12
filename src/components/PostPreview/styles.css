@@ -1,0 +1,72 @@
+.container-post {
+    margin: 2vw 0;
+    width: 73vw;
+    height: 15vw;
+    
+    display: grid;
+    grid-template-columns: 15vw 57vw;
+    grid-column-gap: 15px;
+}
+
+.container-post .post-img {
+    background-color: lightblue;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.container-post .post-content {
+    display: grid;
+    grid-template-rows: 15% 60% 25%;
+}
+
+.post-content .tags {
+    display: flex;
+    align-items: center;
+    gap: .8vw;
+}
+
+.container-post .post-content .tags p {
+    display: flex;
+    padding: 0;
+    margin: 0;
+    font-size: 1.2vw;
+    font-style: italic;
+    color: #444143;
+}
+
+.post-content .post-text {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.post-content .post-description {
+    height: 100%;
+    display: -webkit-box;
+    -webkit-line-clamp: 3; /* max: 4 lines */
+    -webkit-box-orient: vertical; 
+}
+
+.post-content .post-text p {
+    margin: 0;
+    font-size: 1.2vw;
+    color: #444143; 
+}
+
+.post-content .post-text .post-title h1 {
+    font-size: 1.6vw;
+    font-weight: 800;
+    color: #BA66A3;
+    margin: 0;
+    padding: .4vw 0;
+    cursor: pointer;
+}
+
+.post-content .post-footer {
+    display: flex;
+    align-items: center;
+    gap: 1.2vw;
+}
