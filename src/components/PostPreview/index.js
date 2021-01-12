@@ -37,35 +37,3 @@ export default function PostPreview({post}){
         </div>
     );
 }
-/*export default function PostPreview({post}){
-    let tags = ["Cuidados", "Cães & Gatos", "Guias"];
-    // pegar tag.id na key
-    
-    return (
-        <div className="container-post">
-            <div className="post-img">
-                imagem
-            </div>
-            <div className="post-content">
-                <div className="tags">
-                    <p>Tags:</p>
-                    {tags.map((tag) => (
-                        <Tag text={tag} key={tag} />)
-                    )}
-                </div>
-                <div className="title">
-                    <h1>{post.name}</h1>
-                </div>
-                <div className="text">
-                    <p>{post.content.body}</p>
-                </div>
-                <div className="footer">
-                    <Button styles="1">Leia Mais</Button>
-                    <Favorite number={0} />
-                    <CommentIcon number={0} />
-                    <Views number={0} />
-                </div>
-            </div>
-        </div>
-    )
-}*/
