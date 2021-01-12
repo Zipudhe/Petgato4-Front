@@ -26,7 +26,7 @@
 	background-color: #f2f2f2;   
 }
 
-.all-publications a, p {
+.all-publications a, .all-publications p {
     color: #BA66A3;
     font-weight: bold;
     cursor: pointer;

@@ -37,7 +37,7 @@
     }
 }
 
-input:disabled {
+.input input:disabled {
     cursor: not-allowed;
     background-color: #F0F0F0;
 }

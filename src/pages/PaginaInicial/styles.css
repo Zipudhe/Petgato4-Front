@@ -11,9 +11,7 @@
     grid-area: header;
     grid-row: 1 / 2;
     width: 100%;
-
     color: white;
-    background-color: lightcoral;
 }
 
 .container-homepage .homepage-info {
