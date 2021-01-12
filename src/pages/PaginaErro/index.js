@@ -7,12 +7,12 @@ import './styles.css';
 export default function PaginaErro(){
     return (
         <div className="container-error-petgato">
-            <Header />
+            <div className="header-error-petgato"><Header /></div>
             <div className="error-petgato">
-                <h1>Oops... Parece que encontramos um erro!</h1>
+                <p>Oops... Parece que encontramos um erro!</p>
                 <p>Tente acessar a página novamente. Se o problema persistir, entre em contato conosco!</p>
             </div>
-            <Footer />
+            <div className="footer-error-petgato"><Footer /></div>
         </div>
     );
 }

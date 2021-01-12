@@ -1,7 +1,10 @@
 import './App.css';
-import Publicacoes from './pages/Publicacoes';
+import Routes from './routes';
 
-import Routes from "./routes";
+import PaginaErro from './pages/PaginaErro';
+import PaginaInicial from './pages/PaginaInicial';
+
+//import Routes from "./routes";
 
 function App() {
   return (

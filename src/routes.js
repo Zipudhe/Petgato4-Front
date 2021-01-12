@@ -1,33 +1,72 @@
 import React from 'react';
+import { isAuthenticated, isAdmin } from './auth'; 
 
-import { Router } from "@reach/router";
+import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
 
-import Cadastro from "./pages/Cadastro";
-import Recover from "./pages/recover";
-import PageLogin from './pages/login';
 import PaginaInicial from './pages/PaginaInicial';
-import EditUser from './pages/EditUser';
+import Cadastro from './pages/Cadastro';
 import FaleConosco from './pages/FaleConosco';
+import PaginaErro from './pages/PaginaErro';
+import Sobre from './pages/Sobre';
+
+import EditarPerfil from './pages/EditarPerfil';
+import EditUser from './pages/EditUser';
+import Mensagens from './pages/Mensagens';
+
+import Denuncias from './pages/Denuncias';
+import CriarTag from './pages/CriarTag';
 import EditarTag from './pages/EditarTag';
 import Publicacoes from './pages/Publicacoes';
-import Sobre from './pages/Sobre';
-import EditarPerfil from './pages/EditarPerfil';
+//import EditarPublicacoes from './pages/EditarPublicacoes';
+import Tags from './pages/Tags';
+import Usuarios from './pages/Usuarios';
 
-const Routes = () => (
-    <Router>
-        <PaginaInicial path="/" />
-        <Cadastro path="/signUp" />
-        <Recover path="/recover" />
-        <PageLogin path="/login"/>
-        <CriarTag path="/backoffice/create_tags"/>
-        <Denuncias path="/backoffice/denuncias"/>
-        <EditUser path="/backoffice/edituser"/>
-        <EditarTag path="/backoffice/edit_tags"/>
-        <FaleConosco path="/contato"/>
-        <Publicacoes page="0" path="/backoffice/pubclicacoes"/>
-        <Sobre path="/sobre"/>
-        <EditaPerfil path="/backoffice/perfil"/>
-    </Router>
+import Login from './pages/login';
+import Recover from './pages/recover';
+
+const PrivateRoute = ({ component: Component, ... rest}) => (
+    <Route { ... rest} render={props => (
+        isAuthenticated() ? (
+            <Component { ... props} />
+        ) : (
+            <Redirect to={{ pathname: '/erro', state: { from: props.location } }} />
+        )
+    )} />
 );
 
-export default Routes
+const AdminRoute = ({ component: Component, ... rest}) => (
+    <Route { ... rest} render={props => (
+        isAdmin() ? (
+            <Component { ... props} />
+        ) : (
+            <Redirect to={{ pathname: '/erro', state: { from: props.location } }} />
+        )
+    )} />
+);
+
+const Routes = () => (
+    <BrowserRouter>
+        <Switch>
+            <Route exact path="/" component={() => <PaginaInicial />} />
+            <Route exact path="/login" component={() => <Login />} />
+            <Route exact path="/cadastro" component={() => <Cadastro />} />
+            <Route exact path="/recuperar-senha" component={() => <Recover />} />
+            <Route exact path="/sobre" component={() => <Sobre />} />
+            <Route exact path="/contato" component={() => <FaleConosco />} />
+            <Route exact path="/erro" component={() => <PaginaErro />} />
+            
+            <PrivateRoute exact path="/editar-perfil" component={() => <EditarPerfil />} />
+
+            <AdminRoute exact path="/denuncias" component={() => <Denuncias />} />
+            <AdminRoute exact path="/publicacoes" component={() => <Publicacoes />} />
+            <AdminRoute exact path="/usuarios" component={() => <Usuarios />} />
+            <AdminRoute exact path="/tags" component={() => <Tags />} />
+            <AdminRoute exact path="/criar-tag" component={() => <CriarTag />} />
+            <AdminRoute exact path="/editar-tag" component={() => <EditarTag />} />
+            <AdminRoute exact path="/editar-usuario" component={() => <EditUser />} />
+            <AdminRoute exact path="/mensagens" component={() => <Mensagens />} />
+        </Switch>
+    </BrowserRouter>
+);
+
+export default Routes;

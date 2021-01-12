@@ -1,8 +1,9 @@
 .container-error-petgato {
     min-height: 100vh;
+    display: grid;
+    grid-template-rows: 20% 60% 20%;
 }
 
-.error-petgato {
-    width: 50vw;
-    height: 28vw;
+.container-error-petgato .header-error-petgato {
+    background-color: blue;
 }
