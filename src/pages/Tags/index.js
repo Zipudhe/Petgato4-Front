@@ -62,7 +62,7 @@ export default function Tags({ pageRef=1 }){
 
     return (
         <div className="container-tags">
-            <div className="header-tags"><Header /></div>
+            <div className="header-tags"><Header backoffice={true} atual={3} /></div>
             <div className="content-tags">
                 <div className="backoffice-tags">
                     <h2>BACKOFFICE</h2>
@@ -98,7 +98,7 @@ export default function Tags({ pageRef=1 }){
                             </table>
                         </div>
                     )}
-                    <div className="backoffice-footer">
+                    <div className="backoffice-footer-tags">
                         <div className="btn">
                             <Button onClick={() => alert('AQUI NÃO')} styles="1">NOVA TAG</Button>
                         </div>

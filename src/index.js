@@ -2,8 +2,6 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
 
-import Pagination from './components/Pagination';
-
 import './index.css';
 
 ReactDOM.render(
