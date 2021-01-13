@@ -1,29 +1,117 @@
+import { useEffect, useState } from 'react';
+import axios from 'axios';
+import { Link, Redirect } from 'react-router-dom';
+
 import Header from '../../components/Header';
-//import Footer from '../../components/Footer';
-import ListPublications from '../../components/ListPublications';
+import Footer from '../../components/Footer';
 import Button from '../../components/Button';
+import Pagination from '../../components/Pagination';
+import LoadingCat from '../../components/LoadingCat';
 
 import './styles.css';
 
-export default function Publicacoes({page}){
+export default function Publicacoes({ pageRef=1 }){
+    const [page, setPage] = useState(pageRef);
+    const [posts, setPosts] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const totalPages = 5;
+    
+    const converteData = (data) => (
+        data.split('T')[0].split('-').reverse().join('/')
+    );
+
+    const nextPage = () => {
+        if(page < totalPages){
+            setPage(page + 1);
+        }
+    }
+
+    const prevPage = () => {
+        if(page > 0){
+            setPage(page - 1);
+        }
+    }
+
+    const specificPage = () => {
+        if(page === 1){
+            setPage(3);
+        } else {
+            setPage(totalPages - 2);
+        }
+    }
+
+    function deletePost(post_id){
+        if(window.confirm("Tem certeza?")){
+            axios.delete(`http://localhost:3000/posts/${post_id}?page=${page}`)
+                .then((response) => response.data)
+                .then((data) => setPosts(data))
+                .catch((error) => console.error(error));
+        }
+    }
+
+    const loadPosts = async () => {
+        setLoading(true);
+        axios.get(`http://localhost:3000/posts?page=${page}`)
+            .then((response) => response.data)
+            .then((data) => setPosts(data))
+            .catch((error) => console.error(error));
+        setLoading(false);
+    }
+
+    useEffect(() => {
+        loadPosts();
+    }, [page])
+
     return (
-        <div>
-            <Header />
-            <div className="backoffice-publicacoes">
-                <h2>BACKOFFICE</h2>
-                <h1>Todas as publicações</h1>
-                <ListPublications pageRef={page}/>
-                <div className="backoffice-footer">
-                    <div className="btn">
-                        <Button onClick={() => alert('AQUI NÃO')} styles="1">NOVA PUBLICAÇÃO</Button>
-                    </div>
-                    <div className="menu">
-                        1, 2, 3
+        <div className="container-publications">
+            <div className="header-publications"><Header /></div>
+            <div className="content-publications">
+                <div className="backoffice-publications">
+                    <h2>BACKOFFICE</h2>
+                    <h1>Todas as publicações</h1>
+                    {loading ? (
+                        <div className="list-publications-loading-cat"><LoadingCat /></div>
+                    ) : (
+                        <div className="container-table-publications">
+                            <table className="all-publications">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Data</th>
+                                        <th>Título</th>
+                                        <th>Tags</th>
+                                        <th></th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {posts.map((post) => 
+                                        (
+                                        <tr key={post.id}>
+                                            <td>{post.id}</td>
+                                            <td>{converteData(post.created_at)}</td>
+                                            <td><a href="/#">{post.name}</a></td>
+                                            <td></td>
+                                            <td><a>Editar</a></td>
+                                            <td><a onClick={() => deletePost(post.id)}>Excluir</a></td>
+                                        </tr>
+                                        )
+                                    )}
+                                </tbody>
+                            </table>
+                        </div>
+                    )}
+                    <div className="backoffice-footer-publications">
+                        <div className="btn">
+                            <Button onClick={() => alert('NOVA PUBLICAÇÃO')} styles="1">NOVA PUBLICAÇÃO</Button>
+                        </div>
+                        <div className="menu">
+                            <Pagination actualPage={page} totalPages={totalPages} previous={() => prevPage()} next={() => nextPage()} specific={() => specificPage()} />
+                        </div>
                     </div>
                 </div>
             </div>
-            {//<Footer />
-            }
+            <div className="footer-publications"><Footer /></div>
         </div>
     );
 }
