@@ -8,8 +8,8 @@
     font-family: 'Montserrat';
     font-style: normal;
     font-weight: 400;
-    width: 9vw;
-    height: 2.6vw;
+    width: fit-content;
+    height: 100%;
     padding: 0 10px;
 }
 
@@ -19,6 +19,7 @@
     border: 1.8px solid #BA66A3;
     border-radius: 3px;
     font-size: 1vw;
+    padding: 1vw 2vw;
 }
 
 .btn1:hover {
