@@ -1,9 +1,35 @@
 .container-error-petgato {
     min-height: 100vh;
     display: grid;
-    grid-template-rows: 20% 60% 20%;
+    grid-template-rows: 10% 80% 10%;;
 }
 
-.container-error-petgato .header-error-petgato {
-    background-color: blue;
+.container-error-petgato .error-petgato {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.container-error-petgato .error-petgato img {
+    width: 30vw;
+    height: 20vw;
+}
+
+.container-error-petgato .error-petgato h2 {
+    color: #BA66A3;
+    font-size: 2vw;
+}
+
+.container-error-petgato .error-petgato p {
+    color: #707070;
+    font-size: 1.2vw;
+}
+
+.container-error-petgato .footer-error-petgato {
+    display: flex;
+}
+
+.container-error-petgato .footer-error-petgato footer {
+    margin-top: auto;
 }

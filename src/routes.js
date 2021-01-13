@@ -29,7 +29,7 @@ const PrivateRoute = ({ component: Component, ... rest}) => (
         isAuthenticated() ? (
             <Component { ... props} />
         ) : (
-            <Redirect to={{ pathname: '/erro', state: { from: props.location } }} />
+            <Redirect to={{ pathname: '/nao-permitido', state: { from: props.location } }} />
         )
     )} />
 );
@@ -39,7 +39,7 @@ const AdminRoute = ({ component: Component, ... rest}) => (
         isAdmin() ? (
             <Component { ... props} />
         ) : (
-            <Redirect to={{ pathname: '/erro', state: { from: props.location } }} />
+            <Redirect to={{ pathname: '/nao-permitido', state: { from: props.location } }} />
         )
     )} />
 );
@@ -53,6 +53,8 @@ const Routes = () => (
             <Route exact path="/recuperar-senha" component={() => <Recover />} />
             <Route exact path="/sobre" component={() => <Sobre />} />
             <Route exact path="/contato" component={() => <FaleConosco />} />
+            <Route exact path="/nao-permitido" component={() => <PaginaErro error={1} />} />
+            <Route exact path="/nao-encontrada" component={() => <PaginaErro error={2} />} />
             <Route exact path="/erro" component={() => <PaginaErro />} />
             
             <PrivateRoute exact path="/editar-perfil" component={() => <EditarPerfil />} />
@@ -65,6 +67,8 @@ const Routes = () => (
             <AdminRoute exact path="/editar-tag" component={() => <EditarTag />} />
             <AdminRoute exact path="/editar-usuario" component={() => <EditUser />} />
             <AdminRoute exact path="/mensagens" component={() => <Mensagens />} />
+
+            <Route path="/" component={() => <PaginaErro error={2} />} />
         </Switch>
     </BrowserRouter>
 );
