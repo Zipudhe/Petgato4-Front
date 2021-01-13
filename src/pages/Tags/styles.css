@@ -40,15 +40,15 @@
     font-size: 2.4vw;
 }
 
-.backoffice-footer {
+.backoffice-footer-tags {
     width: 100%;
 }
 
-.backoffice-footer .btn {
+.backoffice-footer-tags .btn {
     float: left;
 }
 
-.backoffice-footer .menu {
+.backoffice-footer-tags .menu {
     float: right;
     background-color: yellow;
 }
