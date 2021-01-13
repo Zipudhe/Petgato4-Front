@@ -28,7 +28,7 @@ export default function PaginaInicial() {
     
     return (
         <div className="container-homepage">
-            <div className="homepage-header"><Header /></div>
+            <div className="homepage-header"><Header atual={1} /></div>
             <div className="homepage-info">
                 <PerfilHome />
             </div>

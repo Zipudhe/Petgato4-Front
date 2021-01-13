@@ -7,7 +7,7 @@ import './styles.css';
 export default function Mensagens({page}){
     return (
         <div>
-            <Header />
+            <Header backoffice={true} atual={6} />
             <div className="backoffice-mensagens">
                 <h2>BACKOFFICE</h2>
                 <h1>Mensagens de Contato</h1>

@@ -64,7 +64,7 @@ export default function Publicacoes({ pageRef=1 }){
 
     return (
         <div className="container-publications">
-            <div className="header-publications"><Header /></div>
+            <div className="header-publications"><Header backoffice={true} atual={2} /></div>
             <div className="content-publications">
                 <div className="backoffice-publications">
                     <h2>BACKOFFICE</h2>

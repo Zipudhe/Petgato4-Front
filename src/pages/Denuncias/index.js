@@ -7,7 +7,7 @@ import './styles.css';
 export default function Denuncias({page}){
     return (
         <div>
-            <Header />
+            <Header backoffice={true} atual={5} />
             <div className="backoffice-denuncias">
                 <h2>BACKOFFICE</h2>
                 <h1>Denúncias</h1>

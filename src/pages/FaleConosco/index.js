@@ -9,7 +9,7 @@ import imagem_de_contato from "../../assets/images/Imagem de Contato.jpg";
 
 const FaleConosco = () => (
     <div>
-        <Header />
+        <Header atual={3} />
         <div className="container-enviar-mensagem">
             <div className="dog-image">
                 <img src={imagem_de_contato} />

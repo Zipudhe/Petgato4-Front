@@ -11,7 +11,7 @@ import camera_icon from "../../assets/awesome-camera.svg";
 
 const EditarPerfil = () => (
     <div>
-        <Header />
+        <Header atual={4} />
         <div className="container-editar-perfil">
             <div className="user-image">
                 <UserImage source={profile_user_image} />
