@@ -63,9 +63,10 @@ export default function CriarPublicacao(){
                     </div>
 
                     <h3>Escolha uma imagem de capa:</h3>
-                    <Button onClick={() => alert('UPLOAD')} styles="1">Escolher Arquivo</Button>
-                    <p>Nenhum arquivo escolhido</p>
-
+                    <div className="upload-content">
+                        <Button onClick={() => alert('UPLOAD')} styles="1">Escolher Arquivo</Button>
+                        <p>Nenhum arquivo escolhido</p>
+                    </div>
                     <h3>Escolha pelo menos uma tag:</h3>
                     <div className="container-select-tags">
                     {tags.map((tag) => 

@@ -48,6 +48,13 @@
     font-size: 1.4vw;
 }
 
+.backoffice-criar-publicacao .upload-content {
+    display: flex;
+    align-items: center;
+    gap: 1.6vw;
+    color: #707070;
+}
+
 .backoffice-criar-publicacao .container-react-quill {
     width: 100%;
     max-width: 90vw;
