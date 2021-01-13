@@ -25,6 +25,7 @@ export default function PaginaInicial() {
     useEffect(() => {
         loadPosts();
     }, [page]);
+    
     return (
         <div className="container-homepage">
             <div className="homepage-header"><Header /></div>

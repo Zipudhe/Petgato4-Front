@@ -1,3 +1,22 @@
+.container-tags {
+    min-height: 100vh;
+    display: grid;
+    grid-template-rows: 10% 82% 0%;
+}
+
+.container-tags .header-tags {
+    width: 100%;
+}
+
+.container-tags .content-tags {
+    width: 100%;
+}
+
+.container-tags .footer-tags {
+    align-self: end;
+    width: 100%;
+}
+
 .backoffice-tags {
     font-family: 'Montserrat';
     margin: 0 5%;
@@ -17,16 +36,72 @@
 }
 
 .backoffice-footer {
-    margin-top: 8px;
     width: 100%;
 }
 
 .backoffice-footer .btn {
-    width: 120px;
-    height: 40px;
     float: left;
 }
 
 .backoffice-footer .menu {
     float: right;
+    background-color: yellow;
+}
+
+.list-tags-loading-cat {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 23vw;
+}
+
+.all-tags {
+    font-family: 'Montserrat';
+    border-collapse: collapse;
+    width: 100%;
+    font-size: 1.2vw;
+    color: #707070;
+    white-space: nowrap;
+}
+
+.all-tags td, .all-tags th {
+    border-top: 1.5px solid #ddd;
+    border-bottom: 1.5px solid #ddd;
+    padding: 0.8vw;
+    text-align: left;
+    overflow: hidden;
+    text-overflow: ellipsis;
+} 
+
+.all-tags td:first-child {
+    width: 6vw;
+}
+
+.all-tags td:nth-child(2) {
+    width: 15vw;
+}
+
+.all-tags td:nth-child(3) {
+    width: 60%;
+}
+
+.all-tags tr {
+    color: #444143;
+}
+
+.all-tags tr:nth-child(even) {
+	background-color: #f2f2f2;   
+}
+
+.all-tags a {
+    color: #BA66A3;
+    font-weight: bold;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.container-table-tags {
+    height: 100%;
+    min-height: 20vw;
 }
