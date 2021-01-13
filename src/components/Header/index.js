@@ -12,9 +12,10 @@ export default function Header({ backoffice=false, atual=1 }){
                 <div className="links">
                     <Link to="/">Página Inicial</Link>
                     <Link to="/publicacoes">{atual === 2 ? (<a className="selected-header">Publicações</a>) : (<a>Publicações</a>)}</Link>
-                    <Link to="/usuarios">{atual === 3 ? (<a className="selected-header">Usuários</a>) : (<a>Usuários</a>)}</Link>
-                    <Link to="/denuncias">{atual === 4 ? (<a className="selected-header">Denúncias</a>) : (<a>Denúncias</a>)}</Link>
-                    <Link to="/mensagens">{atual === 5 ? (<a className="selected-header">Mensagens</a>) : (<a>Mensagens</a>)}</Link>
+                    <Link to="/tags">{atual === 3 ? (<a className="selected-header">Tags</a>) : (<a>Tags</a>)}</Link>
+                    <Link to="/usuarios">{atual === 4 ? (<a className="selected-header">Usuários</a>) : (<a>Usuários</a>)}</Link>
+                    <Link to="/denuncias">{atual === 5 ? (<a className="selected-header">Denúncias</a>) : (<a>Denúncias</a>)}</Link>
+                    <Link to="/mensagens">{atual === 6 ? (<a className="selected-header">Mensagens</a>) : (<a>Mensagens</a>)}</Link>
                 </div>
             ) : (
                 <div className="links">
