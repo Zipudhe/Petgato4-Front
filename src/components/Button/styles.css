@@ -15,8 +15,8 @@
 .btn1 {
     background-color: #FFF;
     color: #444143;
-    border: 1.8px solid #BA66A3;
-    border-radius: 3px;
+    border: .1vw solid #BA66A3;
+    border-radius: 4px;
     font-size: 1vw;
     padding: .8vw 2vw;
 }
@@ -41,12 +41,9 @@
 .btn3 {
     background-color: #C882B4;
     color: white;
-    font-weight: 500;
-    height: 40px;
-    font-size: 14px;
-    font-weight: 600;
-    padding-top: 2.5px;
     border-radius: 4px;
+    font-size: 1vw;
+    padding: .9vw 2.1vw;
 }
 
 .btn3:hover {
