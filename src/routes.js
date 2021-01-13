@@ -17,7 +17,8 @@ import Denuncias from './pages/Denuncias';
 import CriarTag from './pages/CriarTag';
 import EditarTag from './pages/EditarTag';
 import Publicacoes from './pages/Publicacoes';
-//import EditarPublicacoes from './pages/EditarPublicacoes';
+import CriarPublicacao from './pages/CriarPublicacao';
+//import EditarPublicacao from './pages/EditarPublicacao';
 import Tags from './pages/Tags';
 import Usuarios from './pages/Usuarios';
 
@@ -61,6 +62,7 @@ const Routes = () => (
 
             <AdminRoute exact path="/denuncias" component={() => <Denuncias />} />
             <AdminRoute exact path="/publicacoes" component={() => <Publicacoes />} />
+            <AdminRoute exact path="/criar-publicacao" component={() => <CriarPublicacao />} />
             <AdminRoute exact path="/usuarios" component={() => <Usuarios />} />
             <AdminRoute exact path="/tags" component={() => <Tags />} />
             <AdminRoute exact path="/criar-tag" component={() => <CriarTag />} />
