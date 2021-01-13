@@ -108,7 +108,7 @@ export default function Tags({ pageRef=1 }){
                     </div>
                 </div>
             </div>
-            <div className="footer-tag"><Footer /></div>
+            <div className="footer-tags"><Footer /></div>
         </div>
     );
 }
