@@ -9,7 +9,7 @@ export default function Input({ name, textholder, prevValue="", password=false, 
         setValue(e);
 
         if(handleValue){
-            handleValue(value);
+            handleValue(e);
         }
     }
 
