@@ -100,7 +100,7 @@ export default function Tags({ pageRef=1 }){
                     )}
                     <div className="backoffice-footer-tags">
                         <div className="btn">
-                            <Button onClick={() => alert('AQUI NÃO')} styles="1">NOVA TAG</Button>
+                            <Link to="/criar-tag"><Button styles="1">NOVA TAG</Button></Link>
                         </div>
                         <div className="menu">
                             <Pagination actualPage={page} totalPages={totalPages} previous={() => prevPage()} next={() => nextPage()} specific={() => specificPage()} />

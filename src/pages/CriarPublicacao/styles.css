@@ -1,0 +1,93 @@
+.container-criar-publicacao {
+    min-height: 100vh;
+    display: grid;
+    grid-template-rows: 10% 80% 10%;
+}
+
+.container-criar-publicacao .header-criar-publicacao {
+    width: 100%;
+}
+
+.container-criar-publicacao .content-criar-publicacao {
+    width: 100%;
+}
+
+.container-criar-publicacao .footer-criar-publicacao {
+    display: flex;
+}
+
+.container-criar-publicacao .footer-criar-publicacao footer {
+    margin-top: auto;
+}
+
+.backoffice-criar-publicacao {
+    font-family: 'Montserrat';
+    margin: 0 5%;
+    width: 90%;
+}
+
+.backoffice-criar-publicacao h2 {
+    font-weight: 100;
+    color: #444143;
+    margin: 3vw 0 0 0;
+    font-size: 1.8vw;
+
+}
+
+.backoffice-criar-publicacao h1 {
+    font-weight: 600;
+    color: #BA66A3;
+    margin: 0 0 2vw 0;
+    font-size: 2.4vw;
+}
+
+.backoffice-criar-publicacao h3 {
+    font-weight: 200;
+    color: #BA66A3;
+    margin: 1.2vw 0;
+    font-size: 1.4vw;
+}
+
+.backoffice-criar-publicacao .upload-content {
+    display: flex;
+    align-items: center;
+    gap: 1.6vw;
+    color: #707070;
+}
+
+.backoffice-criar-publicacao .container-react-quill {
+    width: 100%;
+    max-width: 90vw;
+    height: 100%;
+}
+
+.backoffice-criar-publicacao .container-react-quill .ql-snow {
+    border: .1vw solid #C882B4;
+}
+
+.backoffice-criar-publicacao .container-react-quill .ql-editor {
+    height: 55vh;
+}
+
+.backoffice-criar-publicacao .container-select-tags {
+    display: flex;
+    gap: 1.6vw;
+    height: 50px;
+    margin-bottom: 4vh;
+}
+
+.container-select-tags .tag-content {
+    display: flex;
+    align-items: center;
+    gap: .3vw;
+    width: fit-content;
+    height: 100%;
+    font-size: 1.2vw;
+    color: #707070;
+}
+
+.backoffice-criar-publicacao .container-buttons {
+    display: flex;
+    gap: 2vw;
+    margin: 4vh 0 12vh 0;
+}

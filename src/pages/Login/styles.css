@@ -1,4 +1,4 @@
-.container-cadastro .container-img {
+.container-login .container-img {
     width: 50%;
     min-height: 100vh;
     float: left;
@@ -6,11 +6,11 @@
     justify-content: center;
     align-items: center;
 
-    background: #FBE9F6 url('../../assets/images/login_cat.jpg') no-repeat scroll 0% 0%;
+    background: #FBE9F6 url('../../assets/images/Login.jpg') no-repeat scroll 50% 70%;
     background-size: cover;
 }
 
-.container-cadastro .content-cadastro {
+.container-login .content-login {
     width: 50%;
     min-height: 100vh;
     float: right;
@@ -23,38 +23,45 @@
     background-color: #FBE9F6;
 }
 
-.container-cadastro .content-cadastro p {
+.container-login .content-login p {
     color: #707070;
     font-weight: 300;
     margin: 0;
     font-size: 1.3vw;
 }
 
-.container-cadastro .content-cadastro a {
+.container-login .content-login a {
     color: #BA66A3;
     font-weight: 800;
     text-decoration: none;
     font-size: 1.3vw;
 }
 
-.container-cadastro .logo-petgato {
+.container-login .logo-petgato {
     margin: 0 0;
     width: 12vw;
 }
 
-.container-cadastro .container-input {
+.container-login .container-input {
     display: flex;
     flex-direction: column;
     gap: .6vw;
 }
 
+.container-login .container-text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: .6vw;
+}
+
 /* Mobile */
 @media screen and (max-width: 718px) {
-    .container-cadastro .content-cadastro {
+    .container-login .content-login {
         width: 100%;
     }
 
-    .container-cadastro .container-img {
+    .container-login .container-img {
         width: 0;
     }
 }

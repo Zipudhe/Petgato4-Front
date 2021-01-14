@@ -103,7 +103,7 @@ export default function Publicacoes({ pageRef=1 }){
                     )}
                     <div className="backoffice-footer-publications">
                         <div className="btn">
-                            <Button onClick={() => alert('NOVA PUBLICAÇÃO')} styles="1">NOVA PUBLICAÇÃO</Button>
+                            <Link to="criar-publicacao"><Button styles="1">NOVA PUBLICAÇÃO</Button></Link>
                         </div>
                         <div className="menu">
                             <Pagination actualPage={page} totalPages={totalPages} previous={() => prevPage()} next={() => nextPage()} specific={() => specificPage()} />

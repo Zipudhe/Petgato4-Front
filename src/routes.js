@@ -17,12 +17,13 @@ import Denuncias from './pages/Denuncias';
 import CriarTag from './pages/CriarTag';
 import EditarTag from './pages/EditarTag';
 import Publicacoes from './pages/Publicacoes';
-//import EditarPublicacoes from './pages/EditarPublicacoes';
+import CriarPublicacao from './pages/CriarPublicacao';
+//import EditarPublicacao from './pages/EditarPublicacao';
 import Tags from './pages/Tags';
 import Usuarios from './pages/Usuarios';
 
-import Login from './pages/login';
-import Recover from './pages/recover';
+import Login from './pages/Login';
+import RecuperarSenha from './pages/RecuperarSenha';
 
 const PrivateRoute = ({ component: Component, ... rest}) => (
     <Route { ... rest} render={props => (
@@ -50,7 +51,7 @@ const Routes = () => (
             <Route exact path="/" component={() => <PaginaInicial />} />
             <Route exact path="/login" component={() => <Login />} />
             <Route exact path="/cadastro" component={() => <Cadastro />} />
-            <Route exact path="/recuperar-senha" component={() => <Recover />} />
+            <Route exact path="/recuperar-senha" component={() => <RecuperarSenha />} />
             <Route exact path="/sobre" component={() => <Sobre />} />
             <Route exact path="/contato" component={() => <FaleConosco />} />
             <Route exact path="/nao-permitido" component={() => <PaginaErro error={1} />} />
@@ -61,6 +62,7 @@ const Routes = () => (
 
             <AdminRoute exact path="/denuncias" component={() => <Denuncias />} />
             <AdminRoute exact path="/publicacoes" component={() => <Publicacoes />} />
+            <AdminRoute exact path="/criar-publicacao" component={() => <CriarPublicacao />} />
             <AdminRoute exact path="/usuarios" component={() => <Usuarios />} />
             <AdminRoute exact path="/tags" component={() => <Tags />} />
             <AdminRoute exact path="/criar-tag" component={() => <CriarTag />} />

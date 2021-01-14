@@ -1,4 +1,4 @@
-.container-cadastro .container-img {
+.container-recover .container-img {
     width: 50%;
     min-height: 100vh;
     float: left;
@@ -6,11 +6,11 @@
     justify-content: center;
     align-items: center;
 
-    background: #FBE9F6 url('../../assets/images/login_cat.jpg') no-repeat scroll 0% 0%;
+    background: #FBE9F6 url('../../assets/images/Esqueciminhasenha.jpg') no-repeat scroll 50% 50%;
     background-size: cover;
 }
 
-.container-cadastro .content-cadastro {
+.container-recover .content-login {
     width: 50%;
     min-height: 100vh;
     float: right;
@@ -23,38 +23,50 @@
     background-color: #FBE9F6;
 }
 
-.container-cadastro .content-cadastro p {
+.container-recover .content-login p {
     color: #707070;
     font-weight: 300;
     margin: 0;
     font-size: 1.3vw;
 }
 
-.container-cadastro .content-cadastro a {
+.container-recover .content-login a {
     color: #BA66A3;
     font-weight: 800;
     text-decoration: none;
     font-size: 1.3vw;
 }
 
-.container-cadastro .logo-petgato {
+.container-recover .logo-petgato {
     margin: 0 0;
     width: 12vw;
 }
 
-.container-cadastro .container-input {
+.container-recover .container-input {
     display: flex;
     flex-direction: column;
+    align-items: center;
+    gap: .6vw;
+}
+
+.container-recover .container-input p {
+    font-size: 1.1vw;
+}
+
+.container-recover .container-text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     gap: .6vw;
 }
 
 /* Mobile */
 @media screen and (max-width: 718px) {
-    .container-cadastro .content-cadastro {
+    .container-recover .content-login {
         width: 100%;
     }
 
-    .container-cadastro .container-img {
+    .container-recover .container-img {
         width: 0;
     }
 }
