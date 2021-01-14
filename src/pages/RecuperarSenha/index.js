@@ -5,24 +5,25 @@ import logo_petgato from '../../assets/images/gatinho_petgato.svg';
 
 import './styles.css';
 
-const Cadastro = () => (
-    <div className="container-cadastro">
+const RecuperarSenha = () => (
+    <div className="container-recover">
         <div className="container-img"></div>
-        <div className="content-cadastro">
+        <div className="content-login">
 
             <Link to="/"><img className="logo-petgato" src={logo_petgato} alt="Logo Petgatô" /></Link>
             <div className="container-input">
-                <Input name="Nome"/>
                 <Input name="Email"/>
                 <Input name="Senha" password={true} />
-                <Input name="Confirme sua senha" password={true} />
             </div>
 
-            <Button onClick={() => alert('CADASTRAR')} styles="3">CADASTRAR</Button>
+            <Button onClick={() => alert('ENTRAR')} styles="3">ENTRAR</Button>
 
-            <p>Já possui conta? <Link to="/login"><a>Faça login</a></Link></p>
+            <div className="container-text">
+                <p>Lembrou a senha? <Link to="/login"><a>Faça login</a></Link></p>
+                <p>Ainda não tem conta? <Link to="/cadastro"><a>Cadastre-se aqui</a></Link></p>
+            </div>
         </div>
     </div>
 );
 
-export default Cadastro;
+export default RecuperarSenha;

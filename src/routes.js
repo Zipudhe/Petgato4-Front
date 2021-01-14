@@ -22,8 +22,8 @@ import CriarPublicacao from './pages/CriarPublicacao';
 import Tags from './pages/Tags';
 import Usuarios from './pages/Usuarios';
 
-import Login from './pages/login';
-import Recover from './pages/recover';
+import Login from './pages/Login';
+import RecuperarSenha from './pages/RecuperarSenha';
 
 const PrivateRoute = ({ component: Component, ... rest}) => (
     <Route { ... rest} render={props => (
@@ -51,7 +51,7 @@ const Routes = () => (
             <Route exact path="/" component={() => <PaginaInicial />} />
             <Route exact path="/login" component={() => <Login />} />
             <Route exact path="/cadastro" component={() => <Cadastro />} />
-            <Route exact path="/recuperar-senha" component={() => <Recover />} />
+            <Route exact path="/recuperar-senha" component={() => <RecuperarSenha />} />
             <Route exact path="/sobre" component={() => <Sobre />} />
             <Route exact path="/contato" component={() => <FaleConosco />} />
             <Route exact path="/nao-permitido" component={() => <PaginaErro error={1} />} />
