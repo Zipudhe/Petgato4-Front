@@ -3,10 +3,6 @@ import Footer from '../../components/Footer';
 import facebook_icon from '../../assets/awesome-facebook-square.svg';
 import instagram_icon from '../../assets/awesome-instagram.svg';
 import twitter_icon from '../../assets/awesome-twitter-square.svg';
-import cintia_lorenzzo from '../../assets/images/cintialorenzzo.jpeg';
-import passaralho from '../../assets/images/Mandragora.jpg';
-import dogao from '../../assets/images/Floquinho.jpg';
-
 
 import './styles.css';
 
