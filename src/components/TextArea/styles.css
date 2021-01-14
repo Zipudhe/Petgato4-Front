@@ -1,18 +1,16 @@
-.input {
+.textarea {
     width: min-content;
 }
 
-.input label {
+.textarea label {
     color: #C882B4;
     font-size: 1.2vw;
     font-weight: 300;
     text-align: left;
 }
 
-.input input {
-    height: 3.6vw;
-    width: 22vw;
-
+.textarea textarea {
+    font-family: 'Montserrat';
     font-size: 1.4vw;
     font-weight: 300;
     color: #707070;
@@ -20,9 +18,14 @@
     border-radius: 0;
     border: 1px solid #C882B4;
     outline: none;
+    resize: none;
+    box-sizing: border-box;
+
+    height: 100%;
+    width: 100%;
 }
 
-.input input:disabled {
+.textarea textarea:disabled {
     cursor: not-allowed;
     background-color: #F0F0F0;
 }

@@ -14,7 +14,7 @@
 
 .container-fale-conosco .container-enviar-mensagem {
     display: grid;
-    grid-template-columns: 30% 60%;
+    grid-template-columns: 30% 61%;
     gap: 3%;
 }
 
@@ -26,6 +26,7 @@
 
 .container-enviar-mensagem .user-info {
     margin-top: 3.2vw;
+    width: 100%;
 }
 
 .container-enviar-mensagem .user-info h2 {
@@ -43,22 +44,40 @@
 }
 
 .user-info .container-input {
+    margin-top: 1.8vw;
     display: flex;
     gap: 1.8vw;
-    margin-top: 1.8vw;
+}
+
+.user-info .container-input div {
+    width: 100%;
+}
+
+.user-info .container-input input {
+    width: 100%;
 }
 
 .user-info .input-message {
-    width: 48.4vw;
+    width: 100%;
     height: 31.8vh;
     margin-top: 1.2vw;
 }
 
+.user-info .input-message textarea {
+    width: 100%;
+    padding-top: 1vw;
+}
+
+.user-info .input-message div {
+    width: 100%;
+    height: 100%;
+}
+
 .user-info .container-button {
-    width: 48.4vw;
+    width: 100%;
+    margin-top: 3vw;
 }
 
 .user-info .container-button button {
     float: right;
-    margin: 1.8vw 0;
 }

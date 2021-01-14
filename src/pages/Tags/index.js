@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-import { Link, Redirect } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
@@ -14,7 +14,9 @@ export default function Tags({ pageRef=1 }){
     const [page, setPage] = useState(pageRef);
     const [tags, setTags] = useState([]);
     const [loading, setLoading] = useState(true);
-    const totalPages = 4;
+    const [totalElements, setTotalElements] = useState(0);
+    const [totalPages, setTotalPages] = useState(1);
+    let history = useHistory();
 
     const nextPage = () => {
         if(page < totalPages){
@@ -36,12 +38,22 @@ export default function Tags({ pageRef=1 }){
         }
     }
 
+    const calcTotalPages = (totalElements) => {
+        let pages = (totalElements)/5;
+        console.log(pages);
+        if(totalElements % 5 === 0){
+            return Math.floor(pages) - 1;
+        } else{
+            return Math.floor(pages)
+        }
+    }
+
     const deleteTag = (tag_id) => {
         if(window.confirm("Tem certeza?")){
             axios.delete(`http://localhost:3000/tags/${tag_id}?page=${page}`)
                 .then((response) => response.data)
                 .then((data) => setTags(data))
-                .catch((error) => console.error(error));
+                .catch((error) => history.push("/erro"));
         }
     }
 
@@ -50,14 +62,19 @@ export default function Tags({ pageRef=1 }){
         axios.get(`http://localhost:3000/tags?page=${page}`)
             .then((response) => response.data)
             .then((data) => setTags(data))
-            .catch((error) => (
-                <Redirect to={{ pathname: '/erro', state: { from: error.location } }} />
-            ));
+            .catch((error) => history.push("/erro"));
         setLoading(false);
+    }
+
+    const loadTotalPages = () => {
+        axios.get(`http://localhost:3000/countags`)
+            .then((response) => setTotalPages(calcTotalPages(response.data)))
+            .catch((error) => history.push("/erro"));
     }
 
     useEffect(() => {
         loadTags();
+        loadTotalPages();
     }, [page])
 
     return (
