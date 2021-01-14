@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import axios from 'axios';
 
 import Header from '../../components/Header';
@@ -13,18 +14,19 @@ export default function PaginaInicial() {
     const page = 0; //const [page, setPage] = useState(0);
     const [posts, setPosts] = useState([]);
     const [loading, setLoading] = useState(true);
+    let history = useHistory();
 
     const loadPosts = async () => {
         axios.get(`http://localhost:3000/posts?page=${page}`)
             .then((response) => response.data)
             .then((data) => setPosts(data))
-            .catch((error) => alert('redirecionar para página de erro com dom'));
+            .catch((error) => history.push("/erro") );
         setLoading(false);
     }
 
     useEffect(() => {
         loadPosts();
-    }, [page]);
+    }, []);
     
     return (
         <div className="container-homepage">

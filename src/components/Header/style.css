@@ -14,12 +14,13 @@
     justify-content: space-between;
 }
 
-.links *{
+.links a {
     color: #ffffff;
     font-size: 1.4vw;
     font-weight: 300;
     text-decoration: none;
-    margin: 0 .8vw;
+    margin: 0 1vw;
+    cursor: pointer;
 }
 
 .header img {

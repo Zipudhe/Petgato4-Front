@@ -1,18 +1,27 @@
 import { useState } from 'react';
 
-import './style.css';
+import './styles.css';
 
-export default function Input({ name, textholder, prevValue="", password=false, disabled=false, styles=1 }){
+export default function Input({ name, textholder, prevValue="", password=false, disabled=false, styles=0, handleValue=null }){
     const [value, setValue] = useState(prevValue);
+
+    function handleChange(e) {
+        setValue(e);
+
+        if(handleValue){
+            handleValue(value);
+        }
+    }
 
     return (
         <div className="input">
             <label>{name}</label>
             <input placeholder={textholder} disabled={disabled}
             type={password ? ("password") : ("text")}
-            maxLength="25"
+            maxLength="35"
+            className={styles === 0 ? ("input-normal") : ("input-large")}
             value={value}
-            onChange={e => setValue(e.target.value)} />
+            onChange={e => handleChange(e.target.value)} />
         </div>
     );
 }

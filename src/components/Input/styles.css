@@ -1,0 +1,37 @@
+.input {
+    width: min-content;
+}
+
+.input label {
+    color: #C882B4;
+    font-size: 1.2vw;
+    font-weight: 300;
+    text-align: left;
+}
+
+.input input {
+    font-family: 'Montserrat';
+    font-size: 1.4vw;
+    font-weight: 300;
+    color: #707070;
+    padding-left: 1vw;
+    border-radius: 0;
+    border: 1px solid #C882B4;
+    outline: none;
+    box-sizing: border-box;
+}
+
+.input-normal {
+    height: 3.6vw;
+    width: 22vw
+}
+
+.input-large {
+    height: 3.6vw;
+    width: 100%;
+}
+
+.input input:disabled {
+    cursor: not-allowed;
+    background-color: #F0F0F0;
+}
