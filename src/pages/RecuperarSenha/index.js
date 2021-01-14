@@ -13,10 +13,10 @@ const RecuperarSenha = () => (
             <Link to="/"><img className="logo-petgato" src={logo_petgato} alt="Logo Petgatô" /></Link>
             <div className="container-input">
                 <Input name="Email"/>
-                <Input name="Senha" password={true} />
+                <p>Insira seu email para recuperar a senha</p>
             </div>
 
-            <Button onClick={() => alert('ENTRAR')} styles="3">ENTRAR</Button>
+            <Button onClick={() => alert('RECUPERAR SENHA')} styles="3">RECUPERAR SENHA</Button>
 
             <div className="container-text">
                 <p>Lembrou a senha? <Link to="/login"><a>Faça login</a></Link></p>

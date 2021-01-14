@@ -45,7 +45,12 @@
 .container-recover .container-input {
     display: flex;
     flex-direction: column;
+    align-items: center;
     gap: .6vw;
+}
+
+.container-recover .container-input p {
+    font-size: 1.1vw;
 }
 
 .container-recover .container-text {
