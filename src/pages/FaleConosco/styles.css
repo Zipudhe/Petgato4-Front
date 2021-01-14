@@ -1,110 +1,64 @@
-.container-enviar-mensagem {
-    width: 100%;
-    min-height: 75vh;
-    font-family: 'Montserrat';
+.container-fale-conosco {
+    min-height: 100vh;
+    display: grid;
+    grid-template-rows: 10% 80% 10%;
+}
+
+.container-fale-conosco .footer-fale-conosco {
+    display: flex;
+}
+
+.container-fale-conosco .footer-fale-conosco footer {
+    margin-top: auto;
+}
+
+.container-fale-conosco .container-enviar-mensagem {
+    display: grid;
+    grid-template-columns: 30% 60%;
+    gap: 3%;
 }
 
 .container-enviar-mensagem .dog-image {
-    width: 40%;
-    float: left;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    padding-top: 100px;
+    background: #FBE9F6 url('../../assets/images/Imagem de Contato.jpg') no-repeat scroll 50% 70%;
+    background-size: cover;
+    margin: 15% 0% 20% 15%;
 }
 
 .container-enviar-mensagem .user-info {
-    display: flex;
-    flex-wrap: wrap;
-    padding-top: 100px;
-    width: 50%;
-    float: left;
+    margin-top: 3.2vw;
 }
 
-.container-enviar-mensagem .container-input {
-    display: flex;
-    flex-wrap: nowrap;
-}
-
-.container-enviar-mensagem .container-input .name {
-    padding-right: 25px;
-}
-
-.container-enviar-mensagem .input-right {
-    display: flex;
-    flex-direction: column;
-    float: left;
-    padding-left: 30px;
-}
-
-.user-info h1 {
-    font-size: 45px;
-    color: #BA66A3;
-    padding: 0;
-    margin: 0;
-    font-weight: 600;
-    padding-bottom: 15px;
-}
-
-.user-info h2 {
-    font-size: 25px;
-    color: #444143;
-    padding: 0;
-    margin: 0;
-    font-weight: 200;
-}
-
-.user-info p {
+.container-enviar-mensagem .user-info h2 {
     font-weight: 100;
-    color: #444143;
-    margin-top: 5px;
+    color: #606060; 
+    font-size: 1.8vw;
+    margin: 0;
 }
 
-.container-alterar-foto {
-    cursor: pointer;
-    display: flex;
-    justify-content: cente;
-    align-items: center;
-    
-    font-size: 20px;
-    color: #BA66A3;
-    padding: 0;
-    margin: 0;
+.container-enviar-mensagem .user-info h1 {
     font-weight: 600;
-    outline: none;
-    text-decoration: none;
-    margin-top: 15px;
-}
-
-.input-message .container-button {
-    width: 100%;
+    color: #BA66A3;
+    font-size: 2.4vw;
     margin: 0;
-    padding: 0;
 }
 
-.input-message {
-    display: inline-block;
-    float: left;
-    padding: 0;
-    margin: 0; 
-    width: 93%;
+.user-info .container-input {
+    display: flex;
+    gap: 1.8vw;
+    margin-top: 1.8vw;
 }
 
-.input-message .message {
-    float: left;
+.user-info .input-message {
+    width: 48.4vw;
+    height: 31.8vh;
+    margin-top: 1.2vw;
 }
 
-.container-enviar-mensagem .container-button {
-    padding-top: 25px;
-    width: 120px;
+.user-info .container-button {
+    width: 48.4vw;
+}
+
+.user-info .container-button button {
     float: right;
-    padding-right: 200px;
-}
-
-.container-enviar-mensagem .footer-button {
-    display: inline-block;
-    width: 100%;
-    float: right;
-
+    margin: 1.8vw 0;
 }
