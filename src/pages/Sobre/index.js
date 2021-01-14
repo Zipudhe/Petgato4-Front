@@ -12,17 +12,13 @@ import './styles.css';
 
 export default function Sobre(){
     return (
-        <div>
-            <Header atual={2} />
-            <div className="container-sobre">
+        <div className="container-sobre">
+            <div><Header atual={2} /></div>
+            <div className="content-sobre">
                 <div className="images-sobre">
-                    <div className="img1">
-                        <img src={cintia_lorenzzo} className="temp"/>
-                    </div>
-                    <div className="sobre-images">
-                        <img className="img-b" src={passaralho}></img>
-                        <img className="img-c" src={dogao}/>
-                    </div>
+                    <div className="frist-image"></div>
+                    <div className="second-image"></div>
+                    <div className="third-image"></div>
                 </div>
                 <div className="sobre-info">
                     <h2>SOBRE NÓS</h2>
@@ -54,7 +50,7 @@ export default function Sobre(){
                     </div>
                 </div>
             </div>
-            <Footer />
+            <div className="footer-sobre"><Footer /></div>
         </div>
     );
 }
