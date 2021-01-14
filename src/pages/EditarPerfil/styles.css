@@ -1,82 +1,89 @@
 .container-editar-perfil {
-    width: 100%;
-    min-height: 75vh;
-    font-family: 'Montserrat';
+    display: grid;
+    grid-template-rows: 10% 80% 10%;
+    min-height: 100vh;
+}
+
+.container-editar-perfil .footer-editar-perfil {
+    display: flex;
+}
+
+.container-editar-perfil .footer-editar-perfil footer {
+    margin-top: auto;
+}
+
+.content-editar-perfil {
+    display: grid;
+    grid-template-columns: 35% 60%;
 }
 
 .container-editar-perfil .user-image {
-    width: 40%;
-    float: left;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 4vw;
+    margin-left: 10%;
+}
+
+.container-editar-perfil .container-alterar-foto {
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-direction: column;
-    padding-top: 100px;
+    gap: .6vw;
+}
+
+.container-editar-perfil .container-alterar-foto a {
+    color: #BA66A3;
+    font-size: 1.6vw;
+    font-weight: 800;
+    cursor: pointer;
+    margin-top: .3vw;
+}
+
+.container-editar-perfil .container-alterar-foto img {
+    width: 2.2vw;
+    cursor: pointer;
+}
+
+.content-editar-perfil h2 {
+    font-weight: 100;
+    color: #444143;
+    margin: 3vw 0 0 0;
+    font-size: 1.8vw;
+}
+
+.content-editar-perfil h1 {
+    font-weight: 600;
+    color: #BA66A3;
+    margin: 0 0 2vw 0;
+    font-size: 2.4vw;
 }
 
 .container-editar-perfil .user-info {
-    padding-top: 100px;
-    width: 60%;
-    float: right;
-}
-
-.container-editar-perfil .input-left {
-    display: flex;
-    flex-direction: column;
-    float: left;
-}
-
-.container-editar-perfil .input-right {
-    display: flex;
-    flex-direction: column;
-    float: left;
-    padding-left: 30px;
-}
-
-.container-editar-perfil .container-button {
-    padding-top: 30px;
-    width: 120px;
-}
-
-.user-info h1 {
-    font-size: 45px;
-    color: #BA66A3;
-    padding: 0;
-    margin: 0;
-    font-weight: 600;
-}
-
-.user-info h2 {
-    font-size: 25px;
-    color: #444143;
-    padding: 0;
-    margin: 0;
-    font-weight: 200;
+    display: grid;
+    grid-template-rows: 25% 20% 20% 8% 25%;
 }
 
 .user-info p {
-    font-weight: 100;
-    color: #444143;
-    margin-top: 5px;
+    font-size: 1vw;
+    color: #707070;
 }
 
-.container-alterar-foto {
-    cursor: pointer;
+.user-info .first-row {
     display: flex;
-    justify-content: cente;
     align-items: center;
-    
-    font-size: 20px;
-    color: #BA66A3;
-    padding: 0;
-    margin: 0;
-    font-weight: 600;
-    outline: none;
-    text-decoration: none;
-    margin-top: 15px;
+    gap: 2vw;
+    align-self: flex-end;
 }
 
-.container-alterar-foto img {
-    margin-top: -5px;
-    padding-right: 8px;
+.user-info .second-row {
+    display: flex;
+    align-items: center;
+    gap: 2vw;
+    align-self: flex-end;
+}
+
+.user-info .footer {
+    display: flex;
+    flex-flow: column;
 }

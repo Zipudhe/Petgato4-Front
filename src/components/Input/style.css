@@ -1,40 +1,25 @@
-.input{
-    margin: 1rem auto 0 auto;
+.input {
     width: min-content;
 }
 
-.input input, label{
-    display: block;
-}
-
-.form-label{
+.input label {
     color: #C882B4;
-    font-size: 1.3rem;
+    font-size: 1.2vw;
     font-weight: 300;
-
     text-align: left;
 }
 
-.form-input{
-    height: 3.6rem;
-    width: 25rem;
+.input input {
+    height: 3.6vw;
+    width: 22vw;
 
-    font-size: 1.5rem;
+    font-size: 1.4vw;
     font-weight: 300;
     color: #707070;
-
-    padding-left: 1rem;
-
+    padding-left: 1vw;
     border-radius: 0;
     border: 1px solid #C882B4;
     outline: none;
-}
-
-@media (max-width: 425px) {
-    #form-input{
-        height: 3.2rem;
-        width: 20rem;
-    }
 }
 
 .input input:disabled {
