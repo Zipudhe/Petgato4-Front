@@ -5,7 +5,7 @@ import './styles.css';
 export default function Input({ name, textholder, prevValue="", password=false, disabled=false, styles=0, handleValue=null }){
     const [value, setValue] = useState(prevValue);
 
-    function handleChange(e) {
+    const handleChange = (e) => {
         setValue(e);
 
         if(handleValue){

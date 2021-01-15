@@ -1,11 +1,27 @@
-import "./style.css";
-
+import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import icone_petgato from '../../assets/gatinho_petgato_branco.svg';
 import { isAuthenticated, isAdmin } from '../../auth';
 
-export default function Header({ backoffice=false, atual=1 }){
-    return(
+import "./style.css";
+
+const temp = async () => {
+    return await isAdmin();
+}
+
+const temp2 = async () => {
+    return await isAuthenticated();
+}
+
+const Header = ({ backoffice=false, atual=1 }) => {
+    const admin = temp();
+    const logged = temp2();
+
+    useEffect(() => {
+        console.log(logged);
+    }, [admin, logged])
+
+    return (
         <div className="header">
             <Link to="/"><img alt="PetGatô" src={icone_petgato}/></Link>
             {backoffice ? (
@@ -16,20 +32,22 @@ export default function Header({ backoffice=false, atual=1 }){
                     {atual === 4 ? (<Link to="/usuarios" className="selected-header">Usuários</Link>) : (<Link to="/usuarios">Usuários</Link>)}
                     {atual === 5 ? (<Link to="/denuncias" className="selected-header">Denúncias</Link>) : (<Link to="/denuncias">Denúncias</Link>)}
                     {atual === 6 ? (<Link to="/mensagens" className="selected-header">Mensagens</Link>) : (<Link to="/mensagens">Mensagens</Link>)}
-                    {isAuthenticated() && (<a onClick={() => alert('SAIR')} >Sair</a>)}
+                    {logged && (<a onClick={() => alert('SAIR')} >Sair</a>)}
                 </div>
             ) : (
                 <div className="links">
                     {atual === 1 ? (<Link to="/" className="selected-header">Página Inicial</Link>) : (<Link to="/">Página Inicial</Link>)}
                     {atual === 2 ? (<Link to="/sobre" className="selected-header">Sobre Nós</Link>) : (<Link to="/sobre">Sobre Nós</Link>)}
                     {atual === 3 ? (<Link to="/contato" className="selected-header">Fale Conosco</Link>) : (<Link to="/contato">Fale Conosco</Link>)}
-                    {isAdmin() && (<Link to="/publicacoes">Backoffice</Link>)}
-                    {isAuthenticated() ? (
+                    {admin && (<Link to="/publicacoes">Backoffice</Link>)}
+                    {logged ? (
                         atual === 4 ? (<Link to="/editar-perfil" className="selected-header">Minha Conta</Link>) : (<Link to="/editar-perfil">Minha Conta</Link>)
                     ) : (<Link to="/login">Entrar</Link>)}
-                    {isAuthenticated() && (<a onClick={() => alert('SAIR')} >Sair</a>)}
+                    {logged && (<a onClick={() => alert('SAIR')} >Sair</a>)}
                 </div>
             )}
         </div>
     );
 }
+
+export default Header;

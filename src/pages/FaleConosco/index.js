@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import axios from 'axios';
 
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
@@ -25,6 +26,15 @@ export default function FaleConosco(){
         setMessage(message);
     }
 
+    const sendMessage = () => {
+        axios.post(`http://localhost:3000/messages/`, {
+            "name": name,
+            "email": email,
+            "description": message
+            })
+            .catch((error) => console.error(error)); // colocar um erro de pop up
+    }
+
     return (
         <div className="container-fale-conosco">
             <div><Header atual={3} /></div>
@@ -45,7 +55,7 @@ export default function FaleConosco(){
                     </div>
 
                     <div className="container-button">
-                        <Button styles={1} onClick={() => ( alert('ENVIAR') )}>ENVIAR</Button>
+                        <Button styles={1} onClick={sendMessage}>ENVIAR</Button>
                     </div>
                 </div>
             </div>
