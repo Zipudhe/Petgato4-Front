@@ -1,20 +1,18 @@
-import React from 'react';
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
 import Button from '../../components/Button';
 import Input from '../../components/Input';
-import UserImage from '../../components/UserImage';
+import camera_icon from "../../assets/awesome-camera.svg";
 
 import "./styles.css";
 import profile_user_image from "../../assets/images/cintialorenzzo.jpeg";
-import camera_icon from "../../assets/awesome-camera.svg";
 
 const EditarPerfil = () => (
     <div className="container-editar-perfil">
         <div className="header-editar-perfil"><Header atual={4} /></div>
         <div className="content-editar-perfil">
             <div className="user-image">
-                <UserImage source={profile_user_image} />
+                <div className="container-user-image"><img src={profile_user_image} /></div>
                 <div className="container-alterar-foto" >
                     <img src={camera_icon} />
                     <a>Alterar sua foto de perfil</a>
@@ -40,7 +38,7 @@ const EditarPerfil = () => (
 
                 <div className="footer">
                     <Input name="Senha atual" password={true} />
-                    <Button styles={1} onClick={() => ( alert('SALVAR') )}>SALVAR</Button>
+                    <div><Button styles={1} onClick={() => ( alert('SALVAR') )}>SALVAR</Button></div>
                 </div>
             </div>
             

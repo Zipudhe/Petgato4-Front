@@ -14,12 +14,11 @@ export default function Input({ name, textholder, prevValue="", password=false, 
     }
 
     return (
-        <div className="input">
+        <div className={styles === 0 ? ("input input-normal") : ("input input-large")}>
             <label>{name}</label>
             <input placeholder={textholder} disabled={disabled}
             type={password ? ("password") : ("text")}
-            maxLength="35"
-            className={styles === 0 ? ("input-normal") : ("input-large")}
+            maxLength={styles === 0 ? ("32") : ("128")}
             value={value}
             onChange={e => handleChange(e.target.value)} />
         </div>

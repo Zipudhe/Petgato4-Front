@@ -1,0 +1,66 @@
+.comment {
+    width: 100%;
+    height: min-content;
+    display: grid;
+    grid-template-columns: 10vw 85%;
+}
+
+.comment .user-image {
+    width: 100%;
+    height: 10vw;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.comment .content-comment {
+    height: min-content;
+    min-height: 15vw;
+    padding-left: 1.2vw;
+}
+
+.comment .content-comment h2 {
+    font-size: 1.4vw;
+    margin-top: .8vw;
+}
+
+.comment .content-comment i {
+    padding: 0;
+    margin: 0;
+    font-size: 1.1vw;
+    color: #707070;
+}
+
+.comment .content-comment p {
+    padding: 0;
+    margin: 0;
+    margin-top: .6vw;
+    font-size: 1.2vw;
+    color: #444143;
+}
+
+.comment .content-comment .title {
+    display: grid;
+    grid-template-columns: 90% 10%;
+}
+
+.comment .content-comment .title a:nth-child(2) {
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+}
+
+.comment .content-comment .title a {
+    background-color: burlywood;
+    font-size: 1.4vw;
+}
+
+.comment .user-image .temp-image {
+    width: 100%;
+    height: 100%;
+
+    background: #FBE9F6 url('https://capital95.com.br/wp-content/uploads/2020/08/baroes.jpg%27') no-repeat scroll 0% 0%;
+    background-size: cover;
+    border-radius: 50%;
+}

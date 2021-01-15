@@ -1,84 +1,86 @@
-.container-criar-publicacao {
+.container-editar-publicacao {
     min-height: 100vh;
     display: grid;
     grid-template-rows: 10% 80% 10%;
 }
 
-.container-criar-publicacao .header-criar-publicacao {
+.container-editar-publicacao .header-editar-publicacao {
     width: 100%;
 }
 
-.container-criar-publicacao .content-criar-publicacao {
+.container-editar-publicacao .content-editar-publicacao {
     width: 100%;
 }
 
-.container-criar-publicacao .footer-criar-publicacao {
+.container-editar-publicacao .footer-editar-publicacao {
     display: flex;
 }
 
-.container-criar-publicacao .footer-criar-publicacao footer {
+.container-editar-publicacao .footer-editar-publicacao footer {
     margin-top: auto;
 }
 
-.backoffice-criar-publicacao {
+.backoffice-editar-publicacao {
     font-family: 'Montserrat';
     margin: 0 5%;
     width: 90%;
 }
 
-.backoffice-criar-publicacao .container-title {
+.backoffice-editar-publicacao .container-title {
     width: 100%;
     height: 100%;
+    display: grid;
+    grid-template-columns: 85% 5% 5% 5%;
     margin-bottom: 2.6vw;
 }
 
-.backoffice-criar-publicacao .container-title div {
+.backoffice-editar-publicacao .container-title div {
     width: 100%;
 }
 
-.backoffice-criar-publicacao h2 {
+.backoffice-editar-publicacao h2 {
     font-weight: 100;
     color: #444143;
     margin: .4vw 0 0 0;
     font-size: 1.8vw;
 }
 
-.backoffice-criar-publicacao h1 {
+.backoffice-editar-publicacao h1 {
     font-weight: 600;
     color: #BA66A3;
     margin: 0 0 2vw 0;
     font-size: 2.4vw;
 }
 
-.backoffice-criar-publicacao h3 {
+.backoffice-editar-publicacao h3 {
     font-weight: 200;
     color: #BA66A3;
     margin: 1.2vw 0;
     font-size: 1.4vw;
 }
 
-.backoffice-criar-publicacao .upload-content {
+.backoffice-editar-publicacao .upload-content {
     display: flex;
     align-items: center;
     gap: 1.6vw;
     color: #707070;
 }
 
-.backoffice-criar-publicacao .container-react-quill {
+.backoffice-editar-publicacao .container-react-quill {
     width: 100%;
     max-width: 90vw;
     height: 100%;
 }
 
-.backoffice-criar-publicacao .container-react-quill .ql-snow {
+.backoffice-editar-publicacao .container-react-quill .ql-snow {
     border: .1vw solid #C882B4;
 }
 
-.backoffice-criar-publicacao .container-react-quill .ql-editor {
+.backoffice-editar-publicacao .container-react-quill .ql-editor {
     height: 55vh;
 }
 
-.backoffice-criar-publicacao .container-select-tags {
+.backoffice-editar-publicacao .container-select-tags {
     display: flex;
     gap: 1.6vw;
     margin-bottom: 4vh;   
@@ -95,7 +97,7 @@
     color: #707070;
 }
 
-.backoffice-criar-publicacao .container-buttons {
+.backoffice-editar-publicacao .container-buttons {
     display: flex;
     gap: 2vw;
     margin: 4vh 0 12vh 0;

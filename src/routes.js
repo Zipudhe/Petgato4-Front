@@ -8,6 +8,9 @@ import Cadastro from './pages/Cadastro';
 import FaleConosco from './pages/FaleConosco';
 import PaginaErro from './pages/PaginaErro';
 import Sobre from './pages/Sobre';
+import Login from './pages/Login';
+import RecuperarSenha from './pages/RecuperarSenha';
+import PaginaPublicacao from './pages/PaginaPublicacao';
 
 import EditarPerfil from './pages/EditarPerfil';
 import EditUser from './pages/EditUser';
@@ -18,12 +21,9 @@ import CriarTag from './pages/CriarTag';
 import EditarTag from './pages/EditarTag';
 import Publicacoes from './pages/Publicacoes';
 import CriarPublicacao from './pages/CriarPublicacao';
-//import EditarPublicacao from './pages/EditarPublicacao';
+import EditarPublicacao from './pages/EditarPublicacao';
 import Tags from './pages/Tags';
 import Usuarios from './pages/Usuarios';
-
-import Login from './pages/Login';
-import RecuperarSenha from './pages/RecuperarSenha';
 
 const PrivateRoute = ({ component: Component, ... rest}) => (
     <Route { ... rest} render={props => (
@@ -56,13 +56,17 @@ const Routes = () => (
             <Route exact path="/contato" component={() => <FaleConosco />} />
             <Route exact path="/nao-permitido" component={() => <PaginaErro error={1} />} />
             <Route exact path="/nao-encontrada" component={() => <PaginaErro error={2} />} />
-            <Route exact path="/erro" component={() => <PaginaErro />} />
+            <Route exact path="/post/:id" component={() => <PaginaPublicacao />} />
             
+            <Route exact path="/erro" component={() => <PaginaErro />} />
+            <Route exact path="/teste" component={() => <PaginaPublicacao />} />
+
             <PrivateRoute exact path="/editar-perfil" component={() => <EditarPerfil />} />
 
             <AdminRoute exact path="/denuncias" component={() => <Denuncias />} />
             <AdminRoute exact path="/publicacoes" component={() => <Publicacoes />} />
             <AdminRoute exact path="/criar-publicacao" component={() => <CriarPublicacao />} />
+            <AdminRoute exact path="/editar-publicacao/:id" component={() => <EditarPublicacao />} />
             <AdminRoute exact path="/usuarios" component={() => <Usuarios />} />
             <AdminRoute exact path="/tags" component={() => <Tags />} />
             <AdminRoute exact path="/criar-tag" component={() => <CriarTag />} />

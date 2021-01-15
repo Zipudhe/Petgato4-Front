@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-import { Link, Redirect } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
@@ -10,11 +10,11 @@ import LoadingCat from '../../components/LoadingCat';
 
 import './styles.css';
 
-export default function Publicacoes({ pageRef=1 }){
+export default function Publicacoes({ pageRef=0 }){
     const [page, setPage] = useState(pageRef);
     const [posts, setPosts] = useState([]);
     const [loading, setLoading] = useState(true);
-    const totalPages = 5;
+    const [totalPages, setTotalPages] = useState(1);
     
     const converteData = (data) => (
         data.split('T')[0].split('-').reverse().join('/')
@@ -40,11 +40,28 @@ export default function Publicacoes({ pageRef=1 }){
         }
     }
 
+    function loadTotalPages( deleted=false ) {
+        axios.get(`http://localhost:3000/countposts/`)
+            .then((response) => response.data)
+            .then((data) => {
+                if(deleted && data > 0 && data % 5 === 0){
+                    setPage(page - 1);
+                    setTotalPages(totalPages - 1);
+                } else{
+                    setTotalPages(Math.ceil(data / 5));
+                }
+            })
+            .catch((error) => console.error(error));
+
+        console.log(totalPages);
+    }
+
     function deletePost(post_id){
         if(window.confirm("Tem certeza?")){
             axios.delete(`http://localhost:3000/posts/${post_id}?page=${page}`)
                 .then((response) => response.data)
                 .then((data) => setPosts(data))
+                .then(() => loadTotalPages(true))
                 .catch((error) => console.error(error));
         }
     }
@@ -60,6 +77,7 @@ export default function Publicacoes({ pageRef=1 }){
 
     useEffect(() => {
         loadPosts();
+        loadTotalPages();
     }, [page])
 
     return (
@@ -90,9 +108,9 @@ export default function Publicacoes({ pageRef=1 }){
                                         <tr key={post.id}>
                                             <td>{post.id}</td>
                                             <td>{converteData(post.created_at)}</td>
-                                            <td><a href="/#">{post.name}</a></td>
+                                            <td><Link to={`/post/${post.id}`}>{post.name}</Link></td>
                                             <td></td>
-                                            <td><a>Editar</a></td>
+                                            <td><Link to={`/editar-publicacao/${post.id}`}>Editar</Link></td>
                                             <td><a onClick={() => deletePost(post.id)}>Excluir</a></td>
                                         </tr>
                                         )
@@ -106,7 +124,7 @@ export default function Publicacoes({ pageRef=1 }){
                             <Link to="criar-publicacao"><Button styles="1">NOVA PUBLICAÇÃO</Button></Link>
                         </div>
                         <div className="menu">
-                            <Pagination actualPage={page} totalPages={totalPages} previous={() => prevPage()} next={() => nextPage()} specific={() => specificPage()} />
+                            <Pagination actualPage={page+1} totalPages={totalPages} previous={() => prevPage()} next={() => nextPage()} specific={() => specificPage()} />
                         </div>
                     </div>
                 </div>

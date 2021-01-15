@@ -9,7 +9,7 @@
     font-style: normal;
     font-weight: 400;
     width: fit-content;
-    height: 100%;
+    height: min-content;
 }
 
 .btn1 {

@@ -2,7 +2,7 @@ import { useState } from 'react';
 
 import './styles.css';
 
-export default function TextArea({ name, textholder, prevValue="", disabled=false }){
+export default function TextArea({ name="", textholder="", prevValue="", disabled=false }){
     const [value, setValue] = useState(prevValue);
 
     return (

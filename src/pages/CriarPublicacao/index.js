@@ -8,15 +8,31 @@ import Header from '../../components/Header';
 import Footer from '../../components/Footer';
 import Button from '../../components/Button';
 import Input from '../../components/Input';
+import Favorite from '../../components/Favorite';
+import CommentIcon from '../../components/CommentIcon';
+import Views from '../../components/Views';
 
 import './styles.css';
 
 export default function CriarPublicacao(){
+    const [title, setTitle] = useState('');
     const [value, setValue] = useState('');
     const [tags, setTags] = useState([]);
 
+    function changeTitle(title) {
+        setTitle(title);
+    }
+
+    function createPost() {
+        axios.post(`http://localhost:3000/posts/`, {
+            "name": title,
+            "content": value
+            })
+            .catch((error) => console.error(error)); // colocar um erro de pop up
+    }
+
     const loadTags = async () => {
-        axios.get(`http://localhost:3000/tags?page=1`)
+        axios.get(`http://localhost:3000/alltags/`)
             .then((response) => response.data)
             .then((data) => setTags(data))
             .catch((error) => (
@@ -58,6 +74,10 @@ export default function CriarPublicacao(){
                     <h2>BACKOFFICE</h2>
                     <h1>Criar Publicação</h1>
 
+                    <div className="container-title">
+                        <Input name="Título da Publicação" styles={1} handleValue={changeTitle} />
+                    </div>
+
                     <div className="container-react-quill">
                         <ReactQuill theme="snow" value={value} onChange={setValue} modules={modules} placeholder={"Escreva a publicação aqui..."}/>
                     </div>
@@ -82,7 +102,7 @@ export default function CriarPublicacao(){
                     <Link to="/tags"><Button styles="1">GERENCIAR TAGS</Button></Link>
                     
                     <div className="container-buttons">
-                        <Button onClick={() => alert('PUBLICAR')} styles="3">PUBLICAR</Button>
+                        <Button onClick={() => createPost()} styles="3">PUBLICAR</Button>
                         <Link to="/publicacoes"><Button styles="1">VOLTAR</Button></Link>
                     </div>
                 </div>

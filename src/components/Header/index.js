@@ -2,7 +2,7 @@ import "./style.css";
 
 import { Link } from 'react-router-dom';
 import icone_petgato from '../../assets/gatinho_petgato_branco.svg';
-import { isAuthenticated } from '../../auth';
+import { isAuthenticated, isAdmin } from '../../auth';
 
 export default function Header({ backoffice=false, atual=1 }){
     return(
@@ -23,6 +23,7 @@ export default function Header({ backoffice=false, atual=1 }){
                     {atual === 1 ? (<Link to="/" className="selected-header">Página Inicial</Link>) : (<Link to="/">Página Inicial</Link>)}
                     {atual === 2 ? (<Link to="/sobre" className="selected-header">Sobre Nós</Link>) : (<Link to="/sobre">Sobre Nós</Link>)}
                     {atual === 3 ? (<Link to="/contato" className="selected-header">Fale Conosco</Link>) : (<Link to="/contato">Fale Conosco</Link>)}
+                    {isAdmin() && (<Link to="/publicacoes">Backoffice</Link>)}
                     {isAuthenticated() ? (
                         atual === 4 ? (<Link to="/editar-perfil" className="selected-header">Minha Conta</Link>) : (<Link to="/editar-perfil">Minha Conta</Link>)
                     ) : (<Link to="/login">Entrar</Link>)}
