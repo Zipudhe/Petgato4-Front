@@ -1,25 +1,18 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import icone_petgato from '../../assets/gatinho_petgato_branco.svg';
 import { isAuthenticated, isAdmin } from '../../auth';
 
 import "./style.css";
 
-const temp = async () => {
-    return await isAdmin();
-}
-
-const temp2 = async () => {
-    return await isAuthenticated();
-}
-
 const Header = ({ backoffice=false, atual=1 }) => {
-    const admin = temp();
-    const logged = temp2();
+    const [logged, setLogged] = useState(false);
+    const [admin, setAdmin] = useState(false);
 
     useEffect(() => {
-        console.log(logged);
-    }, [admin, logged])
+        isAuthenticated().then(response => setLogged(response));
+        isAdmin().then(response => setAdmin(response));
+    }, [])
 
     return (
         <div className="header">

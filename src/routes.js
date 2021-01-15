@@ -1,4 +1,4 @@
-import React from 'react';
+import { useState } from 'react';
 import { isAuthenticated, isAdmin } from './auth'; 
 
 import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
@@ -25,25 +25,34 @@ import EditarPublicacao from './pages/EditarPublicacao';
 import Tags from './pages/Tags';
 import Usuarios from './pages/Usuarios';
 
-const PrivateRoute = ({ component: Component, ... rest}) => (
-    <Route { ... rest} render={props => (
-        isAuthenticated() ? (
-            <Component { ... props} />
-        ) : (
-            <Redirect to={{ pathname: '/nao-permitido', state: { from: props.location } }} />
-        )
-    )} />
-);
+const PrivateRoute = ({ component: Component, ... rest}) => {
+    const [logged, setLogged] = useState(isAuthenticated().then(response => setLogged(response)));
+    
+    return (
+        <Route { ... rest} render={props => (
+            logged ? (
+                <Component { ... props} />
+            ) : (
+                <Redirect to={{ pathname: '/nao-permitido', state: { from: props.location } }} />
+            )
+        )} />
+    );
+}
 
-const AdminRoute = ({ component: Component, ... rest}) => (
-    <Route { ... rest} render={props => (
-        isAdmin() ? (
-            <Component { ... props} />
-        ) : (
-            <Redirect to={{ pathname: '/nao-permitido', state: { from: props.location } }} />
-        )
-    )} />
-);
+const AdminRoute = ({ component: Component, ... rest}) => {
+    const [logged, setLogged] = useState(isAuthenticated().then(response => setLogged(response)));
+    const [admin, setAdmin] = useState(isAdmin().then(response => setAdmin(response)));
+    
+    return (
+        <Route { ... rest} render={props => (
+            logged && admin ? (
+                <Component { ... props} />
+            ) : (
+                <Redirect to={{ pathname: '/nao-permitido', state: { from: props.location } }} />
+            )
+        )} />
+    );
+}
 
 const Routes = () => (
     <BrowserRouter>
