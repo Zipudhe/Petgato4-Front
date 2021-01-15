@@ -32,6 +32,7 @@ export default function EditarPublicacao(){
             .then((response) => response.data)
             .then((data) => {
                 setPost(data);
+                setTitle(data.name);
                 setValue(data.content.body);
             })
             .catch((error) => {
