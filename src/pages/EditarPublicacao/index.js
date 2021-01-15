@@ -41,9 +41,8 @@ export default function EditarPublicacao(){
         setLoading(false);
     }
 
-    // editar aqui com put e etc
-    function editPost() {
-        axios.post(`http://localhost:3000/posts/`, {
+    function editPost(id) {
+        axios.put(`http://localhost:3000/posts/${id}`, {
             "name": title,
             "content": value
             })
@@ -129,7 +128,7 @@ export default function EditarPublicacao(){
                         <Link to="/tags"><Button styles="1">GERENCIAR TAGS</Button></Link>
                         
                         <div className="container-buttons">
-                            <Button onClick={() => editPost()} styles="3">PUBLICAR</Button>
+                            <Button onClick={() => editPost(location.id)} styles="3">ATUALIZAR</Button>
                             <Link to="/publicacoes"><Button styles="1">VOLTAR</Button></Link>
                         </div>
                     </div>
