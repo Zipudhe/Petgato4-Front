@@ -52,8 +52,6 @@ export default function Publicacoes({ pageRef=0 }){
                 }
             })
             .catch((error) => console.error(error));
-
-        console.log(totalPages);
     }
 
     function deletePost(post_id){
