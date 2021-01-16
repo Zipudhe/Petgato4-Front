@@ -104,7 +104,7 @@ export default function Tags({ pageRef=0 }){
                                             <td>{tag.id}</td>
                                             <td>0</td>
                                             <td>{tag.name}</td>
-                                            <td><Link to='/editar-tag'>Editar</Link></td>
+                                            <td><Link to={`/editar-tag/${tag.id}`}>Editar</Link></td>
                                             <td><a onClick={() => deleteTag(tag.id)} >Excluir</a></td>
                                         </tr>
                                     )

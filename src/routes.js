@@ -79,7 +79,7 @@ const Routes = () => (
             <AdminRoute exact path="/usuarios" component={() => <Usuarios />} />
             <AdminRoute exact path="/tags" component={() => <Tags />} />
             <AdminRoute exact path="/criar-tag" component={() => <CriarTag />} />
-            <AdminRoute exact path="/editar-tag" component={() => <EditarTag />} />
+            <AdminRoute exact path="/editar-tag/:id" component={() => <EditarTag />} />
             <AdminRoute exact path="/editar-usuario" component={() => <EditUser />} />
             <AdminRoute exact path="/mensagens" component={() => <Mensagens />} />
 
