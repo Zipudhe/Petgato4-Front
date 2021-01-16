@@ -21,4 +21,6 @@
     width: 1.8vw;
     height: 1.8vw;
     float: left;
+    min-width: 23px;
+    min-height: 23px;
 }

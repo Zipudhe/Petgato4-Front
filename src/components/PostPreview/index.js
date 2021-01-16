@@ -14,7 +14,7 @@ export default function PostPreview({post}){
     return (
         <div className="container-post">
             <div className="post-img">
-                imagem
+                <img src={test} alt="Foto do post" />
             </div>
             <div className="post-content">
                 <div className="tags">
@@ -29,9 +29,11 @@ export default function PostPreview({post}){
                 </div>
                 <div className="post-footer">
                     <Button styles="1">LEIA MAIS</Button>
-                    <Favorite number={0} />
-                    <CommentIcon number={0} />
-                    <Views number={0} />
+                    <div>
+                        <Favorite number={0} />
+                        <CommentIcon number={0} />
+                        <Views number={0} />
+                    </div>
                 </div>
             </div>
         </div>

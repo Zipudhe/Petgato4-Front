@@ -13,6 +13,7 @@
     font-size: 15px;
     color: #707070;
     padding: 0 5px;
+    padding-left: 2px;
     margin: 0;
     float: right;
 }
@@ -21,4 +22,6 @@
     width: 1.8vw;
     height: 1.8vw;
     float: left;
+    min-width: 23px;
+    min-height: 23px;
 }
