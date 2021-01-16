@@ -30,12 +30,21 @@
     width: 100%;
     height: 100%;
     display: grid;
-    grid-template-columns: 85% 5% 5% 5%;
+    grid-template-columns: 85% 14%;
+    grid-gap: 1%;
     margin-bottom: 2.6vw;
 }
 
 .backoffice-editar-publicacao .container-title div {
     width: 100%;
+}
+
+.backoffice-editar-publicacao .container-title .icons {
+    width: 100%;
+    height: 3.6vw;
+    display: flex;
+    align-self: flex-end;
+    justify-content: right;
 }
 
 .backoffice-editar-publicacao h2 {

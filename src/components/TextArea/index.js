@@ -17,7 +17,7 @@ export default function TextArea({ name="", textholder="", prevValue="", disable
         <div className="textarea">
             <label>{name}</label>
             <textarea placeholder={textholder} disabled={disabled}
-            maxLength="1024"
+            maxLength="512"
             value={value}
             rows="4"
             col="50"

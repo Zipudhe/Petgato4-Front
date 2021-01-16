@@ -99,10 +99,15 @@ export default function EditarPublicacao(){
                         <h1>Editar Publicação</h1>
 
                         <div className="container-title">
-                            <Input name="Título da Publicação" styles={1} handleValue={changeTitle} prevValue={post.name} />
-                            <Favorite number={0} />
-                            <CommentIcon number={0} />
-                            <Views number={post.views} />
+                            <div>
+                                <Input name="Título da Publicação" styles={1} handleValue={changeTitle} prevValue={post.name} />
+                            </div>
+                            
+                            <div className="icons">
+                                <Favorite number={0} />
+                                <CommentIcon number={0} />
+                                <Views number={post.views} />
+                            </div>
                         </div>
 
                         <div className="container-react-quill">

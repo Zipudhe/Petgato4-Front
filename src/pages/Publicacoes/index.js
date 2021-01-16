@@ -7,6 +7,7 @@ import Footer from '../../components/Footer';
 import Button from '../../components/Button';
 import Pagination from '../../components/Pagination';
 import LoadingCat from '../../components/LoadingCat';
+import { convertDate } from '../../functions';
 
 import './styles.css';
 
@@ -15,10 +16,6 @@ export default function Publicacoes({ pageRef=0 }){
     const [posts, setPosts] = useState([]);
     const [loading, setLoading] = useState(true);
     const [totalPages, setTotalPages] = useState(1);
-    
-    const converteData = (data) => (
-        data.split('T')[0].split('-').reverse().join('/')
-    );
 
     const nextPage = () => {
         if(page < totalPages){
@@ -105,7 +102,7 @@ export default function Publicacoes({ pageRef=0 }){
                                         (
                                         <tr key={post.id}>
                                             <td>{post.id}</td>
-                                            <td>{converteData(post.created_at)}</td>
+                                            <td>{convertDate(post.created_at)}</td>
                                             <td><Link to={`/post/${post.id}`}>{post.name}</Link></td>
                                             <td></td>
                                             <td><Link to={`/editar-publicacao/${post.id}`}>Editar</Link></td>
