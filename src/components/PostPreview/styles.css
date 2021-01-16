@@ -45,6 +45,7 @@
 .post-content .post-text {
     display: flex;
     flex-direction: column;
+    overflow: hidden;
     text-overflow: ellipsis;
 }
 
@@ -74,6 +75,12 @@
     display: flex;
     align-items: center;
     gap: 1.2vw;
+}
+
+.container-post .post-footer div:nth-child(2) {
+    display: flex;
+    width: min-content;
+    gap: .6vw;
 }
 
 .post-content .post-footer button {
