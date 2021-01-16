@@ -1,11 +1,10 @@
 .container-page-publicacao {
     min-height: 100vh;
     display: grid;
-    grid-template-rows: 10% 80% 10%;
 }
 
 .footer-publicacao {
-    margin-top: 5vw;
+    margin-top: 2vw;
     display: flex;
 }
 
@@ -46,7 +45,18 @@
     float: left;
 }
 
-.text-publication  {
+.content-publicacao .post-image {
+    width: 100%;
+    height: 18vw;
+    margin-top: .6vw;
+    overflow: hidden;
+}
+
+.content-publicacao .post-image img {
+    object-position: 0 -8vw;
+}
+
+.text-publication {
     padding: 0;
     margin: 0;
     color: #444143;
@@ -83,5 +93,6 @@
 }
 
 .container-comments {
-    height: 100vh;
+    height: min-content;
+    background-color: lightblue;
 }

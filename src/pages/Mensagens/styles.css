@@ -72,7 +72,7 @@
     text-align: left;
     overflow: hidden;
     text-overflow: ellipsis;
-} 
+}
 
 .all-messages td:first-child {
     width: 1vw;

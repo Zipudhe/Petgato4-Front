@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useHistory, useParams } from 'react-router-dom';
+import { useHistory, useParams, Link } from 'react-router-dom';
 import axios from 'axios';
 
 import Header from '../../components/Header';
@@ -11,6 +11,8 @@ import Reply from '../../components/Reply';
 import Favorite from '../../components/Favorite';
 import Views from '../../components/Views';
 import LoadingCat from '../../components/LoadingCat';
+
+import temp_image from '../../assets/images/Esqueciminhasenha.jpg';
 
 import './styles.css';
 
@@ -65,6 +67,7 @@ export default function PaginaPublicacao() {
     return (
         <div className="container-page-publicacao">
             <Header atual={0} />
+            <Link to="/"><div>  <p>Voltar</p></div></Link>
             {!post ? (
                 <div>
                     <LoadingCat />
@@ -72,15 +75,14 @@ export default function PaginaPublicacao() {
             ) : (
                 <div className="container-publicacao">
                     <div className="content-publicacao">
-                        <div>Voltar</div>
                         <h1>{post.name}</h1>
                         <div className="post-informations">
                             <p className="data-publicacao"><i>{convertDate(post.created_at)}</i></p>
                             <Views number={post.views} />
                         </div>
                         
-                        <div>
-                            imagem da capa aqui (colocar border)
+                        <div className="post-image">
+                            <img src={temp_image} />
                         </div>
 
                         <div className="text-publication" dangerouslySetInnerHTML={{__html: post.content.body}} />
@@ -98,6 +100,10 @@ export default function PaginaPublicacao() {
                             <Comment author={"Rodrigo Barão da Piscadinha"} text="" date={"Publicado em 14 de Janeiro de 2021 às 23h18"} />
                             <Reply author={"Renato Farias"} text="" date={"Publicado em 14 de Janeiro de 2021 às 23h18"} />
                         </div>
+                    </div>
+
+                    <div>
+                        all right ->
                     </div>
                 </div>
                 )}
