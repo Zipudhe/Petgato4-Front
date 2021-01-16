@@ -7,6 +7,8 @@ import Button from '../../components/Button';
 import Input from '../../components/Input';
 import TextArea from '../../components/TextArea';
 
+import dog_image from '../../assets/images/Imagem de Contato.jpg';
+
 import "./styles.css";
 
 export default function FaleConosco(){
@@ -39,7 +41,9 @@ export default function FaleConosco(){
         <div className="container-fale-conosco">
             <div><Header atual={3} /></div>
             <div className="container-enviar-mensagem">
-                <div className="dog-image">a</div>
+                <div className="dog-image">
+                    <img src={dog_image} />
+                </div>
 
                 <div className="user-info">
                     <h2>FALE CONOSCO</h2>

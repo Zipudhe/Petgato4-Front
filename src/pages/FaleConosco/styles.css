@@ -19,9 +19,14 @@
 }
 
 .container-enviar-mensagem .dog-image {
-    background: #FBE9F6 url('../../assets/images/Imagem de Contato.jpg') no-repeat scroll 50% 70%;
-    background-size: cover;
+    overflow: hidden;
     margin: 15% 0% 20% 15%;
+}
+
+.container-enviar-mensagem .dog-image img {
+    object-fit: cover;
+    object-position: -1vw 75%;
+    width: 100%;
 }
 
 .container-enviar-mensagem .user-info {
