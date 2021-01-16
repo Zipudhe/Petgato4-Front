@@ -12,7 +12,7 @@ export default function Sobre(){
             <div><Header atual={2} /></div>
             <div className="content-sobre">
                 <div className="images-sobre">
-                    <div className="frist-image"></div>
+                    <div className="first-image"></div>
                     <div className="second-image"></div>
                     <div className="third-image"></div>
                 </div>
