@@ -43,7 +43,7 @@ export default function Mensagens({ pageRef=0 }){
     const showMessage = () => {
         setModalStatus(!modalStatus);
 
-        document.body.style.overflow = modalStatus ? "hidden" : "visible";
+        document.body.style.overflow = modalStatus ? "visible" : "hidden";
     }
 
     function loadTotalPages( deleted=false ) {
