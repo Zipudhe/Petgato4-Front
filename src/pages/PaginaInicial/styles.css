@@ -50,7 +50,9 @@
     align-self: end;
 }
 
-@media (max-width: 1024px) {
+
+
+@media (max-width: 768px) {
     .container-homepage {
         display: grid;
         grid-template-areas:
@@ -73,15 +75,25 @@
     }
 
     .container-homepage .homepage-posts h1 {
-        font-size: 7vw;
+        font-size: 5vw;
         text-align: center;
         margin-top: 0;
     }
 
     .container-homepage .homepage-posts h2 {
-        font-size: 4vw;
+        font-size: 2.8vw;
         text-align: center;
         margin-top: .4vw;
         margin-bottom: 2vw;
+    }
+}
+
+@media (max-width: 500px) {
+    .container-homepage .homepage-posts h1 {
+        font-size: 7vw;
+    }
+
+    .container-homepage .homepage-posts h2 {
+        font-size: 4vw;
     }
 }

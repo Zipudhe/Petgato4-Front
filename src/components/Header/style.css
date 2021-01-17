@@ -34,11 +34,12 @@
 @media (max-width: 768px){
     .header {
         justify-content: center;
+        height: 10vw;
     }
 
     .header img {
-        width: 53px;
-        height: 53px;
+        width: 13vw;
+        height: 13vw;
     }
     
     .links *{

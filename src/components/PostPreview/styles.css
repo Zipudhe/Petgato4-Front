@@ -87,7 +87,7 @@
     height: 80%;
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 768px) {
     .container-post {
         width: 100%;
         display: flex;
@@ -136,7 +136,7 @@
     }
 
     .container-post .post-text .post-title h1 {
-        font-size: 6vw;
+        font-size: 4vw;
     }
 
     .container-post .post-text .post-description {
@@ -166,8 +166,18 @@
         height: 7vw;
         grid-row-start: 3;
         grid-row-end: 4;
-        font-size: 4vw;
+        font-size: 3vw;
 
         margin-bottom: 2vw;
+    }
+}
+
+@media (max-width: 500px) {
+    .container-post .post-text .post-title h1 {
+        font-size: 5vw;
+    }
+
+    .container-post .post-footer button {
+        font-size: 4vw;
     }
 }
