@@ -11,17 +11,9 @@ const Header = ({ backoffice=false, atual=1 }) => {
     const [logged, setLogged] = useState(false);
     const [admin, setAdmin] = useState(false);
     const [down, setDown] = useState(false);
-    const [actived, setActived] = useState("");
 
     const changeMenu = () => {
-        if(!down){
-            setActived(" on");
-            document.body.style.overflow = "hidden";
-        } else{
-            setActived("");
-            document.body.style.overflow = "visible";
-        }
-        
+        document.body.style.overflow = down ? "visible" : "hidden";
         setDown(!down);
     }
 
@@ -35,7 +27,7 @@ const Header = ({ backoffice=false, atual=1 }) => {
     }, [down])
 
     return (
-        <div className={`header ${actived}`}>
+        <div className={`header ${down && "on"}`}>
             <Link to="/"><img alt="PetGatô" src={petgato_icon}/></Link>
             {backoffice ? (
                 <div className="links" onClick={() => setMenuVisible()}>
