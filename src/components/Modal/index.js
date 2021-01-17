@@ -3,8 +3,16 @@ import close_icon from '../../assets/close_icon.svg';
 
 export default function Modal({ content, close, styles=0 }){
     // style === 0 ? denúncia : mensagem
+
+    // fecha modal ao clicar fora da div
+    const verifyClick = (target) => {
+        if(target.className === 'modal'){
+            close();
+        }
+    }
+
     return (
-        <div className="modal">
+        <div className="modal" onClick={e => verifyClick(e.target)}>
             <div className="box-modal">
                 <div className="header-modal">
                     <img src={close_icon} onClick={close} />

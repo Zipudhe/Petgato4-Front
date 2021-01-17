@@ -8,6 +8,10 @@
     grid-column-gap: 15px;
 }
 
+.container-post a {
+    text-decoration: none;
+}
+
 .container-post .post-img {
     display: flex;
     justify-content: center;
@@ -52,8 +56,12 @@
 .post-content .post-description {
     height: 100%;
     display: -webkit-box;
-    -webkit-line-clamp: 3; /* max: 4 lines */
+    -webkit-line-clamp: 4; /* max: 4 lines */
     -webkit-box-orient: vertical; 
+}
+
+.post-content .post-description img {
+    display: none; 
 }
 
 .post-content .post-text p {
