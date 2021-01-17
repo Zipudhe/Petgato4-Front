@@ -8,26 +8,23 @@
     grid-column-gap: 15px;
 }
 
-.container-post a {
-    text-decoration: none;
-}
-
 .container-post .post-img {
-    background-color: lightblue;
     display: flex;
     justify-content: center;
     align-items: center;
     cursor: pointer;
+    overflow: hidden;
+}
+
+.container-post .post-img img {
+    width: 100%;
+    object-fit: cover;
+    object-position: 0 -2vw;
 }
 
 .container-post .post-content {
     display: grid;
     grid-template-rows: 15% 60% 25%;
-}
-
-.post-content .post-text img {
-    width: 0;
-    height: 0;
 }
 
 .post-content .tags {
@@ -80,6 +77,107 @@
     gap: 1.2vw;
 }
 
+.container-post .post-footer div:nth-child(2) {
+    display: flex;
+    width: min-content;
+    gap: .6vw;
+}
+
 .post-content .post-footer button {
     height: 80%;
+}
+
+@media (max-width: 768px) {
+    .container-post {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        height: auto;
+        cursor: pointer;
+    }
+
+    .container-post .post-img {
+        width: 90vw;
+        height: 25vw;
+        overflow: hidden;
+        border-radius: 2vw;
+        margin-bottom: -2vw;
+    }
+
+    .container-post .post-img img {
+        width: 100%;
+        object-fit: cover;
+        object-position: 0 -3vw;
+    }
+
+    .container-post .post-content {
+        display: flex;
+        flex-direction: column;
+        background-color: #FBE9F6;
+        border: 2px solid #efa8dc;
+        border-bottom-left-radius: 2vw;
+        border-bottom-right-radius: 2vw;
+        border-top: none;
+    }
+
+    .container-post .post-content .tags { /* p até mexer nas tags em si*/
+        display: none;
+    }
+
+    .container-post .post-text {
+        display: grid;
+        height: auto;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .container-post .post-text .post-title {
+        width: 80vw;
+    }
+
+    .container-post .post-text .post-title h1 {
+        font-size: 4vw;
+    }
+
+    .container-post .post-text .post-description {
+        font-size: 3vw;
+        padding-top: 1.6vw;
+        display: none;
+    }
+
+    .container-post .post-footer {
+        display: grid;
+        grid-template-rows: 2;
+        justify-content: center;
+        margin-top: 1.2vw;
+    }
+
+    .container-post .post-footer div:nth-child(2) {
+        grid-row-start: 1;
+        grid-row-end: 2;
+        justify-self: center;
+        display: flex;
+        gap: 1vw;
+        width: min-content;
+    }
+
+    .container-post .post-footer button {
+        width: 85vw;
+        height: 7vw;
+        grid-row-start: 3;
+        grid-row-end: 4;
+        font-size: 3vw;
+
+        margin-bottom: 2vw;
+    }
+}
+
+@media (max-width: 500px) {
+    .container-post .post-text .post-title h1 {
+        font-size: 5vw;
+    }
+
+    .container-post .post-footer button {
+        font-size: 4vw;
+    }
 }

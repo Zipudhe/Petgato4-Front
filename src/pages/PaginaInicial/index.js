@@ -17,11 +17,38 @@ export default function PaginaInicial() {
     let history = useHistory();
 
     const loadPosts = async () => {
+        let temp_posts = [
+            {
+                id: 2,
+                name: "Título do post"
+            },
+            {
+                id: 3,
+                name: "Post dois"
+            },
+            {
+                id: 4,
+                name: "Mais um post só que esse tem título grande"
+            },
+            {
+                id: 5,
+                name: "Pq não outro maior ainda o titulo maior que o de cima já era como pode ver"
+            },
+            {
+                id: 6,
+                name: "Ok parei, eh o ultimo"
+            }
+        ]
+
+        setLoading(false);
+        setPosts(temp_posts);
+
+        /*
         axios.get(`http://localhost:3000/posts?page=${page}`)
             .then((response) => response.data)
             .then((data) => setPosts(data))
             .catch((error) => history.push("/erro") );
-        setLoading(false);
+        setLoading(false);*/
     }
 
     useEffect(() => {
