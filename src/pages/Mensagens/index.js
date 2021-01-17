@@ -5,6 +5,7 @@ import { Link, useHistory } from 'react-router-dom';
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
 import Pagination from '../../components/Pagination';
+import Modal from '../../components/Modal';
 import LoadingCat from '../../components/LoadingCat';
 import { convertDate } from '../../functions';
 
@@ -16,6 +17,7 @@ export default function Mensagens({ pageRef=0 }){
     const [loading, setLoading] = useState(true);
     const [totalElements, setTotalElements] = useState(0);
     const [totalPages, setTotalPages] = useState(1);
+    const [modalStatus, setModalStatus] = useState(false);
     let history = useHistory();
 
     const nextPage = () => {
@@ -36,6 +38,12 @@ export default function Mensagens({ pageRef=0 }){
         } else {
             setPage(totalPages - 2);
         }
+    }
+
+    const showMessage = () => {
+        setModalStatus(!modalStatus);
+
+        document.body.style.overflow = modalStatus ? "hidden" : "visible";
     }
 
     function loadTotalPages( deleted=false ) {
@@ -76,6 +84,8 @@ export default function Mensagens({ pageRef=0 }){
         loadTotalPages();
     }, [])
 
+    useEffect(() => {}, [modalStatus])
+
     return (
         <div className="container-messages">
             <Header backoffice={true} atual={6} />
@@ -104,8 +114,12 @@ export default function Mensagens({ pageRef=0 }){
                                                 <td>{message.name}</td>
                                                 <td>"{message.description}"</td>
                                                 <td>{convertDate(message.created_at)}</td>
-                                                <td><a>Exibir</a></td>
+                                                <td><a onClick={() => showMessage()}>Exibir</a></td>
                                                 <td><a onClick={() => deleteMessage(message.id)}>Excluir</a></td>
+                                                
+                                                <div className={`container-modal ${modalStatus && "on"}`}>
+                                                    <Modal styles={1} content={message} close={showMessage} />
+                                                </div>
                                             </tr>
                                         )
                                     )}

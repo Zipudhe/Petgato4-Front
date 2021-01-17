@@ -105,3 +105,11 @@
     height: 100%;
     min-height: 20vw;
 }
+
+.container-table-messages .container-modal {
+    display: none;
+}
+
+.container-table-messages .container-modal.on {
+    display: inline;
+}
