@@ -2,24 +2,34 @@
     background-color:  #FBE9F6;
     color: #707070;
     padding: 0;
+    margin: 0 auto;
+    margin-top: 6vw;
     text-align: center;
-
     width: 80%;
     height: fit-content;
     padding-bottom: 15px;
-    margin: 0 auto;
-    margin-top: 6vw;
+    
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-.about-frame .crop-image {
+.crop-image {
     width: 10vw;
     height: 10vw;
+    overflow: hidden;
     border-radius: 50%;
+    margin-bottom: 1vw;
+    margin-top: -3vw;
+}
+
+.about-frame .crop-image img {
+    width: 15vw;
+    height: 15vw;
 
     object-fit: cover;
-    object-position: center;
-    margin-bottom: 10px;
-    margin-top: -3vw;
+    object-position: -1vw 75%;
 }
 
 .about-frame h2 {

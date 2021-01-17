@@ -1,13 +1,38 @@
-import "./style.css";
-
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import icone_petgato from '../../assets/gatinho_petgato_branco.svg';
-import { isAuthenticated } from '../../auth';
+import { isAuthenticated, isAdmin } from '../../auth';
 
-export default function Header({ backoffice=false, atual=1 }){
-    return(
-        <div className="header">
-            <Link to="/"><img alt="PetGatô" src={icone_petgato}/></Link>
+import "./style.css";
+import petgato_icon from '../../assets/gatinho_petgato_branco.svg';
+import menu_icon from '../../assets/menu_icon.svg';
+import exit_icon from '../../assets/exit_icon.svg';
+
+const Header = ({ backoffice=false, atual=1 }) => {
+    const [logged, setLogged] = useState(false);
+    const [admin, setAdmin] = useState(false);
+    const [down, setDown] = useState(false);
+    const [actived, setActived] = useState("");
+
+    const changeMenu = () => {
+        if(!down){
+            setActived(" on");
+            document.body.style.overflow = "hidden";
+        } else{
+            setActived("");
+            document.body.style.overflow = "visible";
+        }
+        
+        setDown(!down);
+    }
+
+    useEffect(() => {
+        isAuthenticated().then(response => setLogged(response));
+        isAdmin().then(response => setAdmin(response));
+    }, [down])
+
+    return (
+        <div className={`header ${actived}`}>
+            <Link to="/"><img alt="PetGatô" src={petgato_icon}/></Link>
             {backoffice ? (
                 <div className="links">
                     <Link to="/">Página Inicial</Link>
@@ -16,19 +41,26 @@ export default function Header({ backoffice=false, atual=1 }){
                     {atual === 4 ? (<Link to="/usuarios" className="selected-header">Usuários</Link>) : (<Link to="/usuarios">Usuários</Link>)}
                     {atual === 5 ? (<Link to="/denuncias" className="selected-header">Denúncias</Link>) : (<Link to="/denuncias">Denúncias</Link>)}
                     {atual === 6 ? (<Link to="/mensagens" className="selected-header">Mensagens</Link>) : (<Link to="/mensagens">Mensagens</Link>)}
-                    {isAuthenticated() && (<a onClick={() => alert('SAIR')} >Sair</a>)}
+                    {logged && (<a onClick={() => alert('SAIR')} >Sair</a>)}
+                    <img onClick={() => changeMenu()} className="menu" src={menu_icon} />
+                    <img onClick={() => changeMenu()} className="exit" src={exit_icon} />
                 </div>
             ) : (
                 <div className="links">
                     {atual === 1 ? (<Link to="/" className="selected-header">Página Inicial</Link>) : (<Link to="/">Página Inicial</Link>)}
                     {atual === 2 ? (<Link to="/sobre" className="selected-header">Sobre Nós</Link>) : (<Link to="/sobre">Sobre Nós</Link>)}
                     {atual === 3 ? (<Link to="/contato" className="selected-header">Fale Conosco</Link>) : (<Link to="/contato">Fale Conosco</Link>)}
-                    {isAuthenticated() ? (
+                    {admin && (<Link to="/publicacoes">Backoffice</Link>)}
+                    {logged ? (
                         atual === 4 ? (<Link to="/editar-perfil" className="selected-header">Minha Conta</Link>) : (<Link to="/editar-perfil">Minha Conta</Link>)
                     ) : (<Link to="/login">Entrar</Link>)}
-                    {isAuthenticated() && (<a onClick={() => alert('SAIR')} >Sair</a>)}
+                    {logged && (<a onClick={() => alert('SAIR')} >Sair</a>)}
+                    <img onClick={() => changeMenu()} className="menu" src={menu_icon} />
+                    <img onClick={() => changeMenu()} className="exit" src={exit_icon} />
                 </div>
             )}
         </div>
     );
 }
+
+export default Header;

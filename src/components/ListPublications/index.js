@@ -3,7 +3,7 @@ import './styles.css';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 
-export default function ListPublications({pageRef}){
+export default function ListPublications({ pageRef }){
     const [page, setPage] = useState(pageRef);
     const [posts, setPosts] = useState([]);
     

@@ -1,0 +1,98 @@
+.container-page-publicacao {
+    min-height: 100vh;
+    display: grid;
+}
+
+.footer-publicacao {
+    margin-top: 2vw;
+    display: flex;
+}
+
+.footer-publicacao footer {
+    margin-top: auto;
+}
+
+.container-publicacao {
+    display: grid;
+    grid-template-columns: 75% 25%;
+    margin-top: 1.8vw;
+}
+
+.content-publicacao {
+    padding: 0 5%;
+    border-right: 1px solid #B0B0B0;
+}
+
+.content-publicacao h1 {
+    font-weight: 600;
+    color: #BA66A3;
+    margin: 0 0 .2vw 0;
+    font-size: 2.4vw;
+}
+
+.content-publicacao h2 {
+    font-weight: 600;
+    color: #444143;
+    margin: .4vw 0 0 0;
+    font-size: 1.6vw;
+}
+
+.content-publicacao .data-publicacao {
+    padding: 0;
+    margin: 0;
+    font-size: 1.2vw;
+    color: #707070;
+    float: left;
+}
+
+.content-publicacao .post-image {
+    width: 100%;
+    height: 18vw;
+    margin-top: .6vw;
+    overflow: hidden;
+}
+
+.content-publicacao .post-image img {
+    object-position: 0 -8vw;
+}
+
+.text-publication {
+    padding: 0;
+    margin: 0;
+    color: #444143;
+    font-size: 1.2vw;
+}
+
+.content-publicacao .post-informations {
+    width: 100%;
+    display: inline-block;
+}
+
+.content-publicacao .post-informations div {
+    float: right;
+}
+
+.content-comentario {
+    width: 100%;
+    height: 15vw;
+    margin-top: .8vw;
+}
+
+.content-comentario textarea {
+    padding-top: 1vw;
+}
+
+.content-publicacao img {
+    max-width: 100%;
+}
+
+.content-publicacao .send-button {
+    display: flex;
+    justify-content: flex-end;
+    margin: 1.2vw 0;
+}
+
+.container-comments {
+    height: min-content;
+    background-color: lightblue;
+}

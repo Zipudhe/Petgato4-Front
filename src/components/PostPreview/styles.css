@@ -8,6 +8,10 @@
     grid-column-gap: 15px;
 }
 
+.container-post a {
+    text-decoration: none;
+}
+
 .container-post .post-img {
     background-color: lightblue;
     display: flex;
@@ -19,6 +23,11 @@
 .container-post .post-content {
     display: grid;
     grid-template-rows: 15% 60% 25%;
+}
+
+.post-content .post-text img {
+    width: 0;
+    height: 0;
 }
 
 .post-content .tags {

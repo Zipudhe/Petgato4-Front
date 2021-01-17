@@ -1,10 +1,13 @@
 import { useState } from 'react';
+import axios from 'axios';
 
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
 import Button from '../../components/Button';
 import Input from '../../components/Input';
 import TextArea from '../../components/TextArea';
+
+import dog_image from '../../assets/images/Imagem de Contato.jpg';
 
 import "./styles.css";
 
@@ -25,11 +28,22 @@ export default function FaleConosco(){
         setMessage(message);
     }
 
+    const sendMessage = () => {
+        axios.post(`http://localhost:3000/messages/`, {
+            "name": name,
+            "email": email,
+            "description": message
+            })
+            .catch((error) => console.error(error)); // colocar um erro de pop up
+    }
+
     return (
         <div className="container-fale-conosco">
             <div><Header atual={3} /></div>
             <div className="container-enviar-mensagem">
-                <div className="dog-image">a</div>
+                <div className="dog-image">
+                    <img src={dog_image} />
+                </div>
 
                 <div className="user-info">
                     <h2>FALE CONOSCO</h2>
@@ -45,7 +59,7 @@ export default function FaleConosco(){
                     </div>
 
                     <div className="container-button">
-                        <Button styles={1} onClick={() => ( alert('ENVIAR') )}>ENVIAR</Button>
+                        <Button styles={1} onClick={sendMessage}>ENVIAR</Button>
                     </div>
                 </div>
             </div>

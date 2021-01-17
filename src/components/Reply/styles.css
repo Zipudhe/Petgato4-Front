@@ -1,0 +1,67 @@
+.reply {
+    width: 100%;
+    height: min-content;
+    display: grid;
+    grid-template-columns: 8vw 70%;
+    padding-left: 15%;
+}
+
+.reply .user-image {
+    width: 100%;
+    height: 8vw;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.reply .content-reply {
+    height: min-content;
+    min-height: 15vw;
+    padding-left: 1.2vw;
+}
+
+.reply .content-reply h2 {
+    font-size: 1.4vw;
+    margin-top: .8vw;
+}
+
+.reply .content-reply i {
+    padding: 0;
+    margin: 0;
+    font-size: 1.1vw;
+    color: #707070;
+}
+
+.reply .content-reply p {
+    padding: 0;
+    margin: 0;
+    margin-top: .6vw;
+    font-size: 1.2vw;
+    color: #444143;
+}
+
+.reply .content-reply .title {
+    display: grid;
+    grid-template-columns: 90% 10%;
+}
+
+.reply .content-reply .title a:nth-child(2) {
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+}
+
+.reply .content-reply .title a {
+    background-color: burlywood;
+    font-size: 1.4vw;
+}
+
+.reply .user-image .temp-image {
+    width: 100%;
+    height: 100%;
+
+    background: #FBE9F6 url('https://portalrapmais.com/wp-content/uploads/2019/06/61678492_140427597107249_4447517178766260283_n-e1563733011436.jpg') no-repeat scroll 75% 0%;
+    background-size: cover;
+    border-radius: 50%;
+}

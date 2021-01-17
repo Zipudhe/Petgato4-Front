@@ -10,7 +10,7 @@ import LoadingCat from '../../components/LoadingCat';
 
 import './styles.css';
 
-export default function Tags({ pageRef=1 }){
+export default function Tags({ pageRef=0 }){
     const [page, setPage] = useState(pageRef);
     const [tags, setTags] = useState([]);
     const [loading, setLoading] = useState(true);
@@ -38,14 +38,18 @@ export default function Tags({ pageRef=1 }){
         }
     }
 
-    const calcTotalPages = (totalElements) => {
-        let pages = (totalElements)/5;
-        console.log(pages);
-        if(totalElements % 5 === 0){
-            return Math.floor(pages) - 1;
-        } else{
-            return Math.floor(pages)
-        }
+    function loadTotalPages( deleted=false ) {
+        axios.get(`http://localhost:3000/countags/`)
+            .then((response) => response.data)
+            .then((data) => {
+                if(deleted && data > 0 && data % 5 === 0){
+                    setPage(page - 1);
+                    setTotalPages(totalPages - 1);
+                } else{
+                    setTotalPages(Math.ceil(data / 5));
+                }
+            })
+            .catch((error) => console.error(error));
     }
 
     const deleteTag = (tag_id) => {
@@ -53,6 +57,7 @@ export default function Tags({ pageRef=1 }){
             axios.delete(`http://localhost:3000/tags/${tag_id}?page=${page}`)
                 .then((response) => response.data)
                 .then((data) => setTags(data))
+                .then(() => loadTotalPages(true))
                 .catch((error) => history.push("/erro"));
         }
     }
@@ -64,12 +69,6 @@ export default function Tags({ pageRef=1 }){
             .then((data) => setTags(data))
             .catch((error) => history.push("/erro"));
         setLoading(false);
-    }
-
-    const loadTotalPages = () => {
-        axios.get(`http://localhost:3000/countags`)
-            .then((response) => setTotalPages(calcTotalPages(response.data)))
-            .catch((error) => history.push("/erro"));
     }
 
     useEffect(() => {
@@ -105,7 +104,7 @@ export default function Tags({ pageRef=1 }){
                                             <td>{tag.id}</td>
                                             <td>0</td>
                                             <td>{tag.name}</td>
-                                            <td><Link to='/editar-tag'>Editar</Link></td>
+                                            <td><Link to={`/editar-tag/${tag.id}`}>Editar</Link></td>
                                             <td><a onClick={() => deleteTag(tag.id)} >Excluir</a></td>
                                         </tr>
                                     )
@@ -120,7 +119,7 @@ export default function Tags({ pageRef=1 }){
                             <Link to="/criar-tag"><Button styles="1">NOVA TAG</Button></Link>
                         </div>
                         <div className="menu">
-                            <Pagination actualPage={page} totalPages={totalPages} previous={() => prevPage()} next={() => nextPage()} specific={() => specificPage()} />
+                            <Pagination actualPage={page+1} totalPages={totalPages} previous={() => prevPage()} next={() => nextPage()} specific={() => specificPage()} />
                         </div>
                     </div>
                 </div>

@@ -13,7 +13,7 @@ export default function PaginaErro({ error=0 }){
                     <div className="error-petgato">
                         <h2>Você não tem permissão para acessar essa página.</h2>
                         <img src={error_petgato} alt="Erro!" />
-                        <p>Faça login e/ou verifique se sua conta está como administrador.</p>
+                        <p>Faça login e/ou verifique se sua conta é um administrador.</p>
                     </div>
                 ) : (
                 error === 2 ? ( // página não existe

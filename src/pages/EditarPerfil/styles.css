@@ -25,11 +25,27 @@
     margin-left: 10%;
 }
 
+.content-editar-perfil .container-user-image {
+    width: 15vw;
+    height: 15vw;
+    border-radius: 50%;
+    overflow: hidden;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.content-editar-perfil .container-user-image img {
+    width: 20vw;
+}
+
 .container-editar-perfil .container-alterar-foto {
     display: flex;
     justify-content: center;
     align-items: center;
     gap: .6vw;
+    margin-top: 1vw;
 }
 
 .container-editar-perfil .container-alterar-foto a {

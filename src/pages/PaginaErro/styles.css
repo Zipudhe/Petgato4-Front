@@ -1,10 +1,17 @@
 .container-error-petgato {
     min-height: 100vh;
     display: grid;
-    grid-template-rows: 10% 80% 10%;;
+    grid-template-areas: "header"
+                        "content"
+                        "footer";
+}
+
+.container-error-petgato .header-error-petgato {
+    height: fit-content;
 }
 
 .container-error-petgato .error-petgato {
+    grid-area: content;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -19,17 +26,53 @@
 .container-error-petgato .error-petgato h2 {
     color: #BA66A3;
     font-size: 2vw;
+    text-align: center;
+    margin: 0;
 }
 
 .container-error-petgato .error-petgato p {
     color: #707070;
     font-size: 1.2vw;
+    text-align: center;
+    margin: 0;
+    padding-top: .6vw;
 }
 
 .container-error-petgato .footer-error-petgato {
-    display: flex;
+    grid-area: footer;
+    align-self: flex-end;
 }
 
-.container-error-petgato .footer-error-petgato footer {
-    margin-top: auto;
+@media (max-width: 1024px) {
+    .container-error-petgato .error-petgato img {
+        width: 50vw;
+        height: 30vw;
+    }
+
+    .container-error-petgato .error-petgato h2 {
+        font-size: 3vw;
+        margin: 0 5%;
+    }
+
+    .container-error-petgato .error-petgato p {
+        font-size: 2vw;
+        margin: 0 10%;
+    }
+}
+
+@media (max-width: 768px) {
+    .container-error-petgato .error-petgato img {
+        width: 60vw;
+        height: 40vw;
+    }
+
+    .container-error-petgato .error-petgato h2 {
+        font-size: 5vw;
+        margin: 0 5%;
+    }
+
+    .container-error-petgato .error-petgato p {
+        font-size: 4vw;
+        margin: 0 10%;
+    }
 }
