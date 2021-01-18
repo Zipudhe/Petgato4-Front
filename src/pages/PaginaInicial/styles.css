@@ -21,6 +21,10 @@
     border-right: 1px solid #B0B0B0;
 }
 
+.homepage-posts .homepage-search {
+    display: none;
+}
+
 .container-homepage .homepage-info .homepage-search {
     margin-top: 3.2vw;
     padding: 0 2vw;
@@ -55,8 +59,6 @@
     align-self: end;
 }
 
-
-
 @media (max-width: 768px) {
     .container-homepage {
         display: grid;
@@ -90,6 +92,10 @@
         text-align: center;
         margin-top: .4vw;
         margin-bottom: 2vw;
+    }
+
+    .homepage-posts .homepage-search {
+        display: visible;
     }
 }
 

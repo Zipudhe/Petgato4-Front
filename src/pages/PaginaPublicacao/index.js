@@ -27,6 +27,7 @@ export default function PaginaPublicacao() {
     const [post, setPost] = useState('');
     const [tags, setTags] = useState([]);
     const [loading, setLoading] = useState(true);
+    const [likes, setLikes] = useState(0);
     const [favorited, setFavorited] = useState(false);
     const [popularPosts, setPopularPosts] = useState('');
     const location = useParams();
@@ -34,7 +35,14 @@ export default function PaginaPublicacao() {
     let postContent = post.content;
 
     const changeFavorite = () => {
-        // trocar no back também (fazer put)
+        if(favorited){ // remove like
+            console.log('vc nao pode remover o like');
+        } else{ // adiciona like
+            axios.put(`http://localhost:3000/likes`, {
+                post_id: post.id,
+                user_id: 777
+            })
+        }
         setFavorited(!favorited);
     }
 
@@ -54,6 +62,13 @@ export default function PaginaPublicacao() {
                 axios.put(`http://localhost:3000/posts/${id}`, {
                     views: data.views + 1
                 })
+
+                // carrega o número de likes
+                axios.get(`http://localhost:3000/likes/post/${id}`)
+                    .then(response => setLikes(response.data))
+
+                // verifica se o usuário deu like
+                setFavorited(false);
             })
             .catch((error) => history.push("/erro") );
         setLoading(false);
@@ -108,18 +123,18 @@ export default function PaginaPublicacao() {
                                 favorited ? ( // curtiu o post
                                     <div>
                                         <img src={heart_on} onClick={() => changeFavorite()} />
-                                        <p>Você e outras {8+1} pessoas curtiram essa publicação!</p>
+                                        <p>Você e outras {likes+1} pessoas curtiram essa publicação!</p>
                                     </div>
                                 ) : ( // não curtiu o post
                                     <div>
                                         <img src={heart_off} onClick={() => changeFavorite()} />
-                                        <p>{8} pessoas curtiram essa publicação! <i>Clique no coração para curtir.</i></p>
+                                        <p>{likes} pessoas curtiram essa publicação! <i>Clique no coração para curtir.</i></p>
                                     </div>
                                 )
                             ) : ( // não autenticado
                                 <div className="heart-off">
                                     <img src={heart_off} />
-                                    <p>{8} pessoas curtiram essa publicação! <i>Faça login ou crie uma conta para poder curtir.</i></p>
+                                    <p>{likes} pessoas curtiram essa publicação! <i>Faça login ou crie uma conta para poder curtir.</i></p>
                                 </div>
                             )}
                         </div>

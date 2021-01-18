@@ -38,6 +38,7 @@ export default function PaginaInicial() {
             </div>
 
             <div className="homepage-posts">
+            <div className="homepage-search"><SearchBar /></div>
                 <h1>Miau!</h1>
                 <h2>Seja bem vindo(a) ao blog PetGatô! Confira nosso conteúdo mais recente:</h2>
                 
