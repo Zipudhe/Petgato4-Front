@@ -13,6 +13,7 @@ import './styles.css';
 export default function Tags({ pageRef=0 }){
     const [page, setPage] = useState(pageRef);
     const [tags, setTags] = useState([]);
+    const [tagPost, setTagPost] = useState([]);
     const [loading, setLoading] = useState(true);
     const [totalElements, setTotalElements] = useState(0);
     const [totalPages, setTotalPages] = useState(1);
@@ -66,7 +67,20 @@ export default function Tags({ pageRef=0 }){
         setLoading(true);
         axios.get(`http://localhost:3000/tags?page=${page}`)
             .then((response) => response.data)
-            .then((data) => setTags(data))
+            .then((data) => {
+                let tags_posts = [];
+
+                // carrega o número de posts dessa tag
+                data.map(tag => {
+                    axios.get(`http://localhost:3000/countagposts/${tag.id}`)
+                        .then(post_number => tags_posts.push(post_number.data));
+                
+                //console.log(tags_posts);
+                
+                setTags(data);
+                setTagPost(tags_posts);
+                });
+            })
             .catch((error) => history.push("/erro"));
         setLoading(false);
     }
@@ -102,7 +116,7 @@ export default function Tags({ pageRef=0 }){
                                     (
                                         <tr key={tag.id}>
                                             <td>{tag.id}</td>
-                                            <td>0</td>
+                                            <td>{tag.n_posts}</td>
                                             <td>{tag.name}</td>
                                             <td><Link to={`/editar-tag/${tag.id}`}>Editar</Link></td>
                                             <td><a onClick={() => deleteTag(tag.id)} >Excluir</a></td>

@@ -19,6 +19,7 @@ export default function EditarPublicacao(){
     const [title, setTitle] = useState('');
     const [value, setValue] = useState('');
     const [tags, setTags] = useState([]);
+    const [selectedTags, setSelectedTags] = useState([]);
     const [post, setPost] = useState([]);
     const [loading, setLoading] = useState(true);
     const location = useParams();
@@ -26,6 +27,18 @@ export default function EditarPublicacao(){
 
     function changeTitle(title) {
         setTitle(title);
+    }
+
+    const changeCheckbox = ( id ) => {
+        let index = selectedTags.indexOf(id);
+
+        if(index === -1){
+            selectedTags.push(id);
+        } else{
+            selectedTags.splice(index, 1);
+        }
+
+        console.log(selectedTags);
     }
 
     const loadPost = async (id) => {
@@ -38,32 +51,52 @@ export default function EditarPublicacao(){
             })
             .catch((error) => {
                 alert('Esse post não existe!');
-                //history.push e tals
+                history.push("/");
             });
-        setLoading(false);
     }
 
-    function editPost(id) {
+    function editPost( id ) {
+        // atualiza o post
+        /*
         axios.put(`http://localhost:3000/posts/${id}`, {
-            "name": title,
-            "content": value
+            name: title,
+            content: value
             })
-            .catch((error) => console.error(error)); // colocar um erro de pop up
+            .catch(error => console.error(error)); // colocar um erro de pop up
+        */
+        // adiciona as tags selecionadas
+        console.log(selectedTags);
+        
+        selectedTags.map(tag => {
+            axios.post(`http://localhost:3000/tag_posts/`, {
+                post_id: id,
+                tag_id: tag
+            })
+            .catch(error => console.error(error))
+        });
+ 
     }
 
-    // carregar tags DO POST marcadas verificando né se tão
     const loadTags = async (id) => {
         axios.get(`http://localhost:3000/alltags/`)
             .then((response) => response.data)
             .then((data) => setTags(data))
-            .catch((error) => (
-                <Redirect to={{ pathname: '/erro', state: { from: error.location } }} />
-            ));
+            .catch(error => history.push("/erro")); // colocar um erro de pop up
+    }
+
+    const loadSelectedTags = async (id) => {
+        await axios.get(`http://localhost:3000/tagsbypost/${id}`)
+            .then(response => response.data)
+            .then(data => {
+                data.map(tag => selectedTags.push(tag.id));
+            })
+        setLoading(false);
     }
 
     useEffect(() => {
-        loadPost(location.id);
         loadTags(location.id);
+        loadPost(location.id);
+        loadSelectedTags(location.id).then(console.log(selectedTags));
     }, []);
 
     let modules = {
@@ -92,7 +125,7 @@ export default function EditarPublicacao(){
         <div className="container-editar-publicacao">
             <div className="header-editar-publicacao"><Header backoffice={true} atual={2} /></div>
             <div className="content-editar-publicacao">
-                {post.length === 0 ? (
+                {loading ? (
                     <LoadingCat />
                 ) : (
                     <div className="backoffice-editar-publicacao">
@@ -125,7 +158,10 @@ export default function EditarPublicacao(){
                         {tags.map((tag) => 
                         (   
                             <div className="tag-content" key={tag.id}>
-                                <input type="checkbox" name={tag.name} />
+                                <input type="checkbox" name={tag.name} 
+                                defaultChecked={selectedTags.indexOf(tag.id) === -1 ? false : true } 
+                                onChange={() => changeCheckbox(tag.id)}
+                                />
                                 <span>{tag.name}</span>
                             </div>
                         )
