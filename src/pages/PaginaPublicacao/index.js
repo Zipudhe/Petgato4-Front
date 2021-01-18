@@ -13,6 +13,7 @@ import LoadingCat from '../../components/LoadingCat';
 
 import heart_off from '../../assets/awesome-heart-1.svg';
 import heart_on from '../../assets/awesome-heart.svg';
+import arrow_left from '../../assets/awesome-chevron-left.svg';
 import temp_image from '../../assets/images/Esqueciminhasenha.jpg';
 
 import './styles.css';
@@ -82,7 +83,12 @@ export default function PaginaPublicacao() {
     return (
         <div className="container-page-publicacao">
             <Header atual={0} />
-            <Link to="/"><div>  <p>Voltar</p></div></Link>
+            
+            <div className="back-button">
+                <img src={arrow_left} onClick={() => history.goBack()} />
+                <p onClick={() => history.goBack()}>VOLTAR</p>
+            </div>
+
             {!post ? (
                 <div>
                     <LoadingCat />
@@ -142,7 +148,7 @@ export default function PaginaPublicacao() {
                     </div>
 
                     <div>
-                        all right ->
+                        all right
                     </div>
                 </div>
                 )}

@@ -6,10 +6,30 @@
 .footer-publicacao {
     margin-top: 2vw;
     display: flex;
+    align-items: center;
 }
 
 .footer-publicacao footer {
     margin-top: auto;
+}
+
+.container-page-publicacao .back-button {
+    display: flex;
+    padding: 0 4%;
+    margin-top: 2vw;
+}
+
+.container-page-publicacao .back-button p {
+    font-size: 1.2vw;
+    font-weight: 100;
+    color: #444143;
+    padding-left: 2vw;
+    cursor: pointer;
+}
+
+.container-page-publicacao .back-button img {
+    width: 1vw;
+    cursor: pointer;
 }
 
 .container-publicacao {
