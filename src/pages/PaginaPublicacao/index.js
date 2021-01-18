@@ -122,10 +122,17 @@ export default function PaginaPublicacao() {
                                 </div>
                             )}
                         </div>
-
+                        
                         <h2>Gostou? Deixe um comentário abaixo:</h2>
-                        <div className="content-comentario"><TextArea textholder="Digite aqui seu comentário" /></div>
-                        <div className="send-button"><Button onClick={() => alert('ENVIAR')} styles="1">ENVIAR</Button></div>
+                        {isAuthenticated() ? (
+                            <div className="content-comentario">
+                                <TextArea textholder="Digite aqui seu comentário" />
+                                <div className="send-button"><Button onClick={() => alert('ENVIAR')} styles="1">ENVIAR</Button></div>
+                            </div>
+                        ) : (
+                            <p><i>Você precisa entrar na sua conta para poder comentar!</i></p>
+                        )}
+                        
                         {//se nao tiver comentarios, mostrar mensagem
                         }
                         <div className="container-comments">
