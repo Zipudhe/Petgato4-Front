@@ -1,0 +1,46 @@
+.search-bar {
+    width: 100%;
+    
+    display: flex;
+    position: relative
+}
+
+.search-bar input {
+    font-family: 'Montserrat';
+    font-size: 1.4vw;
+    font-weight: 300;
+    color: #707070;
+    padding-left: 1vw;
+    border-radius: 6px;
+    border: 1px solid #C882B4;
+    outline: none;
+    box-sizing: border-box;
+
+    height: 3.6vw;
+    width: 100%;
+}
+
+.search-bar img {
+    width: 2vw;
+    cursor: pointer;
+    position: absolute;
+    right: 0;
+    margin-top: .8vw;
+    margin-right: .1vw; 
+    padding-right: 1vw;
+    padding-left: .6vw;
+    background-color: white;
+}
+
+@media (max-width: 768px) {
+    .search-bar label {
+        font-size: 15px;
+    }
+
+    .search-bar input {
+        height: 35px;
+        width: 220px;
+        font-size: 13px;
+        padding-left: 8px;
+    }
+}

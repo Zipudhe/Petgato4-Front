@@ -13,13 +13,11 @@ export default function Login(){
  
     const userLogin = () => {
         axios.post(`http://localhost:3000/auth/login`, {
-        "email": email,
-        "password": password
+            email: email,
+            password: password
         }).then((response) => {
             localStorage.setItem('current_user', response.data.user_id);
             localStorage.setItem('token', response.data.token);
-            
-            console.log(response.data.user_id);
         })
         .catch((error) => console.error(error)); // colocar um erro de pop up
     }

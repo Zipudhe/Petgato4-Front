@@ -15,27 +15,45 @@ export default function CriarPublicacao(){
     const [title, setTitle] = useState('');
     const [value, setValue] = useState('');
     const [tags, setTags] = useState([]);
+    const [selectedTags, setSelectedTags] = useState([]);
     let history = useHistory();
 
     function changeTitle(title) {
         setTitle(title);
     }
 
+    const changeCheckbox = ( id ) => {
+        let index = selectedTags.indexOf(id);
+
+        if(index === -1){
+            selectedTags.push(id);
+        } else{
+            selectedTags.splice(index, 1);
+        }
+    }
+
     function createPost() {
+        // cria a publicação
         axios.post(`http://localhost:3000/posts/`, {
-            "name": title,
-            "content": value
+            name: title,
+            content: value
             })
-            .catch((error) => console.error(error)); // colocar um erro de pop up
+            .then(response => {
+                selectedTags.map(id => {
+                    axios.post(`http://localhost:3000/tag_posts/`, {
+                        post_id: response.data.id,
+                        tag_id: id
+                    })
+                })
+            })
+            .catch(error => history.push("/erro")); // colocar um erro de pop up
     }
 
     const loadTags = async () => {
         axios.get(`http://localhost:3000/alltags/`)
             .then((response) => response.data)
             .then((data) => setTags(data))
-            .catch((error) => (
-                <Redirect to={{ pathname: '/erro', state: { from: error.location } }} />
-            ));
+            .catch(error => history.push("/erro"));
     }
 
     useEffect(() => {
@@ -87,14 +105,14 @@ export default function CriarPublicacao(){
                     </div>
                     <h3>Escolha pelo menos uma tag:</h3>
                     <div className="container-select-tags">
-                    {tags.map((tag) => 
-                    (   
-                        <div className="tag-content" key={tag.id}>
-                            <input type="checkbox" name={tag.name} />
-                            <span>{tag.name}</span>
-                        </div>
-                    )
-                    )}
+                        {tags.map((tag) => 
+                        (
+                            <div className="tag-content" key={tag.id}>
+                                <input type="checkbox" name={tag.name} onChange={() => changeCheckbox(tag.id)} />
+                                <span>{tag.name}</span>
+                            </div>
+                        )
+                        )}
                     </div>
                     
                     <Link to="/tags"><Button styles="1">GERENCIAR TAGS</Button></Link>

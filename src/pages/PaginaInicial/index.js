@@ -4,6 +4,7 @@ import axios from 'axios';
 
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
+import SearchBar from '../../components/SearchBar';
 import PerfilHome from '../../components/PerfilHome';
 import PostPreview from '../../components/PostPreview';
 import LoadingCat from '../../components/LoadingCat';
@@ -32,10 +33,12 @@ export default function PaginaInicial() {
         <div className="container-homepage">
             <div className="homepage-header"><Header atual={1} /></div>
             <div className="homepage-info">
+                <div className="homepage-search"><SearchBar /></div>
                 <PerfilHome />
             </div>
 
             <div className="homepage-posts">
+            <div className="homepage-search"><SearchBar /></div>
                 <h1>Miau!</h1>
                 <h2>Seja bem vindo(a) ao blog PetGatô! Confira nosso conteúdo mais recente:</h2>
                 

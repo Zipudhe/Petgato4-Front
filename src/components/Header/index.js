@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { isAuthenticated, isAdmin } from '../../auth';
+import { isAuthenticated, isAdmin, logout } from '../../auth';
 
 import "./style.css";
 import petgato_icon from '../../assets/gatinho_petgato_branco.svg';
@@ -37,7 +37,7 @@ const Header = ({ backoffice=false, atual=1 }) => {
                     {atual === 4 ? (<Link to="/usuarios" className="selected-header">Usuários</Link>) : (<Link to="/usuarios">Usuários</Link>)}
                     {atual === 5 ? (<Link to="/denuncias" className="selected-header">Denúncias</Link>) : (<Link to="/denuncias">Denúncias</Link>)}
                     {atual === 6 ? (<Link to="/mensagens" className="selected-header">Mensagens</Link>) : (<Link to="/mensagens">Mensagens</Link>)}
-                    {logged && (<a onClick={() => alert('SAIR')} >Sair</a>)}
+                    {logged && (<a onClick={logout} >Sair</a>)}
                     <img onClick={() => changeMenu()} className="menu" src={menu_icon} />
                     <img onClick={() => changeMenu()} className="exit" src={exit_icon} />
                 </div>
@@ -50,7 +50,7 @@ const Header = ({ backoffice=false, atual=1 }) => {
                     {logged ? (
                         atual === 4 ? (<Link to="/editar-perfil" className="selected-header">Minha Conta</Link>) : (<Link to="/editar-perfil">Minha Conta</Link>)
                     ) : (<Link to="/login">Entrar</Link>)}
-                    {logged && (<a onClick={() => alert('SAIR')} >Sair</a>)}
+                    {logged && (<a onClick={logout} >Sair</a>)}
                     <img onClick={() => changeMenu()} className="menu" src={menu_icon} />
                     <img onClick={() => changeMenu()} className="exit" src={exit_icon} />
                 </div>
