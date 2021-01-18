@@ -8,17 +8,20 @@ import Button from '../../components/Button';
 import TextArea from '../../components/TextArea';
 import Comment from '../../components/Comment';
 import Reply from '../../components/Reply';
-import Favorite from '../../components/Favorite';
 import Views from '../../components/Views';
 import LoadingCat from '../../components/LoadingCat';
 
+import heart_off from '../../assets/awesome-heart-1.svg';
+import heart_on from '../../assets/awesome-heart.svg';
 import temp_image from '../../assets/images/Esqueciminhasenha.jpg';
 
 import './styles.css';
+import { isAuthenticated } from '../../auth';
 
 export default function PaginaPublicacao() {
     const [post, setPost] = useState('');
     const [loading, setLoading] = useState(true);
+    const [favorited, setFavorited] = useState(false);
     const location = useParams();
     let history = useHistory();
     let postContent = post.content;
@@ -49,6 +52,11 @@ export default function PaginaPublicacao() {
         `
 
         return ans;
+    }
+
+    const changeFavorite = () => {
+        // trocar no back também (fazer put)
+        setFavorited(!favorited);
     }
 
     // pegar pelo titulo dps tb como fazer
@@ -94,8 +102,25 @@ export default function PaginaPublicacao() {
 
                         <div className="text-publication" dangerouslySetInnerHTML={{__html: post.content.body}} />
                         
-                        <div>
-                            <Favorite />
+                        <div className="container-favorite">
+                            {isAuthenticated() ? ( // autenticado
+                                favorited ? ( // curtiu o post
+                                    <div>
+                                        <img src={heart_on} onClick={() => changeFavorite()} />
+                                        <p>Você e outras {8+1} pessoas curtiram essa publicação!</p>
+                                    </div>
+                                ) : ( // não curtiu o post
+                                    <div>
+                                        <img src={heart_off} onClick={() => changeFavorite()} />
+                                        <p>{8} pessoas curtiram essa publicação! <i>Clique no coração para curtir.</i></p>
+                                    </div>
+                                )
+                            ) : ( // não autenticado
+                                <div className="heart-off">
+                                    <img src={heart_off} />
+                                    <p>{8} pessoas curtiram essa publicação! <i>Faça login ou crie uma conta para poder curtir.</i></p>
+                                </div>
+                            )}
                         </div>
 
                         <h2>Gostou? Deixe um comentário abaixo:</h2>

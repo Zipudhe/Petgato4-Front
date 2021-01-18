@@ -56,11 +56,36 @@
     object-position: 0 -8vw;
 }
 
-.text-publication {
+.content-publicacao .text-publication {
     padding: 0;
     margin: 0;
     color: #444143;
     font-size: 1.2vw;
+}
+
+.content-publicacao .container-favorite {
+    justify-content: flex-start;
+    padding-top: 1.4vw;
+}
+
+.content-publicacao .container-favorite div {
+    display: flex;
+    gap: .6vw;
+    font-size: 1.2vw;
+    color: #444143;
+}
+
+.content-publicacao .container-favorite i {
+    color: #606060;
+}
+
+.content-publicacao .container-favorite img {
+    width: 2.2vw;
+    cursor: pointer;
+}
+
+.container-publicacao .container-favorite .heart-off img {
+    cursor: auto;
 }
 
 .content-publicacao .post-informations {
