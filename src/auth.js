@@ -3,7 +3,7 @@ import axios from 'axios';
 export const isAuthenticated = async () => {
     const token = localStorage.getItem('token');
     let auth = false;
-
+    
     if(token){
         await axios.get(`http://localhost:3000/is_token_valid`, {
             headers: {

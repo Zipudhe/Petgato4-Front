@@ -30,6 +30,7 @@ export default function PaginaPublicacao() {
     const [likes, setLikes] = useState(0);
     const [favorited, setFavorited] = useState(false);
     const [popularPosts, setPopularPosts] = useState('');
+    const [logged, setLogged] = useState(false);
     const location = useParams();
     let history = useHistory();
     let postContent = post.content;
@@ -40,16 +41,18 @@ export default function PaginaPublicacao() {
         } else{ // adiciona like
             axios.put(`http://localhost:3000/likes`, {
                 post_id: post.id,
-                user_id: 777
+                user_id: localStorage.getItem('current_user')
             })
         }
         setFavorited(!favorited);
     }
 
     const loadTags = async (id) => {
-        let temp_tags = ["Cuidados", "Cães & Gatos", "Guias"];
+        axios.get(`http://localhost:3000/tagsbypost/${id}`)
+            .then(response => response.data)
+            .then(data => setTags(data))
 
-        setTags(temp_tags);
+        //setTags(temp_tags);
     }
 
     const loadPost = async (id) => {
@@ -82,13 +85,17 @@ export default function PaginaPublicacao() {
     }
 
     useEffect(() => {
+        loadTags(location.id);
         loadPost(location.id);
-        loadTags(); // colcoar isso no then do post
     }, [])
 
     useEffect(() => {
         loadPopularPosts().then(response => setPopularPosts(response));
     }, [])
+
+    useEffect(() => {
+        isAuthenticated().then(logged => setLogged(logged));
+    }, [logged])
 
     return (
         <div className="container-page-publicacao">
@@ -119,7 +126,7 @@ export default function PaginaPublicacao() {
                         <div className="text-publication" dangerouslySetInnerHTML={{__html: post.content.body}} />
                         
                         <div className="container-favorite">
-                            {isAuthenticated() ? ( // autenticado
+                            {logged ? ( // autenticado
                                 favorited ? ( // curtiu o post
                                     <div>
                                         <img src={heart_on} onClick={() => changeFavorite()} />
@@ -161,9 +168,9 @@ export default function PaginaPublicacao() {
                         <SearchBar />
                         <h2>Explore essas tags:</h2>
                         {tags.map(tag => (
-                            <div className="container-tag" key={777}>
-                                <Tag text={tag} />
-                                <p>Então vamos colocar a descrição das tags aqui</p>
+                            <div className="container-tag" key={tag.id}>
+                                <Link to={`/tag/${tag.id}`}><Tag text={tag.name} /></Link>
+                                <p>{tag.description}</p>
                             </div>
                         ))}
                         <h2>Publicações mais populares:</h2>
