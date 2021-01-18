@@ -35,3 +35,14 @@
     cursor: not-allowed;
     background-color: #F0F0F0;
 }
+
+@media (max-width: 768px) {
+    .input label {
+        font-size: 15px;
+    }
+
+    .input-normal input {
+        height: 35px;
+        width: 220px;
+    }
+}

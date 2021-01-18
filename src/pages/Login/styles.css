@@ -56,12 +56,24 @@
 }
 
 /* Mobile */
-@media screen and (max-width: 718px) {
+@media screen and (max-width: 768px) {
     .container-login .content-login {
         width: 100%;
     }
 
     .container-login .container-img {
         width: 0;
+    }
+
+    .container-login .logo-petgato {
+        width: 100px;
+    }
+
+    .container-login .content-login p {
+        font-size: 12px;
+    }
+    
+    .container-login .content-login a {
+        font-size: 12px;
     }
 }

@@ -28,8 +28,7 @@
 .btn2 {
     background-color: #BA66A3;
     color: white;
-    height: 50px;
-    font-size: 16px;
+    font-size: 1vw;
     box-shadow: 0 2.5px 5px 1.5px rgba(0, 0, 0, .2);
     border-radius: 1px;
 }
@@ -48,4 +47,12 @@
 
 .btn3:hover {
     background-color: #BA66A3;
+}
+
+@media (max-width: 768px) {
+    .btn3 {
+        font-size: 15px;
+        padding: 8px 16px;
+        margin-top: 4px;
+    }
 }
