@@ -44,5 +44,7 @@
     .input-normal input {
         height: 35px;
         width: 220px;
+        font-size: 13px;
+        padding-left: 8px;
     }
 }

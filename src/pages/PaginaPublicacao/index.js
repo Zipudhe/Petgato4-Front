@@ -9,6 +9,8 @@ import TextArea from '../../components/TextArea';
 import Comment from '../../components/Comment';
 import Reply from '../../components/Reply';
 import Views from '../../components/Views';
+import Tag from '../../components/Tag';
+import PublicacoesPopulares from '../../components/PublicacoesPopulares';
 import LoadingCat from '../../components/LoadingCat';
 
 import heart_off from '../../assets/awesome-heart-1.svg';
@@ -18,49 +20,29 @@ import temp_image from '../../assets/images/Esqueciminhasenha.jpg';
 
 import './styles.css';
 import { isAuthenticated } from '../../auth';
+import { convertDateText } from '../../functions'; 
 
 export default function PaginaPublicacao() {
     const [post, setPost] = useState('');
+    const [tags, setTags] = useState([]);
     const [loading, setLoading] = useState(true);
     const [favorited, setFavorited] = useState(false);
+    const [popularPosts, setPopularPosts] = useState('');
     const location = useParams();
     let history = useHistory();
     let postContent = post.content;
-
-    const convertNumber = (number) => (
-        number < 10 ? ("0" + number.toString()) : (number.toString())
-    )
-
-    const convertDate = (date) => {
-        let meses = ["", "Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"];
-
-        let newDate = date.split('T')[0].split('-');
-        let newTime = date.split('T')[1].split(':');
-
-        let day = newDate[2];
-        let hour = newTime[0] - 3;
-
-        if(hour < 0){
-            hour += 24;
-            day -= 1;
-        }
-
-        let ans = `
-        Publicado em ${day} 
-        de ${meses[parseInt(newDate[1])]} 
-        de ${newDate[0]} 
-        às ${convertNumber(parseInt(hour))}h${newTime[1]}
-        `
-
-        return ans;
-    }
 
     const changeFavorite = () => {
         // trocar no back também (fazer put)
         setFavorited(!favorited);
     }
 
-    // pegar pelo titulo dps tb como fazer
+    const loadTags = async (id) => {
+        let temp_tags = ["Cuidados", "Cães & Gatos", "Guias"];
+
+        setTags(temp_tags);
+    }
+
     const loadPost = async (id) => {
         axios.get(`http://localhost:3000/posts/${id}`)
             .then((response) => response.data)
@@ -76,8 +58,20 @@ export default function PaginaPublicacao() {
         setLoading(false);
     }
 
+    const loadPopularPosts = async () => {
+        axios.get(`http://localhost:3000/posts?page=${1}`)
+            .then((response) => response.data)
+            .then((data) => setPopularPosts(data))
+            .catch((error) => history.push("/erro") );
+    }
+
     useEffect(() => {
         loadPost(location.id);
+        loadTags(); // colcoar isso no then do post
+    }, [])
+
+    useEffect(() => {
+        loadPopularPosts().then(response => setPopularPosts(response));
     }, [])
 
     return (
@@ -89,7 +83,7 @@ export default function PaginaPublicacao() {
                 <p onClick={() => history.goBack()}>VOLTAR</p>
             </div>
 
-            {!post ? (
+            {!post || !popularPosts ? (
                 <div>
                     <LoadingCat />
                 </div>
@@ -98,7 +92,7 @@ export default function PaginaPublicacao() {
                     <div className="content-publicacao">
                         <h1>{post.name}</h1>
                         <div className="post-informations">
-                            <p className="data-publicacao"><i>{convertDate(post.created_at)}</i></p>
+                            <p className="data-publicacao"><i>{convertDateText(post.created_at)}</i></p>
                             <Views number={post.views + 1} />
                         </div>
                         
@@ -147,8 +141,19 @@ export default function PaginaPublicacao() {
                         </div>
                     </div>
 
-                    <div>
-                        all right
+                    <div className="menu-right">
+                        <h2>Explore essas tags:</h2>
+                        {tags.map(tag => (
+                            <div className="container-tag" key={777}>
+                                <Tag text={tag} />
+                                <p>Então vamos colocar a descrição das tags aqui</p>
+                            </div>
+                        ))}
+                        <h2>Publicações mais populares:</h2>
+                        <PublicacoesPopulares posts={popularPosts} />
+                        <div className="button-popular-posts">
+                            <Link to="/"><Button styles="1">VER TODAS</Button></Link>
+                        </div>
                     </div>
                 </div>
                 )}

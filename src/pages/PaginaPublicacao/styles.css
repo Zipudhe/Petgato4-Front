@@ -150,3 +150,27 @@
     height: min-content;
     background-color: lightblue;
 }
+
+.menu-right {
+    font-size: 1vw;
+    color: #707070;
+    padding: 0 1.8vw;
+}
+
+.menu-right h2 {
+    font-size: 1.8vw;
+    font-weight: 400;
+    color: #444143;
+}
+
+.menu-right .container-tag {
+    border-bottom: 1px solid #B0B0B0;
+    border-bottom-height: 20px;
+    margin: 1vw 0;
+}
+
+.menu-right .button-popular-posts {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
