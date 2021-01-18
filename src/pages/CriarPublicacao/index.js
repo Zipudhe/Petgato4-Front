@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Link, Redirect } from 'react-router-dom';
+import { Link, Redirect, useHistory } from 'react-router-dom';
 import axios from 'axios';
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
@@ -8,9 +8,6 @@ import Header from '../../components/Header';
 import Footer from '../../components/Footer';
 import Button from '../../components/Button';
 import Input from '../../components/Input';
-import Favorite from '../../components/Favorite';
-import CommentIcon from '../../components/CommentIcon';
-import Views from '../../components/Views';
 
 import './styles.css';
 
@@ -18,6 +15,7 @@ export default function CriarPublicacao(){
     const [title, setTitle] = useState('');
     const [value, setValue] = useState('');
     const [tags, setTags] = useState([]);
+    let history = useHistory();
 
     function changeTitle(title) {
         setTitle(title);
@@ -103,7 +101,7 @@ export default function CriarPublicacao(){
                     
                     <div className="container-buttons">
                         <Button onClick={() => createPost()} styles="3">PUBLICAR</Button>
-                        <Link to="/publicacoes"><Button styles="1">VOLTAR</Button></Link>
+                        <Button styles="1" onClick={() => history.goBack()}>VOLTAR</Button>
                     </div>
                 </div>
             </div>

@@ -11,18 +11,14 @@ const Header = ({ backoffice=false, atual=1 }) => {
     const [logged, setLogged] = useState(false);
     const [admin, setAdmin] = useState(false);
     const [down, setDown] = useState(false);
-    const [actived, setActived] = useState("");
 
     const changeMenu = () => {
-        if(!down){
-            setActived(" on");
-            document.body.style.overflow = "hidden";
-        } else{
-            setActived("");
-            document.body.style.overflow = "visible";
-        }
-        
+        document.body.style.overflow = down ? "visible" : "hidden";
         setDown(!down);
+    }
+
+    const setMenuVisible = () => {
+        document.body.style.overflow = "visible";
     }
 
     useEffect(() => {
@@ -31,10 +27,10 @@ const Header = ({ backoffice=false, atual=1 }) => {
     }, [down])
 
     return (
-        <div className={`header ${actived}`}>
+        <div className={`header ${down && "on"}`}>
             <Link to="/"><img alt="PetGatô" src={petgato_icon}/></Link>
             {backoffice ? (
-                <div className="links" onClick={() => changeMenu()}>
+                <div className="links" onClick={() => setMenuVisible()}>
                     <Link to="/">Página Inicial</Link>
                     {atual === 2 ? (<Link to="/publicacoes" className="selected-header">Publicações</Link>) : (<Link to="/publicacoes">Publicações</Link>)}
                     {atual === 3 ? (<Link to="/tags" className="selected-header">Tags</Link>) : (<Link to="/tags">Tags</Link>)}
@@ -46,7 +42,7 @@ const Header = ({ backoffice=false, atual=1 }) => {
                     <img onClick={() => changeMenu()} className="exit" src={exit_icon} />
                 </div>
             ) : (
-                <div className="links" onClick={() => changeMenu()}>
+                <div className="links" onClick={() => setMenuVisible()}>
                     {atual === 1 ? (<Link to="/" className="selected-header">Página Inicial</Link>) : (<Link to="/">Página Inicial</Link>)}
                     {atual === 2 ? (<Link to="/sobre" className="selected-header">Sobre Nós</Link>) : (<Link to="/sobre">Sobre Nós</Link>)}
                     {atual === 3 ? (<Link to="/contato" className="selected-header">Fale Conosco</Link>) : (<Link to="/contato">Fale Conosco</Link>)}

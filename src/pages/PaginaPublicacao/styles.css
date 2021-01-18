@@ -6,10 +6,30 @@
 .footer-publicacao {
     margin-top: 2vw;
     display: flex;
+    align-items: center;
 }
 
 .footer-publicacao footer {
     margin-top: auto;
+}
+
+.container-page-publicacao .back-button {
+    display: flex;
+    padding: 0 4%;
+    margin-top: 2vw;
+}
+
+.container-page-publicacao .back-button p {
+    font-size: 1.2vw;
+    font-weight: 100;
+    color: #444143;
+    padding-left: 2vw;
+    cursor: pointer;
+}
+
+.container-page-publicacao .back-button img {
+    width: 1vw;
+    cursor: pointer;
 }
 
 .container-publicacao {
@@ -21,6 +41,11 @@
 .content-publicacao {
     padding: 0 5%;
     border-right: 1px solid #B0B0B0;
+}
+
+.content-publicacao i {
+    color: #444143;
+    font-size: 1.2vw;
 }
 
 .content-publicacao h1 {
@@ -45,6 +70,10 @@
     float: left;
 }
 
+.content-publicacao .data-publicacao i {
+    color: #707070;
+}
+
 .content-publicacao .post-image {
     width: 100%;
     height: 18vw;
@@ -56,11 +85,36 @@
     object-position: 0 -8vw;
 }
 
-.text-publication {
+.content-publicacao .text-publication {
     padding: 0;
     margin: 0;
     color: #444143;
     font-size: 1.2vw;
+}
+
+.content-publicacao .container-favorite {
+    justify-content: flex-start;
+    padding-top: 1.4vw;
+}
+
+.content-publicacao .container-favorite div {
+    display: flex;
+    gap: .6vw;
+    font-size: 1.2vw;
+    color: #444143;
+}
+
+.content-publicacao .container-favorite i {
+    color: #606060;
+}
+
+.content-publicacao .container-favorite img {
+    width: 2.2vw;
+    cursor: pointer;
+}
+
+.container-publicacao .container-favorite .heart-off img {
+    cursor: auto;
 }
 
 .content-publicacao .post-informations {
@@ -74,12 +128,12 @@
 
 .content-comentario {
     width: 100%;
-    height: 15vw;
     margin-top: .8vw;
 }
 
 .content-comentario textarea {
     padding-top: 1vw;
+    height: 15vw;
 }
 
 .content-publicacao img {
@@ -95,4 +149,28 @@
 .container-comments {
     height: min-content;
     background-color: lightblue;
+}
+
+.menu-right {
+    font-size: 1vw;
+    color: #707070;
+    padding: 0 1.8vw;
+}
+
+.menu-right h2 {
+    font-size: 1.8vw;
+    font-weight: 400;
+    color: #444143;
+}
+
+.menu-right .container-tag {
+    border-bottom: 1px solid #B0B0B0;
+    border-bottom-height: 20px;
+    margin: 1vw 0;
+}
+
+.menu-right .button-popular-posts {
+    width: 100%;
+    display: flex;
+    justify-content: center;
 }

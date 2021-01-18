@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Link, Redirect, useParams } from 'react-router-dom';
+import { Link, Redirect, useParams, useHistory } from 'react-router-dom';
 import axios from 'axios';
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
@@ -22,7 +22,8 @@ export default function EditarPublicacao(){
     const [post, setPost] = useState([]);
     const [loading, setLoading] = useState(true);
     const location = useParams();
-    
+    let history = useHistory();
+
     function changeTitle(title) {
         setTitle(title);
     }
@@ -135,7 +136,7 @@ export default function EditarPublicacao(){
                         
                         <div className="container-buttons">
                             <Button onClick={() => editPost(location.id)} styles="3">ATUALIZAR</Button>
-                            <Link to="/publicacoes"><Button styles="1">VOLTAR</Button></Link>
+                            <Button styles="1" onClick={() => history.goBack()}>VOLTAR</Button>
                         </div>
                     </div>
                 )}

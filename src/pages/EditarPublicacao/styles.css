@@ -45,6 +45,7 @@
     display: flex;
     align-self: flex-end;
     justify-content: right;
+    gap: .1vw;
 }
 
 .backoffice-editar-publicacao h2 {

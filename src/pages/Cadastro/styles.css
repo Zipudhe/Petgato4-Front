@@ -49,12 +49,24 @@
 }
 
 /* Mobile */
-@media screen and (max-width: 718px) {
+@media screen and (max-width: 768px) {
     .container-cadastro .content-cadastro {
         width: 100%;
     }
 
     .container-cadastro .container-img {
         width: 0;
+    }
+
+    .container-cadastro .logo-petgato {
+        width: 100px;
+    }
+
+    .container-cadastro .content-cadastro p {
+        font-size: 12px;
+    }
+    
+    .container-cadastro .content-cadastro a {
+        font-size: 12px;
     }
 }

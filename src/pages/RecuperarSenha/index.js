@@ -16,7 +16,7 @@ const RecuperarSenha = () => (
                 <p>Insira seu email para recuperar a senha</p>
             </div>
 
-            <Button onClick={() => alert('RECUPERAR SENHA')} styles="3">RECUPERAR SENHA</Button>
+            <Button onClick={() => alert('Desculpe, essa função está indisponível no momento.')} styles="3">RECUPERAR SENHA</Button>
 
             <div className="container-text">
                 <p>Lembrou a senha? <Link to="/login"><a>Faça login</a></Link></p>
