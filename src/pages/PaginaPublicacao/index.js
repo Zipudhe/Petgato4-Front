@@ -55,7 +55,14 @@ export default function PaginaPublicacao() {
     const loadPost = async (id) => {
         axios.get(`http://localhost:3000/posts/${id}`)
             .then((response) => response.data)
-            .then((data) => setPost(data))
+            .then((data) => {
+                setPost(data)
+
+                // incrementa o número de visualizações
+                axios.put(`http://localhost:3000/posts/${id}`, {
+                    views: data.views + 1
+                })
+            })
             .catch((error) => history.push("/erro") );
         setLoading(false);
     }
@@ -78,7 +85,7 @@ export default function PaginaPublicacao() {
                         <h1>{post.name}</h1>
                         <div className="post-informations">
                             <p className="data-publicacao"><i>{convertDate(post.created_at)}</i></p>
-                            <Views number={post.views} />
+                            <Views number={post.views + 1} />
                         </div>
                         
                         <div className="post-image">

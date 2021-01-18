@@ -34,7 +34,7 @@ export default function PostPreview({post}){
                     <div>
                         <Favorite number={0} />
                         <CommentIcon number={0} />
-                        <Views number={0} />
+                        <Views number={post.views} />
                     </div>
                 </div>
             </div>
