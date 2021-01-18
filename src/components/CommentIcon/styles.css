@@ -22,6 +22,7 @@
     width: 2.3vw;
     height: 2.3vw;
     float: left;
+    padding-right: .4vw;
 }
 
 @media (max-width: 768px) {
