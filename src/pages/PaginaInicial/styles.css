@@ -21,6 +21,11 @@
     border-right: 1px solid #B0B0B0;
 }
 
+.container-homepage .homepage-info .homepage-search {
+    margin-top: 3.2vw;
+    padding: 0 2vw;
+}
+
 .container-homepage .homepage-posts {
     grid-area: main;
     width: 75vw;

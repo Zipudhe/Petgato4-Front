@@ -9,6 +9,7 @@ import TextArea from '../../components/TextArea';
 import Comment from '../../components/Comment';
 import Reply from '../../components/Reply';
 import Views from '../../components/Views';
+import SearchBar from '../../components/SearchBar';
 import Tag from '../../components/Tag';
 import PublicacoesPopulares from '../../components/PublicacoesPopulares';
 import LoadingCat from '../../components/LoadingCat';
@@ -142,6 +143,7 @@ export default function PaginaPublicacao() {
                     </div>
 
                     <div className="menu-right">
+                        <SearchBar />
                         <h2>Explore essas tags:</h2>
                         {tags.map(tag => (
                             <div className="container-tag" key={777}>
