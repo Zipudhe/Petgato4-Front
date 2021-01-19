@@ -79,10 +79,11 @@ export default function PaginaInicial() {
 
             <div className="tagpage-posts">
             <div className="tagpage-search"><SearchBar /></div>
+                <div className="title-tags">
                 <p><i>Tag: </i><b>{tag.name}</b></p>
                 <p><i>{tag.description}</i></p>
-                <p className="tags-subtitle">Estas são todas as publicações com a tag <b>{tag.name}</b>:</p>
-
+                <p className="tags-subtitle">Estas são todas as publicações com a tag {tag.name}:</p>
+                </div>
                 {loading ? (
                     <LoadingCat />
                 ) : (

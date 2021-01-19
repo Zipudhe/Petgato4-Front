@@ -181,11 +181,36 @@
 }
 
 @media (max-width: 500px) {
-    .container-tagpage .tagpage-posts h1 {
-        font-size: 7vw;
+    .container-tagpage .tagpage-search {
+        display: inline;
+        padding-bottom: 2vw;
     }
 
-    .container-tagpage .tagpage-posts h2 {
+    .container-tagpage .tagpage-posts b {
+        font-size: 6vw;
+        padding-left: 2vw;
+        text-align: center;
+    }
+
+    .container-tagpage .tagpage-posts p {
         font-size: 4vw;
+        margin: 0;
+        text-align: center;
+    }
+
+    .container-tagpage .tagpage-posts i {
+        margin: 2vw 0;
+        text-align: center;
+    }
+
+    .container-tagpage .tagpage-posts .tags-subtitle {
+        font-size: 4vw;
+        text-align: center;
+    }
+
+    .container-tagpage .tagpage-posts .title-tags {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
     }
 }

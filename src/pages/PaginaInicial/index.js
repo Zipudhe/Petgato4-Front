@@ -14,12 +14,12 @@ import LoadingCat from '../../components/LoadingCat';
 import './styles.css';
 
 export default function PaginaInicial() {
-    const page = 0;
     const [posts, setPosts] = useState([]);
     const [popularPosts, setPopularPosts] = useState([]);
     const [loading, setLoading] = useState(true);
     let history = useHistory();
-
+    const page = 0;
+    
     const loadPopularPosts = async () => {
         axios.get(`http://localhost:3000/posts?page=${1}`)
             .then((response) => response.data)
