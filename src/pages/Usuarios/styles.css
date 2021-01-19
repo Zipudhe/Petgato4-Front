@@ -80,14 +80,17 @@
 
 .all-users td:first-child {
     width: 20vw;
+    max-width: 20vw;
 }
 
 .all-users td:nth-child(2) {
     width: 15vw;
+    max-width: 15vw;
 }
 
 .all-users td:nth-child(3) {
     width: 45%;
+    max-width: 45%;
 }
 
 .all-users tr {

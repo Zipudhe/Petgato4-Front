@@ -34,7 +34,6 @@ export default function EditarUsuario(){
                     'Authorization': token
                 }
             })
-            .then(response => console.log(response))
             .catch(error => history.push("/erro"));
     }
 
@@ -51,6 +50,7 @@ export default function EditarUsuario(){
             .catch(error => history.push("/erro"));
         
         setUser(temp_user);
+        setName(temp_user.name);
         setIsAdmin(temp_user.is_admin);
         setLoading(false);
     }

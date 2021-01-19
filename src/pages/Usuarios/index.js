@@ -4,16 +4,15 @@ import { Link, useHistory } from 'react-router-dom';
 
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
-import Button from '../../components/Button';
 import Pagination from '../../components/Pagination';
 import LoadingCat from '../../components/LoadingCat';
+import { convertDate } from '../../functions';
 
 import './styles.css';
 
 export default function Users({ pageRef=0 }){
     const [page, setPage] = useState(pageRef);
-    const [tags, setTags] = useState([]);
-    const [tagPost, setTagPost] = useState([]);
+    const [users, setUsers] = useState([]);
     const [loading, setLoading] = useState(true);
     const [totalElements, setTotalElements] = useState(0);
     const [totalPages, setTotalPages] = useState(1);
@@ -40,7 +39,7 @@ export default function Users({ pageRef=0 }){
     }
 
     function loadTotalPages( deleted=false ) {
-        axios.get(`http://localhost:3000/countags/`)
+        axios.get(`http://localhost:3000/users_count/`)
             .then((response) => response.data)
             .then((data) => {
                 if(deleted && data > 0 && data % 5 === 0){
@@ -53,40 +52,31 @@ export default function Users({ pageRef=0 }){
             .catch((error) => console.error(error));
     }
 
-    const deleteTag = (tag_id) => {
+    const deleteUser = (user_id) => {
         if(window.confirm("Tem certeza?")){
-            axios.delete(`http://localhost:3000/tags/${tag_id}?page=${page}`)
+            axios.delete(`http://localhost:3000/users/${user_id}?page=${page}`, {
+                headers: {
+                    'Authorization': localStorage.getItem('token')
+                }
+            })
                 .then((response) => response.data)
-                .then((data) => setTags(data))
+                .then((data) => setUsers(data))
                 .then(() => loadTotalPages(true))
                 .catch((error) => history.push("/erro"));
         }
     }
 
-    const loadTags = async () => {
+    const loadUsers = async () => {
         setLoading(true);
-        axios.get(`http://localhost:3000/tags?page=${page}`)
+        axios.get(`http://localhost:3000/users?page=${page}`)
             .then((response) => response.data)
-            .then((data) => {
-                let tags_posts = [];
-
-                // carrega o número de posts dessa tag
-                data.map(tag => {
-                    axios.get(`http://localhost:3000/countagposts/${tag.id}`)
-                        .then(post_number => tags_posts.push(post_number.data));
-                
-                //console.log(tags_posts);
-                
-                setTags(data);
-                setTagPost(tags_posts);
-                });
-            })
+            .then((data) => setUsers(data))
             .catch((error) => history.push("/erro"));
         setLoading(false);
     }
 
     useEffect(() => {
-        loadTags();
+        loadUsers();
         loadTotalPages();
     }, [page])
 
@@ -112,14 +102,14 @@ export default function Users({ pageRef=0 }){
                                     </tr>
                                 </thead>
                                 <tbody>
-                                {tags.map((tag) => 
+                                {users.map((user) => 
                                     (
-                                        <tr key={tag.id}>
-                                            <td>{tag.id}</td>
-                                            <td>{tag.n_posts}</td>
-                                            <td>{tag.name}</td>
-                                            <td><Link to={`/editar-tag/${tag.id}`}>Editar</Link></td>
-                                            <td><a onClick={() => deleteTag(tag.id)} >Excluir</a></td>
+                                        <tr key={user.id}>
+                                            <td>{user.name}</td>
+                                            <td>{user.is_admin ? "Administrador" : "Usuário"}</td>
+                                            <td>{convertDate(user.created_at)}</td>
+                                            <td><Link to={`/editar-usuario/${user.id}`}>Editar</Link></td>
+                                            <td><a onClick={() => deleteUser(user.id)} >Excluir</a></td>
                                         </tr>
                                     )
                                 )}
@@ -129,9 +119,6 @@ export default function Users({ pageRef=0 }){
                         </div>
                     )}
                     <div className="backoffice-footer-users">
-                        <div className="btn">
-                            <Link to="/criar-tag"><Button styles="1">NOVA TAG</Button></Link>
-                        </div>
                         <div className="menu">
                             <Pagination actualPage={page+1} totalPages={totalPages} previous={() => prevPage()} next={() => nextPage()} specific={() => specificPage()} />
                         </div>

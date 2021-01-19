@@ -80,10 +80,12 @@
 
 .all-publications td:first-child {
     width: 6vw;
+    max-width: 6vw;
 }
 
 .all-publications td:nth-child(2) {
     width: 10vw;
+    max-width: 10vw;
 }
 
 .all-publications td:nth-child(3) {

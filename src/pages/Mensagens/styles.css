@@ -2,6 +2,7 @@
     min-height: 100vh;
     display: grid;
     grid-template-rows: 10% 80% 10%;
+    width: 100vw;
 }
 
 .container-messages .content-messages {
@@ -59,7 +60,6 @@
 .all-messages {
     font-family: 'Montserrat';
     border-collapse: collapse;
-    width: 100%;
     font-size: 1.2vw;
     color: #707070;
     white-space: nowrap;
@@ -75,15 +75,18 @@
 }
 
 .all-messages td:first-child {
-    width: 1vw;
+    width: 20vw;
+    max-width: 20vw;
 }
 
 .all-messages td:nth-child(2) {
-    width: 15vw;
+    width: 42vw;
+    max-width: 42vw;
 }
 
 .all-messages td:nth-child(3) {
-    width: 6vw;
+    width: 30%;
+    max-width: 30%;
 }
 
 .all-messages tr {

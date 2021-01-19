@@ -80,14 +80,17 @@
 
 .all-tags td:first-child {
     width: 6vw;
+    max-width: 6vw;
 }
 
 .all-tags td:nth-child(2) {
     width: 15vw;
+    max-width: 15vw;
 }
 
 .all-tags td:nth-child(3) {
-    width: 60%;
+    width: 65%;
+    max-width: 20vw;
 }
 
 .all-tags tr {

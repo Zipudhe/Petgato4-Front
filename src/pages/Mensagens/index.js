@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-import { Link, useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
@@ -47,7 +47,7 @@ export default function Mensagens({ pageRef=0 }){
     }
 
     function loadTotalPages( deleted=false ) {
-        axios.get(`http://localhost:3000/countmessages/`)
+        axios.get(`http://localhost:3000/messages_count/`)
             .then((response) => response.data)
             .then((data) => {
                 if(deleted && data > 0 && data % 5 === 0){
