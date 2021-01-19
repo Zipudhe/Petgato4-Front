@@ -19,7 +19,7 @@ export const isAdmin = async () => {
     const user_id = localStorage.getItem('current_user');
     let auth = false;
 
-    if(user_id){
+    if(user_id && await isAuthenticated()){
         await axios.get(`http://localhost:3000/is_admin`, {
                 headers: {
                     'UserID': user_id
