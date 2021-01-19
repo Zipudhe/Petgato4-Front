@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-import { useHistory } from 'react-router-dom';
+import { useParams, useHistory } from 'react-router-dom';
 
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
@@ -12,27 +12,37 @@ import { convertDate } from '../../functions';
 import './styles.css';
 
 export default function EditarUsuario(){
-    const [loading, setLoading] = useState(true);
     const [user, setUser] = useState('');
+    const [name, setName] = useState('');
     const [isAdmin, setIsAdmin] = useState(false);
+    const [loading, setLoading] = useState(true);
+    const location = useParams();
     let history = useHistory();
 
+    function changeName(name) {
+        setName(name);
+    }
+    
     const saveUser = async () => {
         const token = localStorage.getItem('token');
 
-        axios.put(`http://localhost:3000/users/${localStorage.getItem('current_user')}`, {
+        axios.put(`http://localhost:3000/users/${location.id}`, {
+                name: name,
+                is_admin: isAdmin
+            }, {
                 headers: {
                     'Authorization': token
                 }
             })
             .then(response => console.log(response))
+            .catch(error => history.push("/erro"));
     }
 
     const loadUser = async () => {
         const token = localStorage.getItem('token');
         let temp_user = {};
 
-        await axios.get(`http://localhost:3000/users/${localStorage.getItem('current_user')}`, {
+        await axios.get(`http://localhost:3000/users/${location.id}`, {
                 headers: {
                     'Authorization': token
                 }
@@ -47,7 +57,7 @@ export default function EditarUsuario(){
 
     useEffect(() => {
         loadUser();
-    }, [loading])
+    }, [])
 
     return (
         <div className="container-editar-usuario">
@@ -57,10 +67,12 @@ export default function EditarUsuario(){
                     <h2>BACKOFFICE</h2>
                     <h1>Editar Usuário</h1>
                     {loading ? (
-                        <div className="list-editar-usuario-loading-cat"><LoadingCat /></div>
+                        <div className="list-editar-usuario-loading-cat">
+                            <LoadingCat />
+                        </div>
                     ) : (
                         <div className="input-editar-usuario">
-                            <Input name="Nome" prevValue={user.name} styles={1} />
+                            <Input name="Nome" prevValue={user.name} styles={1} handleValue={changeName} />
                             <Input name="Email" prevValue={user.email} styles={1} disabled={true} />
                             <div className="role-selector">
                                 <label>Tipo de usuário</label>

@@ -11,6 +11,7 @@ import Sobre from './pages/Sobre';
 import Login from './pages/Login';
 import RecuperarSenha from './pages/RecuperarSenha';
 import PaginaPublicacao from './pages/PaginaPublicacao';
+import PaginaTag from './pages/PaginaTag';
 
 import EditarPerfil from './pages/EditarPerfil';
 import EditarUsuario from './pages/EditarUsuario';
@@ -66,7 +67,8 @@ const Routes = () => (
             <Route exact path="/nao-permitido" component={() => <PaginaErro error={1} />} />
             <Route exact path="/nao-encontrada" component={() => <PaginaErro error={2} />} />
             <Route exact path="/post/:id" component={() => <PaginaPublicacao />} />
-            
+            <Route exact path="/tag/:id" component={() => <PaginaTag />} />
+
             <Route exact path="/erro" component={() => <PaginaErro />} />
             <Route exact path="/teste" component={() => <PaginaPublicacao />} />
 
@@ -80,7 +82,7 @@ const Routes = () => (
             <AdminRoute exact path="/tags" component={() => <Tags />} />
             <AdminRoute exact path="/criar-tag" component={() => <CriarTag />} />
             <AdminRoute exact path="/editar-tag/:id" component={() => <EditarTag />} />
-            <AdminRoute exact path="/editar-usuario" component={() => <EditarUsuario />} />
+            <AdminRoute exact path="/editar-usuario/:id" component={() => <EditarUsuario />} />
             <AdminRoute exact path="/mensagens" component={() => <Mensagens />} />
 
             <Route path="/" component={() => <PaginaErro error={2} />} />

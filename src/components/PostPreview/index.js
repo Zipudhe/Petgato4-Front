@@ -34,7 +34,7 @@ export default function PostPreview({ post }){
                 <div className="tags">
                     <p>Tags:</p>
                     {tags.map((tag) => (
-                        <Tag text={tag.name} key={tag.id} />)
+                        <Link to={`/tag/${tag.id}`}><Tag text={tag.name} key={tag.id} /></Link>)
                     )}
                 </div>
                 <div className="post-text">

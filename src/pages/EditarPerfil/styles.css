@@ -3,7 +3,7 @@
     min-height: 100vh;
     width: 100%;
     grid-template-areas: "header header header"
-                        "picture content content"
+                        "content content content"
                         "footer footer footer";
 }
 
@@ -15,6 +15,12 @@
 .container-editar-perfil .footer-editar-perfil {
     grid-area: footer;
     align-self: flex-end;
+}
+
+.content-editar-perfil {
+    grid-area: content;
+    display: flex;
+    gap: 4vw;
 }
 
 .container-editar-perfil .user-image {
