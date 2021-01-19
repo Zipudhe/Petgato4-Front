@@ -1,0 +1,190 @@
+.container-tagpage {
+    display: grid;
+    grid-template-areas:
+    'header header header'
+    'menu main main'
+    'footer footer footer';
+    min-height: 100vh;
+}
+
+.container-tagpage .tagpage-header {
+    grid-area: header;
+    grid-row: 1 / 2;
+    width: 100%;
+    color: white;
+}
+
+.container-tagpage .tagpage-info {
+    grid-area: menu;
+    grid-row: 2 / 20;
+    width: 100%;
+    border-right: 1px solid #B0B0B0;
+
+    padding-left: 8%;
+    padding-right: 8%;
+    width: 84%;
+    overflow: hidden;
+    margin-top: 3vw;
+}
+
+.tagpage-info .button-popular-posts {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.tagpage-info h4 {
+    font-size: 1.6vw;
+    font-weight: 100;
+    color: #444143;
+    margin: 2vw 0;
+}
+
+.tagpage-info h2 {
+    font-size: 1.6vw;
+    font-weight: 400;
+    color: #444143;
+    margin: 2vw 0;
+}
+
+.tagpage-info a {
+    text-decoration: none;
+    padding: 0;
+    margin: 0;
+}
+
+.tagpage-info p {
+    font-size: 1.2vw;
+    font-weight: 400;
+    color: #444143;
+    padding: 0;
+}
+
+.tagpage-info .container-tag {
+    display: flex;
+    flex-direction: row;
+}
+
+.tagpage-posts .tagpage-search {
+    display: none;
+}
+
+.container-tagpage .tagpage-info .tagpage-search {
+    margin-top: 3.2vw;
+    padding: 0 2vw;
+}
+
+.container-tagpage .tagpage-posts {
+    grid-area: main;
+    width: 75vw;
+    margin-left: 2.3vw;
+    margin-top: 1.8vw;
+}
+
+.container-tagpage .tagpage-posts p {
+    font-size: 1.4vw;
+    color: #444143;
+    display: flex;
+    align-items: center;
+}
+
+.container-tagpage .tagpage-posts i {
+    color: #707070;
+    font-weight: 100;
+}
+
+.container-tagpage .tagpage-posts h1 {
+    font-size: 1.8vw;
+    font-weight: 600;
+    color: #BA66A3;
+    margin: 0;
+    margin-top: 3vw;
+}
+
+.container-tagpage .tagpage-posts h2 {
+    font-size: 1.2vw;
+    font-weight: 100;
+    color: #606060;
+    margin-top: 5px;
+    margin-bottom: 20px;
+}
+
+.container-tagpage .tagpage-posts b {
+    font-size: 2vw;
+    font-weight: 800;
+    color: #BA66A3;
+    padding-left: .8vw;
+}
+
+.container-tagpage .tagpage-posts .tags-subtitle {
+    font-size: 1.4vw;
+    font-weight: 100;
+    color: #606060;
+    margin: 0;
+    padding: 0;
+}
+
+.container-tagpage .tagpage-posts .tags-subtitle b {
+    font-size: 1.4vw;
+    font-weight: 800;
+    color: #BA66A3;
+    margin-left: -5px;
+    margin-top: 2px;
+}
+
+.container-tagpage .tagpage-footer {
+    grid-area: footer;
+    grid-row: 19 / 20;
+    width: 100%;
+    align-self: end;
+}
+
+@media (max-width: 768px) {
+    .container-tagpage {
+        display: grid;
+        grid-template-areas:
+        'header'
+        'main'
+        'footer';
+        justify-items: center;
+    }
+
+    .container-tagpage .tagpage-info {
+        display: none;
+    }
+
+    .container-tagpage .tagpage-posts {
+        width: 90%;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        margin-top: 3vw;
+    }
+
+    .container-tagpage .tagpage-posts h1 {
+        font-size: 5vw;
+        text-align: center;
+        margin-top: 0;
+    }
+
+    .container-tagpage .tagpage-posts h2 {
+        font-size: 2.8vw;
+        text-align: center;
+        margin-top: .4vw;
+        margin-bottom: 2vw;
+    }
+
+    .tagpage-posts .tagpage-search {
+        display: visible;
+    }
+}
+
+@media (max-width: 500px) {
+    .container-tagpage .tagpage-posts h1 {
+        font-size: 7vw;
+    }
+
+    .container-tagpage .tagpage-posts h2 {
+        font-size: 4vw;
+    }
+}

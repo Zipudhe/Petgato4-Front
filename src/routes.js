@@ -11,6 +11,7 @@ import Sobre from './pages/Sobre';
 import Login from './pages/Login';
 import RecuperarSenha from './pages/RecuperarSenha';
 import PaginaPublicacao from './pages/PaginaPublicacao';
+import PaginaTag from './pages/PaginaTag';
 
 import EditarPerfil from './pages/EditarPerfil';
 import EditarUsuario from './pages/EditarUsuario';
@@ -66,7 +67,8 @@ const Routes = () => (
             <Route exact path="/nao-permitido" component={() => <PaginaErro error={1} />} />
             <Route exact path="/nao-encontrada" component={() => <PaginaErro error={2} />} />
             <Route exact path="/post/:id" component={() => <PaginaPublicacao />} />
-            
+            <Route exact path="/tag/:id" component={() => <PaginaTag />} />
+
             <Route exact path="/erro" component={() => <PaginaErro />} />
             <Route exact path="/teste" component={() => <PaginaPublicacao />} />
 

@@ -29,7 +29,7 @@ export default function PaginaPublicacao() {
     const [loading, setLoading] = useState(true);
     const [likes, setLikes] = useState(0);
     const [favorited, setFavorited] = useState(false);
-    const [popularPosts, setPopularPosts] = useState('');
+    const [popularPosts, setPopularPosts] = useState([]);
     const [logged, setLogged] = useState(false);
     const location = useParams();
     let history = useHistory();
@@ -51,8 +51,6 @@ export default function PaginaPublicacao() {
         axios.get(`http://localhost:3000/tagsbypost/${id}`)
             .then(response => response.data)
             .then(data => setTags(data))
-
-        //setTags(temp_tags);
     }
 
     const loadPost = async (id) => {
