@@ -89,8 +89,8 @@
 }
 
 .all-tags td:nth-child(3) {
-    width: 65%;
-    max-width: 20vw;
+    width: 50vw;
+    max-width: 50vw;
 }
 
 .all-tags tr {
