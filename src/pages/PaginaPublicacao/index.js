@@ -57,7 +57,7 @@ export default function PaginaPublicacao() {
         axios.get(`http://localhost:3000/posts/${id}`)
             .then((response) => response.data)
             .then((data) => {
-                setPost(data)
+                setPost(data);
 
                 // incrementa o número de visualizações
                 axios.put(`http://localhost:3000/posts/${id}`, {
