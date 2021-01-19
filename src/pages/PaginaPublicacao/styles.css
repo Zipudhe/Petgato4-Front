@@ -158,6 +158,10 @@
     padding: 0 1.8vw;
 }
 
+.menu-right a {
+    text-decoration: none;
+}
+
 .menu-right h2 {
     font-size: 1.8vw;
     font-weight: 400;
@@ -166,7 +170,6 @@
 
 .menu-right .container-tag {
     border-bottom: 1px solid #B0B0B0;
-    border-bottom-height: 20px;
     margin: 1vw 0;
 }
 

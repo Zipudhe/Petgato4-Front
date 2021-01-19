@@ -34,7 +34,10 @@
 .post-content .tags {
     display: flex;
     align-items: center;
+    flex-wrap: nowrap;
     gap: .8vw;
+    width: 90%;
+    overflow: hidden;
 }
 
 .container-post .post-content .tags p {

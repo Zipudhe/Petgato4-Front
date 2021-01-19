@@ -8,4 +8,5 @@
   font-weight: 600;
   cursor: pointer;
   height: 1.3vw;
+  white-space: nowrap;
 }

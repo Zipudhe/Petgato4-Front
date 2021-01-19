@@ -1,6 +1,6 @@
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-
-import './styles.css';
+import axios from 'axios';
 
 import Tag from '../Tag';
 import Favorite from '../Favorite';
@@ -8,10 +8,22 @@ import CommentIcon from '../CommentIcon';
 import Views from '../Views';
 import Button from '../Button';
 
+import './styles.css';
 import test from '../../assets/images/Login.jpg';
 
-export default function PostPreview({post}){
-    let tags = ["Cuidados", "Cães & Gatos", "Guias"];
+export default function PostPreview({ post }){
+    const [tags, setTags] = useState([]);
+
+    const loadTags = ( id ) => {
+        axios.get(`http://localhost:3000/tagsbypost/${id}`)
+            .then(response => response.data)
+            .then(data => setTags(data))
+    }
+
+    useEffect(() => {
+        loadTags(post.id);
+        console.log(tags);
+    }, [])
 
     return (
         <div className="container-post">
@@ -22,7 +34,7 @@ export default function PostPreview({post}){
                 <div className="tags">
                     <p>Tags:</p>
                     {tags.map((tag) => (
-                        <Tag text={tag} key={tag} />)
+                        <Tag text={tag.name} key={tag.id} />)
                     )}
                 </div>
                 <div className="post-text">
