@@ -23,7 +23,7 @@ export default function PaginaInicial() {
     let history = useHistory();
 
     const loadPopularPosts = async () => {
-        axios.get(`http://localhost:3000/posts?page=${1}`)
+        axios.get(`http://localhost:3000/popularposts`)
             .then((response) => response.data)
             .then((data) => setPopularPosts(data))
             .catch((error) => history.push("/erro") );
