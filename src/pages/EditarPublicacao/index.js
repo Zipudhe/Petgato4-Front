@@ -37,8 +37,6 @@ export default function EditarPublicacao(){
         } else{
             selectedTags.splice(index, 1);
         }
-
-        console.log(selectedTags);
     }
 
     const loadPost = async (id) => {
@@ -56,24 +54,13 @@ export default function EditarPublicacao(){
     }
 
     function editPost( id ) {
-        // atualiza o post
-        /*
-        axios.put(`http://localhost:3000/posts/${id}`, {
-            name: title,
-            content: value
-            })
-            .catch(error => console.error(error)); // colocar um erro de pop up
-        */
         // adiciona as tags selecionadas
-        console.log(selectedTags);
-        
-        selectedTags.map(tag => {
-            axios.post(`http://localhost:3000/tag_posts/`, {
+        axios.put(`http://localhost:3000/edit_tagpost/`, {
                 post_id: id,
-                tag_id: tag
+                tags: selectedTags.toString()
             })
+            .then(response => console.log(response))
             .catch(error => console.error(error))
-        });
  
     }
 
