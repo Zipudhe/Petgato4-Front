@@ -11,7 +11,7 @@ export default function PerfilHome({text, link, path}){
             <div className="crop-image">
                 <img alt="Cíntia Lorenzzo" src={cintia_lorenzzo} />
             </div>
-            <h2>SOBRE A AUTORA</h2>
+            <h5>SOBRE A AUTORA</h5>
             <h1>Cíntia Lorenzzo</h1>
 
             <p>

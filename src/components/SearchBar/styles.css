@@ -33,14 +33,18 @@
 }
 
 @media (max-width: 768px) {
-    .search-bar label {
-        font-size: 15px;
+    .search-bar input {
+        height: 9.8vw;
+        width: 100%;
+        font-size: 3.6vw;
+        padding-left: 8px;
     }
 
-    .search-bar input {
-        height: 35px;
-        width: 220px;
-        font-size: 13px;
-        padding-left: 8px;
+    .search-bar img {
+        width: 7vw;
+        margin-right: .2vw; 
+        padding-right: 1.4vw;
+        padding-left: 1vw;
+        margin-top: 1.4vw;
     }
 }

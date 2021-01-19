@@ -68,7 +68,8 @@
 
 .container-homepage .homepage-footer {
     grid-area: footer;
-    grid-row: 19 / 20;
+    grid-row: 21 / 21;
+    margin-top: 2vw;
     width: 100%;
     align-self: end;
 }
@@ -85,6 +86,12 @@
 
     .container-homepage .homepage-info {
         display: none;
+    }
+
+    .homepage-posts .homepage-search {
+        display: inline;
+        z-index: 0;
+        padding-bottom: 1.8vw;
     }
 
     .container-homepage .homepage-posts {
