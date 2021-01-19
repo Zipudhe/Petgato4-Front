@@ -1,0 +1,144 @@
+.container-editar-usuario {
+    display: grid;
+    grid-template-areas:
+    'header header header'
+    'content content content'
+    'footer footer footer';
+    min-height: 100vh;
+}
+
+.container-editar-usuario .header-editar-usuario {
+    grid-area: header;
+    width: 100%;
+}
+
+.container-editar-usuario .content-editar-usuario {
+    grid-area: content;
+}
+
+.content-editar-usuario .input-editar-usuario {
+    display: grid;
+    grid-template-columns: 48% 48%;
+    grid-template-rows: 50% 50%;
+    grid-gap: 4%;
+    grid-row-gap: 1.4vw;
+}
+
+.input-editar-usuario div:nth-child(1) {
+    width: 100%;
+
+    grid-row-start: 0;
+    grid-row-end: 1;
+    grid-column-start: 1;
+    grid-column-end: 2;
+}
+
+.input-editar-usuario div:nth-child(2) {
+    width: 100%;
+    
+    grid-row-start: 0;
+    grid-row-end: 1;
+    grid-column-start: 2;
+    grid-column-end: 3;
+}
+
+.input-editar-usuario div:nth-child(3) {
+    width: 100%;
+    
+    grid-row-start: 1;
+    grid-row-end: 2;
+    grid-column-start: 1;
+    grid-column-end: 2;
+}
+
+.input-editar-usuario .role-selector {
+    width: min-content;
+}
+
+.input-editar-usuario .role-selector label {
+    color: #C882B4;
+    font-size: 1.2vw;
+    font-weight: 300;
+    text-align: left;
+}
+
+.input-editar-usuario .role-selector select {
+    height: 3.6vw;
+    width: 100%;
+    font-family: 'Montserrat';
+    font-size: 1.4vw;
+    font-weight: 300;
+    color: #707070;
+    padding-left: 1vw;
+    border-radius: 0;
+    border: 1px solid #C882B4;
+    outline: none;
+    box-sizing: border-box;
+    background-color: #ffffff;
+    cursor: pointer;
+}
+
+.input-editar-usuario div:nth-child(4) {
+    width: 100%;
+    
+    grid-row-start: 1;
+    grid-row-end: 2;
+    grid-column-start: 2;
+    grid-column-end: 3;
+}
+
+.button-editar-usuario {
+    display: flex;
+    margin-top: 2vw;
+    gap: 1.6vw;
+}
+
+.container-editar-usuario .footer-editar-usuario {
+    grid-area: footer;
+    align-self: flex-end;
+}
+
+.backoffice-editar-usuario {
+    font-family: 'Montserrat';
+    margin: 0 5%;
+}
+
+.backoffice-editar-usuario h2 {
+    font-weight: 100;
+    color: #444143;
+    margin: 3vw 0 0 0;
+    font-size: 1.8vw;
+}
+
+.backoffice-editar-usuario h1 {
+    font-weight: 600;
+    color: #BA66A3;
+    margin: 0 0 2vw 0;
+    font-size: 2.4vw;
+}
+
+.backoffice-footer-editar-usuario {
+    width: 100%;
+}
+
+.backoffice-footer-editar-usuario .btn {
+    float: left;
+}
+
+.backoffice-footer-editar-usuario .menu {
+    float: right;
+    background-color: yellow;
+}
+
+.list-editar-usuario-loading-cat {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 23vw;
+}
+
+.container-table-editar-usuario {
+    height: 100%;
+    min-height: 20vw;
+}

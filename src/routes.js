@@ -13,7 +13,7 @@ import RecuperarSenha from './pages/RecuperarSenha';
 import PaginaPublicacao from './pages/PaginaPublicacao';
 
 import EditarPerfil from './pages/EditarPerfil';
-import EditUser from './pages/EditUser';
+import EditarUsuario from './pages/EditarUsuario';
 import Mensagens from './pages/Mensagens';
 
 import Denuncias from './pages/Denuncias';
@@ -39,7 +39,7 @@ const PrivateRoute = ({ component: Component, ... rest}) => {
     );
 }
 
-const AdminRoute = ({ component: Component, ... rest}) => {
+const AdminRoute = ({ component: Component, ... rest }) => {
     const [logged, setLogged] = useState(isAuthenticated().then(response => setLogged(response)));
     const [admin, setAdmin] = useState(isAdmin().then(response => setAdmin(response)));
     
@@ -80,7 +80,7 @@ const Routes = () => (
             <AdminRoute exact path="/tags" component={() => <Tags />} />
             <AdminRoute exact path="/criar-tag" component={() => <CriarTag />} />
             <AdminRoute exact path="/editar-tag/:id" component={() => <EditarTag />} />
-            <AdminRoute exact path="/editar-usuario" component={() => <EditUser />} />
+            <AdminRoute exact path="/editar-usuario" component={() => <EditarUsuario />} />
             <AdminRoute exact path="/mensagens" component={() => <Mensagens />} />
 
             <Route path="/" component={() => <PaginaErro error={2} />} />
