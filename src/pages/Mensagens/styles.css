@@ -62,7 +62,6 @@
     border-collapse: collapse;
     font-size: 1.2vw;
     color: #707070;
-    white-space: nowrap;
 }
 
 .all-messages td, .all-messages th {
@@ -77,16 +76,19 @@
 .all-messages td:first-child {
     width: 20vw;
     max-width: 20vw;
+    white-space: nowrap;
 }
 
 .all-messages td:nth-child(2) {
     width: 42vw;
     max-width: 42vw;
+    white-space: nowrap;
 }
 
 .all-messages td:nth-child(3) {
     width: 30%;
     max-width: 30%;
+    white-space: nowrap;
 }
 
 .all-messages tr {
