@@ -37,6 +37,21 @@ export default function CriarPublicacao(){
     }
 
     function createPost() {
+        if(title === ''){
+            alert('Você precisa definir um título!');
+            return;
+        }
+
+        if(value === ''){
+            alert('Você precisa escrever algo no conteúdo do post!');
+            return;
+        }
+
+        if(selectedTags.length === 0){
+            alert('Você precisa selecionar ao menos uma tag!');
+            return;
+        }
+        
         // cria a publicação
         axios.post(`http://localhost:3000/posts/`, {
             name: title,
@@ -51,6 +66,9 @@ export default function CriarPublicacao(){
                 })
             })
             .catch(error => history.push("/erro")); // colocar um erro de pop up
+
+        // foi publicado com sucesso
+        
     }
 
     const loadTags = async () => {

@@ -65,9 +65,13 @@ export default function EditarPublicacao(){
     }
 
     function editPost( id ) {
-        
         if(title === ''){
             alert('Você precisa definir um título!');
+            return;
+        }
+
+        if(value === ''){
+            alert('Você precisa escrever algo no conteúdo do post!');
             return;
         }
 
@@ -89,6 +93,9 @@ export default function EditarPublicacao(){
                 tags: selectedTags.toString()
             })
             .catch(error => history.push("/erro"));
+
+        // foi publicado com sucesso
+        
     }
 
     const loadTags = async (id) => {
