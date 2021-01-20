@@ -174,7 +174,7 @@ export default function PaginaPublicacao() {
                         }
                         <div className="container-comments">
                             <Comment author={"Rodrigo Barão da Piscadinha"} text="" date={"Publicado em 14 de Janeiro de 2021 às 23h18"} />
-                            <Reply author={"Renato Farias"} text="" date={"Publicado em 14 de Janeiro de 2021 às 23h18"} />
+                            
                         </div>
                     </div>
 
