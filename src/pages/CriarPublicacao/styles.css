@@ -57,11 +57,34 @@
     font-size: 1.4vw;
 }
 
-.backoffice-criar-publicacao .upload-content {
-    display: flex;
-    align-items: center;
-    gap: 1.6vw;
-    color: #707070;
+/* Input image */
+.file-input::-webkit-file-upload-button {
+    width: 1vw;
+    visibility: hidden;
+}
+
+.file-input {
+    width: 100%;
+    outline: none;
+    color: #444143;
+    font-size: 1.2vw;
+}
+
+.file-input::before {
+    content: 'Escolher arquivo';
+    display: inline-block;
+    background: linear-gradient(top, #f9f9f9, #e3e3e3);
+    border: 1px solid #C882B4;
+    outline: none;
+    box-sizing: border-box;
+    padding: .8vw 2vw;
+    outline: none;
+    white-space: nowrap;
+    -webkit-user-select: none;
+    cursor: pointer;
+    color: #444143;
+    font-weight: 100;
+    font-size: 1.2vw;
 }
 
 .backoffice-criar-publicacao .container-react-quill {

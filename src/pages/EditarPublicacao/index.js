@@ -30,6 +30,10 @@ export default function EditarPublicacao(){
         setTitle(title);
     }
 
+    const changeFile = ( img ) => {
+        console.log(img);
+    }
+
     const changeCheckbox = ( id ) => {
         let index = selectedTags.indexOf(id);
 
@@ -61,21 +65,37 @@ export default function EditarPublicacao(){
     }
 
     function editPost( id ) {
+        
+        if(title === ''){
+            alert('Você precisa definir um título!');
+            return;
+        }
+
+        if(selectedTags.length === 0){
+            alert('Você precisa selecionar ao menos uma tag!');
+            return;
+        }
+
+        // adiciona o título / conteúdo
+        axios.put(`http://localhost:3000/posts/${id}`, {
+                name: title,
+                content: value
+            })
+            .catch(error => history.push("/erro"));
+
         // adiciona as tags selecionadas
         axios.put(`http://localhost:3000/edit_tagpost/`, {
                 post_id: id,
                 tags: selectedTags.toString()
             })
-            .then(response => console.log(response))
-            .catch(error => console.error(error))
- 
+            .catch(error => history.push("/erro"));
     }
 
     const loadTags = async (id) => {
         axios.get(`http://localhost:3000/alltags/`)
             .then((response) => response.data)
             .then((data) => setTags(data))
-            .catch(error => history.push("/erro")); // colocar um erro de pop up
+            .catch(error => history.push("/erro"));
     }
 
     const loadSelectedTags = async (id) => {
@@ -91,7 +111,7 @@ export default function EditarPublicacao(){
         loadTags(location.id);
         loadPost(location.id);
         loadLikes(location.id);
-        loadSelectedTags(location.id).then(console.log(selectedTags));
+        loadSelectedTags(location.id);
     }, []);
 
     let modules = {
@@ -142,12 +162,10 @@ export default function EditarPublicacao(){
                         <div className="container-react-quill">
                             <ReactQuill theme="snow" value={value} onChange={setValue} modules={modules} placeholder={"Escreva a publicação aqui..."}/>
                         </div>
-
+                        
                         <h3>Escolha uma imagem de capa:</h3>
-                        <div className="upload-content">
-                            <Button onClick={() => alert('UPLOAD')} styles="1">Escolher Arquivo</Button>
-                            <p>Nenhum arquivo escolhido</p>
-                        </div>
+                        <input className="file-input" type="file" accept="image/*" onChange={e => changeFile(e.target.files[0])} />
+                        
                         <h3>Escolha pelo menos uma tag:</h3>
                         <div className="container-select-tags">
                         {tags.map((tag) => 

@@ -22,6 +22,10 @@ export default function CriarPublicacao(){
         setTitle(title);
     }
 
+    const changeFile = ( img ) => {
+        console.log(img);
+    }
+
     const changeCheckbox = ( id ) => {
         let index = selectedTags.indexOf(id);
 
@@ -99,10 +103,8 @@ export default function CriarPublicacao(){
                     </div>
 
                     <h3>Escolha uma imagem de capa:</h3>
-                    <div className="upload-content">
-                        <Button onClick={() => alert('UPLOAD')} styles="1">Escolher Arquivo</Button>
-                        <p>Nenhum arquivo escolhido</p>
-                    </div>
+                    <input class="file-input" type="file" accept="image/*" onChange={e => changeFile(e.target.files[0])} />
+                    
                     <h3>Escolha pelo menos uma tag:</h3>
                     <div className="container-select-tags">
                         {tags.map((tag) => 
