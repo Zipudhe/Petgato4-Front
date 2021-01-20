@@ -18,6 +18,7 @@ const EditarPerfil = () => {
     const [password, setPassword] = useState('');
     const [newPassword, setNewPassword] = useState('');
     const [confirmNewPassword, setConfirmNewPassword] = useState('');
+    const [image, setImage] = useState(null);
     const [loading, setLoading] = useState(true);
     let history = useHistory();
 
@@ -37,24 +38,41 @@ const EditarPerfil = () => {
         setConfirmNewPassword(password);
     }
     
+    const changeFile = ( img ) => {
+        console.log(img);
+        setImage(img);
+    }
+
     const saveUser = async () => {
         const token = localStorage.getItem('token');
+        const formData = {};
+        //formData.append('name', name);
 
-        let temp_info = {};
+        if(name.length > 0){
+            formData.name = name;
+        }
 
-        temp_info.name = name;
         if(newPassword.length > 0){
             if(newPassword === confirmNewPassword) {
-                temp_info.password = newPassword;
+                //formData.append('password', newPassword);
+                formData.password = newPassword;
             } else{
                 alert('As senhas não são iguais!');
                 return;
             }
         }
 
+        if(image){
+            //formData.append('profile_image', image);
+            formData.profile_image = image;
+        }
+
+        console.log(formData);
+
+
         // tentar autenticar o usuário com a senha atual que ele inseriu
         axios.put(`http://localhost:3000/users/${localStorage.getItem('current_user')}`,
-        temp_info, {
+        formData, {
             headers: {
                 'Authorization': token
             }
@@ -75,6 +93,7 @@ const EditarPerfil = () => {
             .catch(error => history.push("/erro"));
         
         setUser(temp_user);
+        setName(temp_user.name);
         setLoading(false);
     }
 
@@ -91,12 +110,13 @@ const EditarPerfil = () => {
                 <div className="content-editar-perfil">
                     <div className="user-image">
                         <div className="container-user-image">
-                            <img src={profile_user_image} />
+                            <img src={profile_user_image /*user.profile_image.url*/} />
                         </div>
                         <div className="container-alterar-foto" >
                             <img src={camera_icon} />
                             <a>Alterar sua foto de perfil</a>
                         </div>
+                        <input className="file-input" type="file" accept="image/*" onChange={e => changeFile(e.target.files[0])} />
                     </div>
 
                     <div className="user-info">

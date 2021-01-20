@@ -28,7 +28,7 @@ import Usuarios from './pages/Usuarios';
 
 const PrivateRoute = ({ component: Component, ... rest}) => {
     const [logged, setLogged] = useState(isAuthenticated().then(response => setLogged(response)));
-    
+
     return (
         <Route { ... rest} render={props => (
             logged ? (

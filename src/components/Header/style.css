@@ -46,6 +46,7 @@
         align-items: center;
         user-select: none;
         outline: none;
+        z-index: 10;
     }
 
     .header img {

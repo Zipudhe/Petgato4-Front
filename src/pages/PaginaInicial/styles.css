@@ -152,6 +152,23 @@
     .homepage-posts .homepage-search {
         display: visible;
     }
+
+    .homepage-posts .homepage-search img {
+        margin-right: 2px;
+    }
+
+    .container-homepage .homepage-posts .search-results b {
+        font-size: 3.8vw;
+    }
+    
+    .container-homepage .homepage-posts .search-results p {
+        font-size: 3vw;
+    }
+    
+    .container-homepage .homepage-posts h4 {
+        font-size: 3.2vw;
+        text-align: center;
+    }
 }
 
 @media (max-width: 500px) {
@@ -161,5 +178,18 @@
 
     .container-homepage .homepage-posts h2 {
         font-size: 4vw;
+    }
+
+    .container-homepage .homepage-posts .search-results b {
+        font-size: 16px;
+    }
+    
+    .container-homepage .homepage-posts .search-results p {
+        font-size: 14px;
+    }
+    
+    .container-homepage .homepage-posts h4 {
+        font-size: 14px;
+        text-align: center;
     }
 }

@@ -109,7 +109,7 @@ export default function Users({ pageRef=0 }){
                                             <td>{user.is_admin ? "Administrador" : "Usuário"}</td>
                                             <td>{convertDate(user.created_at)}</td>
                                             <td><Link to={`/editar-usuario/${user.id}`}>Editar</Link></td>
-                                            <td><a onClick={() => deleteUser(user.id)} >Excluir</a></td>
+                                            <td>{user.id !== parseInt(localStorage.getItem('current_user')) && <a onClick={() => deleteUser(user.id)}>Excluir</a>}</td>
                                         </tr>
                                     )
                                 )}

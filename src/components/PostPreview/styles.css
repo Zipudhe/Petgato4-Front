@@ -172,13 +172,15 @@
         width: min-content;
     }
 
-    .container-post .post-footer button {
+    .container-post .post-footer .btn1 {
         width: 85vw;
-        height: 7vw;
+        height: 9vw;
         grid-row-start: 3;
         grid-row-end: 4;
-        font-size: 3vw;
-
+        font-size: 4vw;
+        margin: 0;
+        padding: 0;
+        text-align: center;
         margin-bottom: 2vw;
     }
 }
@@ -190,5 +192,9 @@
 
     .container-post .post-footer button {
         font-size: 4vw;
+    }
+
+    .container-post .post-footer .btn1 {
+        font-size: 13px;
     }
 }

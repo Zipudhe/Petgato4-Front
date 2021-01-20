@@ -121,7 +121,7 @@ export default function CriarPublicacao(){
                     </div>
 
                     <h3>Escolha uma imagem de capa:</h3>
-                    <input class="file-input" type="file" accept="image/*" onChange={e => changeFile(e.target.files[0])} />
+                    <input className="file-input" type="file" accept="image/*" onChange={e => changeFile(e.target.files[0])} />
                     
                     <h3>Escolha pelo menos uma tag:</h3>
                     <div className="container-select-tags">
