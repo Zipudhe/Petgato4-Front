@@ -3,18 +3,22 @@ import { useState } from 'react';
 import './styles.css';
 import search_icon from '../../assets/awesome-search.svg';
 
-export default function SearchBar(){
+export default function SearchBar({ handleValue=null, handleSubmit=null }){
     const [value, setValue] = useState('');
 
     const handleChange = (e) => {
         setValue(e);
-        /*if(handleValue){
+
+        if(handleValue){
             handleValue(e);
-        }*/
+        }
     }
     
     const submitSearch = () => {
-        console.log(value);
+        if(handleSubmit){
+            console.log(value);
+            handleSubmit(value);
+        }
     }
 
     return (

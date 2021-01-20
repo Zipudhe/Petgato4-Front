@@ -18,6 +18,7 @@ export default function Mensagens({ pageRef=0 }){
     const [totalElements, setTotalElements] = useState(0);
     const [totalPages, setTotalPages] = useState(1);
     const [modalStatus, setModalStatus] = useState(false);
+    const [messageValue, setMessageValue] = useState('');
     let history = useHistory();
 
     const nextPage = () => {
@@ -40,7 +41,11 @@ export default function Mensagens({ pageRef=0 }){
         }
     }
 
-    const showMessage = () => {
+    const showMessage = (message = null) => {
+        if(message){
+            setMessageValue(message);
+        }
+        
         setModalStatus(!modalStatus);
 
         document.body.style.overflow = modalStatus ? "visible" : "hidden";
@@ -82,7 +87,7 @@ export default function Mensagens({ pageRef=0 }){
     useEffect(() => {
         loadMessages();
         loadTotalPages();
-    }, [])
+    }, [page])
 
     useEffect(() => {}, [modalStatus])
 
@@ -114,12 +119,15 @@ export default function Mensagens({ pageRef=0 }){
                                                 <td>{message.name}</td>
                                                 <td>"{message.description}"</td>
                                                 <td>{convertDate(message.created_at)}</td>
-                                                <td><a onClick={() => showMessage()}>Exibir</a></td>
+                                                <td>
+                                                    <a onClick={() => showMessage(message)}>Exibir</a>
+                                                    <div className={`container-modal ${modalStatus && "on"}`}>
+                                                        <Modal styles={1} content={messageValue} close={showMessage} />
+                                                    </div>
+                                                </td>
                                                 <td><a onClick={() => deleteMessage(message.id)}>Excluir</a></td>
                                                 
-                                                <div className={`container-modal ${modalStatus && "on"}`}>
-                                                    <Modal styles={1} content={message} close={showMessage} />
-                                                </div>
+                                                
                                             </tr>
                                         )
                                     )}

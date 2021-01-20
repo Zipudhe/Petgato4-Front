@@ -66,6 +66,32 @@
     margin-bottom: 20px;
 }
 
+.container-homepage .homepage-posts .search-results i {
+    color: #606060;
+    margin-right: .2vw;
+}
+
+.container-homepage .homepage-posts .search-results b {
+    color: #444143;
+    font-style: normal;
+    font-size: 1.6vw;
+}
+
+.container-homepage .homepage-posts .search-results p {
+    font-style: italic;
+    font-size: 1.4vw;
+    color: #606060;
+    text-align: left;
+    margin-top: 4vw;
+    margin-bottom: 2vw;
+}
+
+.container-homepage .homepage-posts h4 {
+    font-weight: 100;
+    color: #444143;
+    font-size: 1.4vw;
+}
+
 .container-homepage .homepage-footer {
     grid-area: footer;
     grid-row: 21 / 21;
@@ -112,6 +138,14 @@
         font-size: 2.8vw;
         text-align: center;
         margin-top: .4vw;
+        margin-bottom: 2vw;
+    }
+
+    .container-homepage .homepage-posts h3 {
+        font-style: italic;
+        font-size: 2.1vw;
+        text-align: center;
+        margin-top: 4vw;
         margin-bottom: 2vw;
     }
 
