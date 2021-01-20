@@ -36,15 +36,37 @@ export default function PaginaPublicacao() {
     let postContent = post.content;
 
     const changeFavorite = () => {
+        const user_id = localStorage.getItem('current_user');
+
         if(favorited){ // remove like
-            console.log('vc nao pode remover o like');
+            setLikes(likes - 1);
+            
+            axios.delete(`http://localhost:3000/likes/${user_id}/${location.id}`)
+                .catch((error) => history.push("/erro") );
+            
         } else{ // adiciona like
-            axios.put(`http://localhost:3000/likes`, {
-                post_id: post.id,
-                user_id: localStorage.getItem('current_user')
+            setLikes(likes + 1);
+
+            axios.post(`http://localhost:3000/likes`, {
+                post_id: location.id,
+                user_id: user_id
             })
         }
         setFavorited(!favorited);
+    }
+
+    const loadLikes = async ( id ) => {
+        axios.get(`http://localhost:3000/countlikespost/${id}`)
+            .then(response => response.data)
+            .then(data => data && setLikes(data))
+
+        if(await isAuthenticated()){
+            const user_id = localStorage.getItem('current_user');
+
+            axios.get(`http://localhost:3000/likes/${user_id}/${id}`)
+                .then(response => response.data)
+                .then(data => setFavorited(data))
+        }
     }
 
     const loadTags = async (id) => {
@@ -63,13 +85,6 @@ export default function PaginaPublicacao() {
                 axios.put(`http://localhost:3000/posts/${id}`, {
                     views: data.views + 1
                 })
-
-                // carrega o número de likes
-                axios.get(`http://localhost:3000/likes/post/${id}`)
-                    .then(response => setLikes(response.data))
-
-                // verifica se o usuário deu like
-                setFavorited(false);
             })
             .catch((error) => history.push("/erro") );
         setLoading(false);
@@ -83,9 +98,10 @@ export default function PaginaPublicacao() {
     }
 
     useEffect(() => {
+        loadLikes(location.id);
         loadTags(location.id);
         loadPost(location.id);
-    }, [])
+    }, [likes])
 
     useEffect(() => {
         loadPopularPosts().then(response => setPopularPosts(response));
@@ -128,7 +144,7 @@ export default function PaginaPublicacao() {
                                 favorited ? ( // curtiu o post
                                     <div>
                                         <img src={heart_on} onClick={() => changeFavorite()} />
-                                        <p>Você e outras {likes+1} pessoas curtiram essa publicação!</p>
+                                        <p>Você e outras {likes - 1} pessoas curtiram essa publicação!</p>
                                     </div>
                                 ) : ( // não curtiu o post
                                     <div>

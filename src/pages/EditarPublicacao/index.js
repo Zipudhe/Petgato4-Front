@@ -21,6 +21,7 @@ export default function EditarPublicacao(){
     const [tags, setTags] = useState([]);
     const [selectedTags, setSelectedTags] = useState([]);
     const [post, setPost] = useState([]);
+    const [likes, setLikes] = useState(0);
     const [loading, setLoading] = useState(true);
     const location = useParams();
     let history = useHistory();
@@ -37,6 +38,12 @@ export default function EditarPublicacao(){
         } else{
             selectedTags.splice(index, 1);
         }
+    }
+
+    const loadLikes = ( id ) => {
+        axios.get(`http://localhost:3000/countlikespost/${id}`)
+            .then(response => response.data)
+            .then(data => setLikes(data))
     }
 
     const loadPost = async (id) => {
@@ -83,6 +90,7 @@ export default function EditarPublicacao(){
     useEffect(() => {
         loadTags(location.id);
         loadPost(location.id);
+        loadLikes(location.id);
         loadSelectedTags(location.id).then(console.log(selectedTags));
     }, []);
 
@@ -125,7 +133,7 @@ export default function EditarPublicacao(){
                             </div>
                             
                             <div className="icons">
-                                <Favorite number={0} />
+                                <Favorite number={likes} />
                                 <CommentIcon number={0} />
                                 <Views number={post.views} />
                             </div>

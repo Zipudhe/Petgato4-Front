@@ -13,6 +13,13 @@ import test from '../../assets/images/Login.jpg';
 
 export default function PostPreview({ post }){
     const [tags, setTags] = useState([]);
+    const [likes, setLikes] = useState(0);
+
+    const loadLikes = ( id ) => {
+        axios.get(`http://localhost:3000/countlikespost/${id}`)
+            .then(response => response.data)
+            .then(data => data && setLikes(data))
+    }
 
     const loadTags = ( id ) => {
         axios.get(`http://localhost:3000/tagsbypost/${id}`)
@@ -21,8 +28,8 @@ export default function PostPreview({ post }){
     }
 
     useEffect(() => {
+        loadLikes(post.id);
         loadTags(post.id);
-        console.log(tags);
     }, [])
 
     return (
@@ -44,7 +51,7 @@ export default function PostPreview({ post }){
                 <div className="post-footer">
                     <Link to={`/post/${post.id}`}><Button styles="1">LEIA MAIS</Button></Link>
                     <div>
-                        <Favorite number={0} />
+                        <Favorite number={likes} />
                         <CommentIcon number={0} />
                         <Views number={post.views} />
                     </div>
