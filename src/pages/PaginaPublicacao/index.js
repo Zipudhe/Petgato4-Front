@@ -32,9 +32,27 @@ export default function PaginaPublicacao() {
     const [popularPosts, setPopularPosts] = useState([]);
     const [logged, setLogged] = useState(false);
     const [openResponse, setOpenResponse] = useState(false);
+    const [comment, setComment] = useState('');
+    const [response, setResponse] = useState('');
     const location = useParams();
     let history = useHistory();
     let postContent = post.content;
+
+    const changeResponse = (response) => {
+        setResponse(response);
+    }
+
+    const sendResponse = () => {
+        if(response === ''){
+            alert('Digite algo para poder enviar!');
+            return;
+        }
+
+        console.log(response);
+
+        setResponse('');
+        setOpenResponse(false);
+    }
 
     const changeFavorite = () => {
         const user_id = localStorage.getItem('current_user');
@@ -177,13 +195,23 @@ export default function PaginaPublicacao() {
                             <Comment author={"Rodrigo Barão da Piscadinha"} text="" date={"Publicado em 14 de Janeiro de 2021 às 23h18"} />
                             <Reply author={"Igor Koishikawa"} text="" date={"Publicado em 14 de Janeiro de 2021 às 23h18"} />
                             
-                            <div className="container-response" onClick={() => setOpenResponse(!openResponse)}>
+                            {logged && // está autenticado para poder responder
+                            <div className="container-response">
                                 {openResponse && 
-                                <div>
-                                    oi
-                                </div>}
-                                <Button styles="1">{openResponse ? "FECHAR" : "RESPONDER"}</Button>
+                                <TextArea handleValue={changeResponse} />
+                                }
+                                <div className="container-buttons">
+                                    {openResponse && 
+                                    <Button styles="3" onClick={() => sendResponse()} >
+                                        ENVIAR
+                                    </Button>
+                                    }
+                                    <Button styles="1" onClick={() => setOpenResponse(!openResponse)} >
+                                        {openResponse ? "FECHAR" : "RESPONDER"}
+                                    </Button> 
+                                </div>
                             </div>
+                            }
 
                         </div>
                     </div>

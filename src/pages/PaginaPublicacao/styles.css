@@ -183,6 +183,18 @@
     width: 100%;
 }
 
-.container-response button {
+.container-response .container-buttons {
+    display: flex;
+    gap: .8vw
+}
+
+.container-response button:first-child {
+    margin-left: 15%;
+}
+.container-response textarea {
+    
+    width: 85%;
+    padding-top: .8vw;
+    margin: 1vw 0;
     margin-left: 15%;
 }
