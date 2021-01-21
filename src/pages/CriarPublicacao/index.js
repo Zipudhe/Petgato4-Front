@@ -10,11 +10,13 @@ import Button from '../../components/Button';
 import Input from '../../components/Input';
 
 import './styles.css';
+import { DirectUpload } from "activestorage";
 
 export default function CriarPublicacao(){
     const [title, setTitle] = useState('');
     const [value, setValue] = useState('');
     const [tags, setTags] = useState([]);
+    const [image, setImage] = useState(null);
     const [selectedTags, setSelectedTags] = useState([]);
     let history = useHistory();
 
@@ -24,6 +26,7 @@ export default function CriarPublicacao(){
 
     const changeFile = ( img ) => {
         console.log(img);
+        setImage(img);
     }
 
     const changeCheckbox = ( id ) => {
@@ -37,6 +40,8 @@ export default function CriarPublicacao(){
     }
 
     function createPost() {
+
+        return;
         if(title === ''){
             alert('Você precisa definir um título!');
             return;
@@ -55,9 +60,11 @@ export default function CriarPublicacao(){
         // cria a publicação
         axios.post(`http://localhost:3000/posts/`, {
             name: title,
-            content: value
+            content: value,
+            image: image
             })
             .then(response => {
+                console.log(response.data);
                 selectedTags.map(id => {
                     axios.post(`http://localhost:3000/tag_posts/`, {
                         post_id: response.data.id,
@@ -65,7 +72,7 @@ export default function CriarPublicacao(){
                     })
                 })
             })
-            .catch(error => history.push("/erro")); // colocar um erro de pop up
+            //.catch(error => history.push("/erro")); // colocar um erro de pop up
 
         // foi publicado com sucesso
         

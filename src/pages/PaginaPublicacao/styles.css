@@ -149,13 +149,13 @@
 
 .container-comments {
     height: min-content;
-    background-color: lightblue;
 }
 
 .menu-right {
     font-size: 1vw;
     color: #707070;
     padding: 0 1.8vw;
+    overflow: hidden;
 }
 
 .menu-right a {
