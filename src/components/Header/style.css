@@ -47,6 +47,7 @@
         user-select: none;
         outline: none;
         z-index: 10;
+        padding: 0 20px;
     }
 
     .header img {
@@ -88,7 +89,7 @@
         padding-right: 1.2vw;
         position: absolute;
         top: 4vw;
-        right: 8vw;
+        right: 24px;
     }
 
     .header.on img {
