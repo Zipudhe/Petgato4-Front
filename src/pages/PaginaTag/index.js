@@ -65,11 +65,13 @@ export default function PaginaInicial() {
             <div className="tagpage-info">
                 <SearchBar />
                 <h4>TODAS AS TAGS</h4>
-                {tags.map(tag => (
-                    <div className="container-tag" key={tag.id}>
-                        <Link to={`/tag/${tag.id}`}><Tag text={tag.name} /></Link>
-                    </div>
-                ))}
+                <div className="all-tags">
+                    {tags.map(tag => (
+                        <div className="container-tag" key={tag.id}>
+                            <Link to={`/tag/${tag.id}`}><Tag text={tag.name} /></Link>
+                        </div>
+                    ))}
+                </div>
                 <h2>Publicações mais populares:</h2>
                 <PublicacoesPopulares posts={popularPosts} />
                 <div className="button-popular-posts">
