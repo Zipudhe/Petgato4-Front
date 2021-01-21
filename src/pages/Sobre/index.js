@@ -9,7 +9,7 @@ import './styles.css';
 export default function Sobre(){
     return (
         <div className="container-sobre">
-            <div><Header atual={2} /></div>
+            <div className="header-sobre"><Header atual={2} /></div>
             <div className="content-sobre">
                 <div className="images-sobre">
                     <div className="first-image"></div>
