@@ -20,6 +20,10 @@
 }
 
 /* Comment content */
+.comment {
+    padding: 1vw 0;
+}
+
 .comment .content-comment h2 {
     font-size: 1.6vw;
     margin-top: .8vw;
@@ -56,6 +60,13 @@
     cursor: pointer;
     width: 2vw;
     height: 2vw;
+}
+
+.comment .content-comment .title .pet-icon {
+    width: 1.55vw;
+    height: 1.3vw;
+    padding-left: .4vw;
+    cursor: default;
 }
 
 .comment .content-comment .title .report {

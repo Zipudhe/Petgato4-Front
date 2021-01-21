@@ -3,10 +3,15 @@ import { useState, useEffect } from 'react';
 import './styles.css';
 import feather_icon from '../../assets/feather-more-horizontal.svg';
 import warning_icon from '../../assets/warning_icon.png';
+import paw_icon from '../../assets/paw_icon.png';
 
 export default function Comment({ author, text, date }){
     const [opened, setOpened] = useState(false);
     let id = 8; // passar o objeto do usuário...
+
+    let user = {
+        is_admin: false
+    }
 
     const reportUser = ( id ) => {
         console.log(id);
@@ -31,7 +36,7 @@ export default function Comment({ author, text, date }){
 
             <div className="content-comment">
                 <div className="title">
-                    <h2>{author}</h2>
+                <h2>{author}{user.is_admin && <img className="pet-icon" src={paw_icon} />}</h2>
                     
                     <div className="title-report">
                         {opened && 
