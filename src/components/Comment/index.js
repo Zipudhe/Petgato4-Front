@@ -27,7 +27,7 @@ export default function Comment({ comment }){
                     
                     <div className="title-report">
                         {opened && 
-                            <div className="report" onClick={reportComment(comment.id)}>
+                            <div className="report" onClick={() => reportComment(comment.comment_id)}>
                                 <img src={warning_icon} alt="Reportar" /> Reportar
                             </div>
                         }

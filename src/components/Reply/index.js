@@ -27,7 +27,7 @@ export default function Reply({ reply }){
                     
                     <div className="title-report">
                         {opened && 
-                            <div className="report" onClick={reportReply(reply.id)}>
+                            <div className="report" onClick={() => reportReply(reply.reply_id)}>
                                 <img src={warning_icon} alt="Reportar" /> Reportar
                             </div>
                         }
