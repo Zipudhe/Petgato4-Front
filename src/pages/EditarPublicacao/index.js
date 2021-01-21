@@ -18,6 +18,7 @@ import './styles.css';
 export default function EditarPublicacao(){
     const [title, setTitle] = useState('');
     const [value, setValue] = useState('');
+    const [image, setImage] = useState(null);
     const [tags, setTags] = useState([]);
     const [selectedTags, setSelectedTags] = useState([]);
     const [post, setPost] = useState([]);
@@ -31,7 +32,7 @@ export default function EditarPublicacao(){
     }
 
     const changeFile = ( img ) => {
-        console.log(img);
+        setImage(img);
     }
 
     const changeCheckbox = ( id ) => {
@@ -79,6 +80,21 @@ export default function EditarPublicacao(){
             alert('Você precisa selecionar ao menos uma tag!');
             return;
         }
+
+        const data = new FormData();
+        
+        if(image){ // se tiver imagem, alterá-la
+            data.append('banner', image);
+        }
+        data.append('name', title);
+        data.append('content', value);
+
+        axios.put(`http://localhost:3000/posts/${location.id}`, data, {
+            headers: {
+                "Content-Type": 'multipart/form-data'
+            }
+        })
+        .catch(error => history.push("/erro"));
 
         // adiciona o título / conteúdo
         axios.put(`http://localhost:3000/posts/${id}`, {

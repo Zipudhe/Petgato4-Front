@@ -76,7 +76,7 @@ export default function CriarPublicacao(){
                     })
                 })
             })
-            //.catch(error => history.push("/erro")); // colocar um erro de pop up
+            .catch(error => history.push("/erro"));
 
         // foi publicado com sucesso
         
