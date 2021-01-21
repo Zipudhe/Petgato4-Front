@@ -6,21 +6,13 @@ import warning_icon from '../../assets/warning_icon.png';
 import paw_icon from '../../assets/paw_icon.png';
 import default_user_image from '../../assets/images/default_user_image.png';
 
-export default function Reply({ author, text, date }){
+import { convertDateText } from '../../functions';
+
+export default function Reply({ reply }){
     const [opened, setOpened] = useState(false);
-    let id = 8; // passar o objeto do usuário...
 
-    let user = {
-        is_admin: true
-    }
-
-    const reportUser = ( id ) => {
+    const reportReply = ( id ) => {
         console.log(id);
-    }
-
-    if(text === ""){
-        text = `AK do japão mt barulhenta
-        `
     }
     
     return (
@@ -31,19 +23,19 @@ export default function Reply({ author, text, date }){
 
             <div className="content-reply">
                 <div className="title">
-                    <h2>{author}{user.is_admin && <img className="pet-icon" src={paw_icon} alt="Administrador" />}</h2>
+                    <h2>{reply.author}{reply.is_admin && <img className="pet-icon" src={paw_icon} alt="Administrador" />}</h2>
                     
                     <div className="title-report">
                         {opened && 
-                            <div className="report" onClick={reportUser(id)}>
+                            <div className="report" onClick={reportReply(reply.id)}>
                                 <img src={warning_icon} alt="Reportar" /> Reportar
                             </div>
                         }
                         <img src={feather_icon} onClick={() => setOpened(!opened)} alt="Mais opções" />
                     </div>
                 </div>
-                <i>{date}</i>
-                <p>{text}</p>
+                <i>{convertDateText(reply.created_at)}</i>
+                <p>{reply.reply_description}</p>
             </div>
         </div>
     );

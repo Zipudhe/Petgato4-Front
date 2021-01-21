@@ -11,11 +11,7 @@ import { convertDateText } from '../../functions';
 export default function Comment({ comment }){
     const [opened, setOpened] = useState(false);
 
-    let user = {
-        is_admin: false
-    }
-
-    const reportUser = ( id ) => {
+    const reportComment = ( id ) => {
         console.log(id);
     }
     
@@ -27,11 +23,11 @@ export default function Comment({ comment }){
 
             <div className="content-comment">
                 <div className="title">
-                <h2>{comment.author}{user.is_admin && <img className="pet-icon" src={paw_icon} alt="Administrador" />}</h2>
+                <h2>{comment.author}{comment.is_admin && <img className="pet-icon" src={paw_icon} alt="Administrador" />}</h2>
                     
                     <div className="title-report">
                         {opened && 
-                            <div className="report" onClick={reportUser(comment.id)}>
+                            <div className="report" onClick={reportComment(comment.id)}>
                                 <img src={warning_icon} alt="Reportar" /> Reportar
                             </div>
                         }

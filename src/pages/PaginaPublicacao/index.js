@@ -6,8 +6,6 @@ import Header from '../../components/Header';
 import Footer from '../../components/Footer';
 import Button from '../../components/Button';
 import TextArea from '../../components/TextArea';
-import Comment from '../../components/Comment';
-import Reply from '../../components/Reply';
 import Views from '../../components/Views';
 import SearchBar from '../../components/SearchBar';
 import Tag from '../../components/Tag';
@@ -33,20 +31,13 @@ export default function PaginaPublicacao() {
     const [popularPosts, setPopularPosts] = useState([]);
     const [logged, setLogged] = useState(false);
     const [comments, setComments] = useState([]);
-
-    const [openResponse, setOpenResponse] = useState(false);
-    const [comment, setComment] = useState('');
-    const [response, setResponse] = useState('');
+    const [comment, setComment] = useState(''); // comentário do usuário
     const location = useParams();
     let history = useHistory();
     let postContent = post.content;
 
     const changeComment = (comment) => {
         setComment(comment);
-    }
-
-    const changeResponse = (response) => {
-        setResponse(response);
     }
 
     const sendComment = () => {
@@ -56,18 +47,6 @@ export default function PaginaPublicacao() {
         }
         
         console.log(comment);
-    }
-
-    const sendResponse = () => {
-        if(response === ''){
-            alert('Digite algo para poder enviar!');
-            return;
-        }
-
-        console.log(response);
-
-        setResponse('');
-        setOpenResponse(false);
     }
 
     const changeFavorite = () => {
@@ -213,7 +192,7 @@ export default function PaginaPublicacao() {
                         </div>
                         
                         <h2>Gostou? Deixe um comentário abaixo:</h2>
-                        {isAuthenticated() ? (
+                        {logged ? (
                             <div className="content-comentario">
                                 <TextArea textholder="Digite aqui seu comentário" handleValue={changeComment} />
                                 <div className="send-button"><Button onClick={() => sendComment()} styles="1">ENVIAR</Button></div>
@@ -222,29 +201,10 @@ export default function PaginaPublicacao() {
                             <p><i>Você precisa entrar na sua conta para poder comentar!</i></p>
                         )}
                         
-                        
                         <div className="container-comments">
-                            {comments.length > 0 && comments.map(comment => <ListComments comment={comment} />)}
-
-                            
-                            {logged && // está autenticado para poder responder
-                            <div className="container-response">
-                                {openResponse && 
-                                <TextArea handleValue={changeResponse} textholder="Digite aqui seu comentário..." />
-                                }
-                                <div className="container-buttons">
-                                    {openResponse && 
-                                    <Button styles="3" onClick={() => sendResponse()} >
-                                        ENVIAR
-                                    </Button>
-                                    }
-                                    <Button styles="1" onClick={() => setOpenResponse(!openResponse)} >
-                                        {openResponse ? "FECHAR" : "RESPONDER"}
-                                    </Button> 
-                                </div>
-                            </div>
-                            }
-
+                            {comments.length > 0 && comments.map(comment => 
+                                <ListComments comment={comment} key={comment.comment_id} />
+                            )}
                         </div>
                     </div>
 
