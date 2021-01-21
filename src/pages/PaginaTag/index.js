@@ -63,12 +63,16 @@ export default function PaginaInicial() {
         <div className="container-tagpage">
             <div className="tagpage-header"><Header atual={0} /></div>
             <div className="tagpage-info">
-                <SearchBar />
+                <SearchBar handleSubmit={() => history.push('/')} />
                 <h4>TODAS AS TAGS</h4>
                 <div className="all-tags">
                     {tags.map(tag => (
-                        <div className="container-tag" key={tag.id}>
-                            <Link to={`/tag/${tag.id}`}><Tag text={tag.name} /></Link>
+                        <div className="container-tag" key={tag.id} 
+                                onClick={() => {
+                                history.push(`/tag/${tag.id}`);
+                                window.location.reload();
+                            }}>
+                            <Tag text={tag.name} />
                         </div>
                     ))}
                 </div>

@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import axios from 'axios';
 
 import Tag from '../Tag';
@@ -14,6 +14,7 @@ import default_post_image from '../../assets/images/default_post_image.jpg';
 export default function PostPreview({ post }){
     const [tags, setTags] = useState([]);
     const [likes, setLikes] = useState(0);
+    let history = useHistory();
 
     const loadLikes = ( id ) => {
         axios.get(`http://localhost:3000/countlikespost/${id}`)
@@ -41,7 +42,13 @@ export default function PostPreview({ post }){
                 <div className="tags">
                     <p>Tags:</p>
                     {tags.map((tag) => (
-                        <Link to={`/tag/${tag.id}`}><Tag text={tag.name} key={tag.id} /></Link>)
+                        <div key={tag.id}
+                            onClick={() => {
+                                history.push(`/tag/${tag.id}`);
+                                window.location.reload();
+                        }}>
+                            <Tag text={tag.name} />
+                        </div>)
                     )}
                 </div>
                 <div className="post-text">
