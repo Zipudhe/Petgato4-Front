@@ -40,7 +40,7 @@ export default function CriarPublicacao(){
 
     function createPost() {
 
-        return;
+        
         if(title === ''){
             alert('Você precisa definir um título!');
             return;

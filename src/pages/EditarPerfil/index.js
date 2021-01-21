@@ -7,7 +7,6 @@ import Footer from '../../components/Footer';
 import Button from '../../components/Button';
 import Input from '../../components/Input';
 import LoadingCat from '../../components/LoadingCat';
-import DirectUpload from 'activestorage';
 
 import "./styles.css";
 import camera_icon from "../../assets/awesome-camera.svg";
@@ -45,6 +44,7 @@ const EditarPerfil = () => {
     }
 
     const saveUser = async () => {
+        
         if(name.length === 0){
             alert('O campo "Nome" não pode ficar em branco!');
             return;
@@ -56,8 +56,8 @@ const EditarPerfil = () => {
         }
 
         // verificação pra adicionar ou não a senha e a imagem
-
-        /* autenticação da senha atual */
+        /*
+        // autenticação da senha atual
         let correct_password = false;
         await axios.post(`http://localhost:3000/auth/login`, {
                 email: user.email,
@@ -72,21 +72,19 @@ const EditarPerfil = () => {
         if(!correct_password){
             return;
         }
-
+        */
         const data = new FormData();
 
-        data.append('photo', image);
+        data.append('profile_image', image);
         data.append('name', name);
 
-        axios.put(`http://localhost:3000/users/${localStorage.getItem('current_user')}`, data, {
+        axios.put(`http://localhost:3000/users/${localStorage.getItem('current_user')}/`, data, {
                 headers: {
-                    'content-type': 'multipart/form-data'
+                    "Content-Type": `multipart/form-data; boundary=${data._boundary}`,
                 }
-            })
+            }).then(response => console.log(response))
         
         return;
-        
-        const token = localStorage.getItem('token');
     }
 
     const loadUser = async () => {
@@ -120,7 +118,7 @@ const EditarPerfil = () => {
                 <div className="content-editar-perfil">
                     <div className="user-image">
                         <div className="container-user-image">
-                            <img src={userImage ? userImage : profile_user_image} />
+                            <img src={user.url && user.url} />
                         </div>
                         <div className="container-alterar-foto" >
                             <img src={camera_icon} />

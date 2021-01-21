@@ -14,7 +14,14 @@ import default_post_image from '../../assets/images/default_post_image.jpg';
 export default function PostPreview({ post }){
     const [tags, setTags] = useState([]);
     const [likes, setLikes] = useState(0);
+    const [commentNumber, setCommentNumber] = useState(0);
     let history = useHistory();
+
+    const loadCommentNumber = ( id ) => {
+        axios.get(`http://localhost:3000/comments_count/${id}`)
+            .then(response => response.data)
+            .then(data => data && setCommentNumber(data.n_comments))
+    }
 
     const loadLikes = ( id ) => {
         axios.get(`http://localhost:3000/countlikespost/${id}`)
@@ -29,6 +36,7 @@ export default function PostPreview({ post }){
     }
 
     useEffect(() => {
+        loadCommentNumber(post.id);
         loadLikes(post.id);
         loadTags(post.id);
     }, [])
@@ -59,7 +67,7 @@ export default function PostPreview({ post }){
                     <Link to={`/post/${post.id}`}><Button styles="1">LEIA MAIS</Button></Link>
                     <div>
                         <Favorite number={likes} />
-                        <CommentIcon number={0} />
+                        <CommentIcon number={commentNumber} />
                         <Views number={post.views} />
                     </div>
                 </div>

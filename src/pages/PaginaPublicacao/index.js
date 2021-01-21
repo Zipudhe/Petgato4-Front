@@ -13,6 +13,7 @@ import SearchBar from '../../components/SearchBar';
 import Tag from '../../components/Tag';
 import PublicacoesPopulares from '../../components/PublicacoesPopulares';
 import LoadingCat from '../../components/LoadingCat';
+import ListComments from '../../components/ListComments';
 
 import heart_off from '../../assets/awesome-heart-1.svg';
 import heart_on from '../../assets/awesome-heart.svg';
@@ -31,6 +32,8 @@ export default function PaginaPublicacao() {
     const [favorited, setFavorited] = useState(false);
     const [popularPosts, setPopularPosts] = useState([]);
     const [logged, setLogged] = useState(false);
+    const [comments, setComments] = useState([]);
+
     const [openResponse, setOpenResponse] = useState(false);
     const [comment, setComment] = useState('');
     const [response, setResponse] = useState('');
@@ -89,6 +92,12 @@ export default function PaginaPublicacao() {
         setFavorited(!favorited);
     }
 
+    const loadComments = async ( id ) => {
+        axios.get(`http://localhost:3000/comments_by_post/${id}`)
+            .then(response => response.data)
+            .then(data => setComments(data))
+    }
+
     const loadLikes = async ( id ) => {
         axios.get(`http://localhost:3000/countlikespost/${id}`)
             .then(response => response.data)
@@ -137,6 +146,7 @@ export default function PaginaPublicacao() {
     }
 
     useEffect(() => {
+        loadComments(location.id);
         loadTags(location.id);
         loadPost(location.id);
     }, [])
@@ -212,11 +222,10 @@ export default function PaginaPublicacao() {
                             <p><i>Você precisa entrar na sua conta para poder comentar!</i></p>
                         )}
                         
-                        {//se nao tiver comentarios, mostrar mensagem
-                        }
+                        
                         <div className="container-comments">
-                            <Comment author={"Rodrigo Barão da Piscadinha"} text="" date={"Publicado em 14 de Janeiro de 2021 às 23h18"} />
-                            <Reply author={"Igor Koishikawa"} text="" date={"Publicado em 14 de Janeiro de 2021 às 23h18"} />
+                            {comments.length > 0 && comments.map(comment => <ListComments comment={comment} />)}
+
                             
                             {logged && // está autenticado para poder responder
                             <div className="container-response">
