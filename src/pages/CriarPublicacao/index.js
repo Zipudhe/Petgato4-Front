@@ -39,7 +39,6 @@ export default function CriarPublicacao(){
     }
 
     function createPost() {
-
         
         if(title === ''){
             alert('Você precisa definir um título!');
@@ -56,11 +55,17 @@ export default function CriarPublicacao(){
             return;
         }
         
+        const data = new FormData();
+        
+        data.append('banner', image);
+        data.append('name', title);
+        data.append('content', value);
+
         // cria a publicação
-        axios.post(`http://localhost:3000/posts/`, {
-            name: title,
-            content: value,
-            image: image
+        axios.post(`http://localhost:3000/posts/`, data, {
+                headers: {
+                    "Content-Type": 'multipart/form-data'
+                }
             })
             .then(response => {
                 console.log(response.data);

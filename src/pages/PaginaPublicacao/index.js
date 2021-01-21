@@ -133,7 +133,7 @@ export default function PaginaPublicacao() {
     useEffect(() => {
         loadLikes(location.id);
     }, [])
-
+    
     useEffect(() => {
         loadPopularPosts().then(response => setPopularPosts(response));
     }, [])
@@ -165,7 +165,7 @@ export default function PaginaPublicacao() {
                         </div>
                         
                         <div className="post-image">
-                            <img src={default_post_image} />
+                            <img src={post.url ? post.url : default_post_image} />
                         </div>
 
                         <div className="text-publication" dangerouslySetInnerHTML={{__html: post.content.body}} />

@@ -10,7 +10,7 @@ import LoadingCat from '../../components/LoadingCat';
 
 import "./styles.css";
 import camera_icon from "../../assets/awesome-camera.svg";
-import profile_user_image from "../../assets/images/cintialorenzzo.jpeg";
+import default_user_image from "../../assets/images/default_user_image.png";
 
 const EditarPerfil = () => {
     const [user, setUser] = useState('');
@@ -19,7 +19,6 @@ const EditarPerfil = () => {
     const [newPassword, setNewPassword] = useState('');
     const [confirmNewPassword, setConfirmNewPassword] = useState('');
     const [image, setImage] = useState(null);
-    const [userImage, setUserImage] = useState(null);
     const [loading, setLoading] = useState(true);
     let history = useHistory();
 
@@ -82,8 +81,9 @@ const EditarPerfil = () => {
                 headers: {
                     "Content-Type": `multipart/form-data; boundary=${data._boundary}`,
                 }
-            }).then(response => console.log(response))
-        
+            })
+            .catch(error => history.push("/erro"));
+
         return;
     }
 
@@ -100,7 +100,6 @@ const EditarPerfil = () => {
             .catch(error => history.push("/erro"));
         
         setUser(temp_user);
-        setUserImage(temp_user.profile_image && temp_user.profile_image.url);
         setName(temp_user.name);
         setLoading(false);
     }
@@ -118,7 +117,7 @@ const EditarPerfil = () => {
                 <div className="content-editar-perfil">
                     <div className="user-image">
                         <div className="container-user-image">
-                            <img src={user.url && user.url} />
+                            <img src={user.url ? user.url : default_user_image} />
                         </div>
                         <div className="container-alterar-foto" >
                             <img src={camera_icon} />
