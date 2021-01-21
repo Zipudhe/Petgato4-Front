@@ -9,7 +9,7 @@ import Views from '../Views';
 import Button from '../Button';
 
 import './styles.css';
-import test from '../../assets/images/Login.jpg';
+import default_post_image from '../../assets/images/default_post_image.jpg';
 
 export default function PostPreview({ post }){
     const [tags, setTags] = useState([]);
@@ -35,7 +35,7 @@ export default function PostPreview({ post }){
     return (
         <div className="container-post">
             <div className="post-img">
-                <Link to={`/post/${post.id}`}><img src={test} alt="Foto do post" /></Link>
+                <Link to={`/post/${post.id}`}><img src={default_post_image} alt="Foto do post" /></Link>
             </div>
             <div className="post-content">
                 <div className="tags">

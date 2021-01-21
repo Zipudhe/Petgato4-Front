@@ -4,6 +4,7 @@ import './styles.css';
 import feather_icon from '../../assets/feather-more-horizontal.svg';
 import warning_icon from '../../assets/warning_icon.png';
 import paw_icon from '../../assets/paw_icon.png';
+import default_user_image from '../../assets/images/default_user_image.png';
 
 export default function Reply({ author, text, date }){
     const [opened, setOpened] = useState(false);
@@ -25,7 +26,7 @@ export default function Reply({ author, text, date }){
     return (
         <div className="reply">
             <div className="user-image">
-                <img src={'https://portalrapmais.com/wp-content/uploads/2019/06/mc-igu.jpg'} alt="Imagem do usuário" />
+                <img src={default_user_image} alt="Imagem do usuário" />
             </div>
 
             <div className="content-reply">

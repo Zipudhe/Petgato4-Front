@@ -17,7 +17,7 @@ import LoadingCat from '../../components/LoadingCat';
 import heart_off from '../../assets/awesome-heart-1.svg';
 import heart_on from '../../assets/awesome-heart.svg';
 import arrow_left from '../../assets/awesome-chevron-left.svg';
-import temp_image from '../../assets/images/Esqueciminhasenha.jpg';
+import default_post_image from '../../assets/images/default_post_image.jpg';
 
 import './styles.css';
 import { isAuthenticated } from '../../auth';
@@ -166,7 +166,7 @@ export default function PaginaPublicacao() {
                         </div>
                         
                         <div className="post-image">
-                            <img src={temp_image} />
+                            <img src={default_post_image} />
                         </div>
 
                         <div className="text-publication" dangerouslySetInnerHTML={{__html: post.content.body}} />

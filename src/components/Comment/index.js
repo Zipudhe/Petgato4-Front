@@ -4,6 +4,7 @@ import './styles.css';
 import feather_icon from '../../assets/feather-more-horizontal.svg';
 import warning_icon from '../../assets/warning_icon.png';
 import paw_icon from '../../assets/paw_icon.png';
+import default_user_image from '../../assets/images/default_user_image.png';
 
 export default function Comment({ author, text, date }){
     const [opened, setOpened] = useState(false);
@@ -31,7 +32,7 @@ export default function Comment({ author, text, date }){
     return (
         <div className="comment">
             <div className="user-image">
-                <img src={'https://capital95.com.br/wp-content/uploads/2020/08/baroes.jpg'} alt="Imagem do usuário" />
+                <img src={default_user_image} alt="Imagem do usuário" />
             </div>
 
             <div className="content-comment">

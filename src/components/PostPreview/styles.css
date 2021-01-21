@@ -22,8 +22,9 @@
 
 .container-post .post-img img {
     width: 100%;
+    height: 15vw;
     object-fit: cover;
-    object-position: 0 -2vw;
+    object-position: center;
 }
 
 .container-post .post-content {
@@ -117,8 +118,8 @@
 
     .container-post .post-img img {
         width: 100%;
+        height: 25vw;
         object-fit: cover;
-        object-position: 0 -3vw;
     }
 
     .container-post .post-content {
