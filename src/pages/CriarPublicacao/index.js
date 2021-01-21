@@ -57,7 +57,10 @@ export default function CriarPublicacao(){
         
         const data = new FormData();
         
-        data.append('banner', image);
+        if(image){ // se o post tiver imagem
+            data.append('banner', image);
+        }
+
         data.append('name', title);
         data.append('content', value);
 

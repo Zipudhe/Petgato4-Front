@@ -1,6 +1,7 @@
 .container-page-publicacao {
     min-height: 100vh;
     display: grid;
+    width: 100vw;
 }
 
 .footer-publicacao {
@@ -37,11 +38,14 @@
     width: 100%;
     grid-template-columns: 75% 25%;
     margin-top: 1.8vw;
+    word-wrap: normal;
 }
 
 .content-publicacao {
     padding: 0 5%;
     border-right: 1px solid #B0B0B0;
+    max-width: 75vw;
+    overflow: hidden;
 }
 
 .content-publicacao i {
@@ -54,6 +58,7 @@
     color: #BA66A3;
     margin: 0 0 .2vw 0;
     font-size: 2.4vw;
+    word-wrap: break-word;
 }
 
 .content-publicacao h2 {
@@ -91,6 +96,7 @@
     margin: 0;
     color: #444143;
     font-size: 1.2vw;
+    word-wrap: break-word;
 }
 
 .content-publicacao .container-favorite {

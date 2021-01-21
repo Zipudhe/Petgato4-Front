@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import axios from 'axios';
 
 import Comment from '../Comment';
@@ -14,6 +15,8 @@ export default function ListComments({ comment }) {
     const [replies, setReplies] = useState([]);
     const [openResponse, setOpenResponse] = useState(false);
     const [response, setResponse] = useState(''); // resposta do usuário
+    const [postResponse, setPostResponse] = useState(false);
+    let history = useHistory();
 
     const loadReplies = async ( id ) => {
         axios.get(`http://localhost:3000/replies_by_comment/${id}`)
@@ -31,9 +34,15 @@ export default function ListComments({ comment }) {
             return;
         }
 
-        console.log(response);
+        axios.post(`http://localhost:3000/replies`, {
+            comment_id: comment.comment_id,
+            user_id: localStorage.getItem('current_user'),
+            description: response
+        })
+        .catch((error) => history.push("/erro") );
 
         setResponse('');
+        setPostResponse(!postResponse);
         setOpenResponse(false);
     }
 
@@ -43,7 +52,7 @@ export default function ListComments({ comment }) {
 
     useEffect(() => {
         loadReplies(comment.comment_id);
-    }, [])
+    }, [postResponse])
 
     return (
         comment ? (

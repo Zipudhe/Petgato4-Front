@@ -32,6 +32,7 @@ export default function PaginaPublicacao() {
     const [logged, setLogged] = useState(false);
     const [comments, setComments] = useState([]);
     const [comment, setComment] = useState(''); // comentário do usuário
+    const [postComment, setPostComment] = useState(false);
     const location = useParams();
     let history = useHistory();
     let postContent = post.content;
@@ -46,7 +47,16 @@ export default function PaginaPublicacao() {
             return;
         }
         
-        console.log(comment);
+        axios.post(`http://localhost:3000/comments`, {
+            post_id: location.id,
+            user_id: localStorage.getItem('current_user'),
+            description: comment
+        })
+        .catch((error) => history.push("/erro") );
+
+        setComment('');
+        loadComments(location.id);
+        setPostComment(!postComment);
     }
 
     const changeFavorite = () => {
@@ -74,7 +84,7 @@ export default function PaginaPublicacao() {
     const loadComments = async ( id ) => {
         axios.get(`http://localhost:3000/comments_by_post/${id}`)
             .then(response => response.data)
-            .then(data => setComments(data))
+            .then(data => setComments(data.reverse()))
     }
 
     const loadLikes = async ( id ) => {
@@ -125,7 +135,6 @@ export default function PaginaPublicacao() {
     }
 
     useEffect(() => {
-        loadComments(location.id);
         loadTags(location.id);
         loadPost(location.id);
     }, [])
@@ -134,6 +143,10 @@ export default function PaginaPublicacao() {
         loadLikes(location.id);
     }, [])
     
+    useEffect(() => {
+        loadComments(location.id);
+    }, [postComment])
+
     useEffect(() => {
         loadPopularPosts().then(response => setPopularPosts(response));
     }, [])
@@ -194,7 +207,8 @@ export default function PaginaPublicacao() {
                         <h2>Gostou? Deixe um comentário abaixo:</h2>
                         {logged ? (
                             <div className="content-comentario">
-                                <TextArea textholder="Digite aqui seu comentário" handleValue={changeComment} />
+                                {postComment && <TextArea textholder="Digite aqui seu comentário" prevValue={comment} handleValue={changeComment} />}
+                                {!postComment && <TextArea textholder="Digite aqui seu comentário" prevValue={comment} handleValue={changeComment} />}
                                 <div className="send-button"><Button onClick={() => sendComment()} styles="1">ENVIAR</Button></div>
                             </div>
                         ) : (
