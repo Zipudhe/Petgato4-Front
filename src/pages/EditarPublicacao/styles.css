@@ -50,6 +50,10 @@
     gap: .1vw;
 }
 
+.backoffice-editar-publicacao .container-title .icons .comment-number {
+    padding: 0 .4vw;
+}
+
 .backoffice-editar-publicacao h2 {
     font-weight: 100;
     color: #444143;

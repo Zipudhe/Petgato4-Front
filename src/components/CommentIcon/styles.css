@@ -12,9 +12,10 @@
     font-family: 'Montserrat';
     font-size: 1.4vw;
     color: #707070;
-    padding: 0 .4vw;
+    padding: 0;
     margin: 0;
     float: right;
+    padding-right: .4vw;
 }
 
 .comment-icon {

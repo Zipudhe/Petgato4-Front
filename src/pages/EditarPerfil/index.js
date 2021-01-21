@@ -45,7 +45,26 @@ const EditarPerfil = () => {
     }
 
     const saveUser = async () => {
-        return;
+        if(newPassword.length > 0 && newPassword !== confirmNewPassword){
+            alert('As senhas não coincidem!');
+            return;
+        }
+
+        /* autenticação da senha atual */
+        let correct_password = false;
+        await axios.post(`http://localhost:3000/auth/login`, {
+                email: user.email,
+                password: password
+            }).then((response) => {
+                localStorage.setItem('token', response.data.token);
+                correct_password = true;
+            }).catch(error => {
+                alert('A senha atual está errada, tente novamente!');
+            })
+        
+        if(!correct_password){
+            return;
+        }
 
         const data = new FormData();
 

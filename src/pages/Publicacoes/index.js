@@ -16,6 +16,7 @@ export default function Publicacoes({ pageRef=0 }){
     const [posts, setPosts] = useState([]);
     const [loading, setLoading] = useState(true);
     const [totalPages, setTotalPages] = useState(1);
+    const [tags, setTags] = useState([]);
 
     const nextPage = () => {
         if(page < totalPages){
@@ -63,9 +64,12 @@ export default function Publicacoes({ pageRef=0 }){
 
     const loadPosts = async () => {
         setLoading(true);
-        axios.get(`http://localhost:3000/posts?page=${page}`)
+        await axios.get(`http://localhost:3000/posts?page=${page}`)
             .then((response) => response.data)
-            .then((data) => setPosts(data))
+            .then((data) => {
+                setPosts(data);
+
+            })
             .catch((error) => console.error(error));
         setLoading(false);
     }
@@ -104,7 +108,9 @@ export default function Publicacoes({ pageRef=0 }){
                                             <td>{post.id}</td>
                                             <td>{convertDate(post.created_at)}</td>
                                             <td><Link to={`/post/${post.id}`}>{post.name}</Link></td>
-                                            <td></td>
+                                            <td>
+                                                {"oi"}
+                                            </td>
                                             <td><Link to={`/editar-publicacao/${post.id}`}>Editar</Link></td>
                                             <td><a onClick={() => deletePost(post.id)}>Excluir</a></td>
                                         </tr>
