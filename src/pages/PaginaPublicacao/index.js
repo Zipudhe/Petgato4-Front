@@ -38,8 +38,21 @@ export default function PaginaPublicacao() {
     let history = useHistory();
     let postContent = post.content;
 
+    const changeComment = (comment) => {
+        setComment(comment);
+    }
+
     const changeResponse = (response) => {
         setResponse(response);
+    }
+
+    const sendComment = () => {
+        if(comment === ''){
+            alert('Digite algo para poder enviar!');
+            return;
+        }
+
+        console.log(comment);
     }
 
     const sendResponse = () => {
@@ -182,8 +195,8 @@ export default function PaginaPublicacao() {
                         <h2>Gostou? Deixe um comentário abaixo:</h2>
                         {isAuthenticated() ? (
                             <div className="content-comentario">
-                                <TextArea textholder="Digite aqui seu comentário" />
-                                <div className="send-button"><Button onClick={() => alert('ENVIAR')} styles="1">ENVIAR</Button></div>
+                                <TextArea textholder="Digite aqui seu comentário" handleValue={changeComment} />
+                                <div className="send-button"><Button onClick={() => sendComment()} styles="1">ENVIAR</Button></div>
                             </div>
                         ) : (
                             <p><i>Você precisa entrar na sua conta para poder comentar!</i></p>
@@ -198,7 +211,7 @@ export default function PaginaPublicacao() {
                             {logged && // está autenticado para poder responder
                             <div className="container-response">
                                 {openResponse && 
-                                <TextArea handleValue={changeResponse} />
+                                <TextArea handleValue={changeResponse} textholder="Digite aqui seu comentário..." />
                                 }
                                 <div className="container-buttons">
                                     {openResponse && 
