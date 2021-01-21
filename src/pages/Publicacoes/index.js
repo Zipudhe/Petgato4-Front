@@ -68,7 +68,6 @@ export default function Publicacoes({ pageRef=0 }){
             .then((response) => response.data)
             .then((data) => {
                 setPosts(data);
-
             })
             .catch((error) => console.error(error));
         setLoading(false);
@@ -108,9 +107,7 @@ export default function Publicacoes({ pageRef=0 }){
                                             <td>{post.id}</td>
                                             <td>{convertDate(post.created_at)}</td>
                                             <td><Link to={`/post/${post.id}`}>{post.name}</Link></td>
-                                            <td>
-                                                {"oi"}
-                                            </td>
+                                            <td>{post.tags}</td>
                                             <td><Link to={`/editar-publicacao/${post.id}`}>Editar</Link></td>
                                             <td><a onClick={() => deletePost(post.id)}>Excluir</a></td>
                                         </tr>

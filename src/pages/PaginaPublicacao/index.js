@@ -51,7 +51,7 @@ export default function PaginaPublicacao() {
             alert('Digite algo para poder enviar!');
             return;
         }
-
+        
         console.log(comment);
     }
 
@@ -72,7 +72,7 @@ export default function PaginaPublicacao() {
 
         if(favorited){ // remove like
             setLikes(likes - 1);
-            
+
             axios.delete(`http://localhost:3000/likes/${user_id}/${location.id}`)
                 .catch((error) => history.push("/erro") );
             
@@ -83,7 +83,9 @@ export default function PaginaPublicacao() {
                 post_id: location.id,
                 user_id: user_id
             })
+            .catch((error) => history.push("/erro") );
         }
+
         setFavorited(!favorited);
     }
 
@@ -97,7 +99,12 @@ export default function PaginaPublicacao() {
 
             axios.get(`http://localhost:3000/likes/${user_id}/${id}`)
                 .then(response => response.data)
-                .then(data => setFavorited(data))
+                .then(data => {
+                    setFavorited(data);
+                    if(data){
+                        setLikes(likes + 1);
+                    }
+                })
         }
     }
 
@@ -130,10 +137,13 @@ export default function PaginaPublicacao() {
     }
 
     useEffect(() => {
-        loadLikes(location.id);
         loadTags(location.id);
         loadPost(location.id);
-    }, [likes])
+    }, [])
+
+    useEffect(() => {
+        loadLikes(location.id);
+    }, [])
 
     useEffect(() => {
         loadPopularPosts().then(response => setPopularPosts(response));
