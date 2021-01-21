@@ -24,6 +24,12 @@ export default function EditarUsuario(){
     }
     
     const saveUser = async () => {
+        
+        if(name === ''){
+            alert('O campo nome não pode ficar em branco!');
+            return;
+        }
+        
         const token = localStorage.getItem('token');
 
         axios.put(`http://localhost:3000/users/${location.id}`, {

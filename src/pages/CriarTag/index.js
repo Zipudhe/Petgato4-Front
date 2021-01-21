@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import axios from 'axios';
 
 import Header from '../../components/Header';
@@ -12,6 +12,7 @@ import './styles.css';
 export default function CriarTag(){
     const [name, setName] = useState('');
     const [description, setDescription] = useState('');
+    let history = useHistory();
 
     function changeName(name) {
         setName(name);
@@ -22,10 +23,22 @@ export default function CriarTag(){
     }
 
     const createTag = () => {
+        if(name.length === 0){
+            alert('O nome não pode ficar vazio!');
+            return;
+        }
+
+        if(description.length === 0){
+            alert('A descrição não pode estar vazia!');
+            return;
+        }
+
         axios.post(`http://localhost:3000/tags/`, {
             name: name,
             description: description
-        }).catch(error => console.error(error))
+        })
+        .then(response => history.goBack())
+        .catch(error => history.push('/erro'))
     }
 
     return (

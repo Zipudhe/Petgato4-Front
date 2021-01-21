@@ -29,12 +29,28 @@ export default function FaleConosco(){
     }
 
     const sendMessage = () => {
+        if(name.length === 0){
+            alert('O campo "Nome" não pode ficar em branco!');
+            return;
+        }
+
+        if(email.length === 0){
+            alert('O campo "Email" não pode ficar em branco!');
+            return;
+        }
+
+        if(message.length === 0){
+            alert('O campo "Mensagem" não pode ficar em branco!');
+            return;
+        }
+
         axios.post(`http://localhost:3000/messages/`, {
-            "name": name,
-            "email": email,
-            "description": message
+                name: name,
+                email: email,
+                description: message
             })
-            .catch((error) => console.error(error)); // colocar um erro de pop up
+            .then(response => alert('Sua mensagem foi enviada com sucesso!'))
+            .catch((error) => alert('Ocorreu um erro ao processar sua mensagem!'));
     }
 
     return (

@@ -1,17 +1,18 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import axios from 'axios';
 import Button from '../../components/Button';
 import Input from '../../components/Input';
-import logo_petgato from '../../assets/images/gatinho_petgato.svg';
 
 import './styles.css';
+import logo_petgato from '../../assets/images/gatinho_petgato.svg';
 
 export default function Cadastro(){
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [passwordConfirmation, setPasswordConfirmation] = useState("");
+    let history = useHistory();
 
     function changeName(name) {
         setName(name);
@@ -30,7 +31,31 @@ export default function Cadastro(){
     }
 
     const cadastrar = async () => {
-        // faz algo pra indicar pro usuário que foi (limpar inputs errados, etc)
+        
+        if(name.length === 0){
+            alert('O campo "Nome" não pode ficar vazio!');
+            return;
+        }
+
+        if(email.length === 0){
+            alert('O campo "Email" não pode ficar vazio!');
+            return;
+        }
+
+        if(password.length === 0){
+            alert('O campo "Senha" não pode ficar vazio!');
+            return;
+        }
+
+        if(passwordConfirmation.length === 0){
+            alert('O campo "Confirme sua senha" não pode ficar vazio!');
+            return;
+        }
+
+        if(password !== passwordConfirmation){
+            alert('As duas senhas não coincidem!');
+            return;
+        }
 
         axios.post(`http://localhost:3000/users/`, {
             "user": {
@@ -39,10 +64,11 @@ export default function Cadastro(){
                 password_confirmation: passwordConfirmation,
                 email: email
             }})
-            .catch((error) => console.error(error)); // colocar um erro de pop up
-        
-            // redireciona para página inicial logado já
-
+            .then(response => {
+                alert('Cadastro feito com sucesso! Por favor, entre na sua conta.');
+                history.push("/login");
+            })
+            .catch(error => history.push("/erro"));
     }
 
     return (

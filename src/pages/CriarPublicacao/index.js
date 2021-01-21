@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Link, Redirect, useHistory } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import axios from 'axios';
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
@@ -10,7 +10,6 @@ import Button from '../../components/Button';
 import Input from '../../components/Input';
 
 import './styles.css';
-import { DirectUpload } from "activestorage";
 
 export default function CriarPublicacao(){
     const [title, setTitle] = useState('');

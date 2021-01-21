@@ -1,6 +1,4 @@
-import React from 'react';
-
-import style from './styles.css';
+import './styles.css';
 
 const Footer = () => (
     <footer className="container-footer">

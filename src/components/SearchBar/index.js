@@ -27,7 +27,7 @@ export default function SearchBar({ handleValue=null, handleSubmit=null }){
             value={value}
             onChange={e => handleChange(e.target.value)}
             maxLength="64" />
-            <img src={search_icon} onClick={() => submitSearch()} />
+            <img src={search_icon} onClick={() => submitSearch()} alt="Pesquisar" />
         </div>
     );
 }

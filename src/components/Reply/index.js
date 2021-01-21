@@ -25,20 +25,20 @@ export default function Reply({ author, text, date }){
     return (
         <div className="reply">
             <div className="user-image">
-                <img src={'https://portalrapmais.com/wp-content/uploads/2019/06/mc-igu.jpg'} />
+                <img src={'https://portalrapmais.com/wp-content/uploads/2019/06/mc-igu.jpg'} alt="Imagem do usuário" />
             </div>
 
             <div className="content-reply">
                 <div className="title">
-                    <h2>{author}{user.is_admin && <img className="pet-icon" src={paw_icon} />}</h2>
+                    <h2>{author}{user.is_admin && <img className="pet-icon" src={paw_icon} alt="Administrador" />}</h2>
                     
                     <div className="title-report">
                         {opened && 
                             <div className="report" onClick={reportUser(id)}>
-                                <img src={warning_icon} /> Reportar
+                                <img src={warning_icon} alt="Reportar" /> Reportar
                             </div>
                         }
-                        <img src={feather_icon} onClick={() => setOpened(!opened)} />
+                        <img src={feather_icon} onClick={() => setOpened(!opened)} alt="Mais opções" />
                     </div>
                 </div>
                 <i>{date}</i>

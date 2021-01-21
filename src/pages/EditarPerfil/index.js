@@ -45,10 +45,17 @@ const EditarPerfil = () => {
     }
 
     const saveUser = async () => {
+        if(name.length === 0){
+            alert('O campo "Nome" não pode ficar em branco!');
+            return;
+        }
+
         if(newPassword.length > 0 && newPassword !== confirmNewPassword){
             alert('As senhas não coincidem!');
             return;
         }
+
+        // verificação pra adicionar ou não a senha e a imagem
 
         /* autenticação da senha atual */
         let correct_password = false;

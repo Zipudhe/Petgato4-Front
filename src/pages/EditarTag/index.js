@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useHistory, useParams } from 'react-router-dom';
 import axios from 'axios';
 
 import Header from '../../components/Header';
@@ -11,10 +11,11 @@ import LoadingCat from '../../components/LoadingCat';
 import './styles.css';
 
 export default function EditarTag(){
-    const [name, setName] = useState('');
-    const [description, setDescription] = useState('');
+    const [name, setName] = useState('-1');
+    const [description, setDescription] = useState('-1');
     const [loading, setLoading] = useState(true);
     const location = useParams();
+    let history = useHistory();
 
     function changeName(name) {
         setName(name);
@@ -25,10 +26,22 @@ export default function EditarTag(){
     }
 
     const editTag = (id) => {
+        if(name.length === 0){
+            alert('O nome não pode ficar vazio!');
+            return;
+        }
+
+        if(description.length === 0){
+            alert('A descrição não pode estar vazia!');
+            return;
+        }
+
         axios.put(`http://localhost:3000/tags/${id}`, {
             name: name,
             description: description
-        }).catch(error => console.error(error))
+        })
+        .then(response => history.goBack())
+        .catch(error => history.push('/erro'))
     }
 
     const loadTag = async (id) => {
@@ -50,7 +63,7 @@ export default function EditarTag(){
         <div className="container-editar-tag">
             <Header />
 
-            {name.length === 0 || description.length === 0 ? ( 
+            {name === '-1' || description === '-1' ? ( 
                 <LoadingCat />
             ) : (
                 <div className="backoffice-editar-tag">

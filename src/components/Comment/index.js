@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 
 import './styles.css';
 import feather_icon from '../../assets/feather-more-horizontal.svg';
@@ -31,20 +31,20 @@ export default function Comment({ author, text, date }){
     return (
         <div className="comment">
             <div className="user-image">
-                <img src={'https://capital95.com.br/wp-content/uploads/2020/08/baroes.jpg'} />
+                <img src={'https://capital95.com.br/wp-content/uploads/2020/08/baroes.jpg'} alt="Imagem do usuário" />
             </div>
 
             <div className="content-comment">
                 <div className="title">
-                <h2>{author}{user.is_admin && <img className="pet-icon" src={paw_icon} />}</h2>
+                <h2>{author}{user.is_admin && <img className="pet-icon" src={paw_icon} alt="Administrador" />}</h2>
                     
                     <div className="title-report">
                         {opened && 
                             <div className="report" onClick={reportUser(id)}>
-                                <img src={warning_icon} /> Reportar
+                                <img src={warning_icon} alt="Reportar" /> Reportar
                             </div>
                         }
-                        <img src={feather_icon} onClick={() => setOpened(!opened)} />
+                        <img src={feather_icon} onClick={() => setOpened(!opened)} alt="Mais opções" />
                     </div>
                 </div>
                 <i>{date}</i>

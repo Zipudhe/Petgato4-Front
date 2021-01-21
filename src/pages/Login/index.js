@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import axios from 'axios';
 import Button from '../../components/Button';
 import Input from '../../components/Input';
@@ -10,7 +10,16 @@ import './styles.css';
 export default function Login(){
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
- 
+    let history = useHistory();
+    
+    function changeEmail(email) {
+        setEmail(email);
+    }
+
+    function changePassword(password) {
+        setPassword(password);
+    }
+
     const userLogin = () => {
         axios.post(`http://localhost:3000/auth/login`, {
             email: email,
@@ -19,15 +28,8 @@ export default function Login(){
             localStorage.setItem('current_user', response.data.user_id);
             localStorage.setItem('token', response.data.token);
         })
-        .catch((error) => console.error(error)); // colocar um erro de pop up
-    }
-
-    function changeEmail(email) {
-        setEmail(email);
-    }
-
-    function changePassword(password) {
-        setPassword(password);
+        .then(response => history.push('/'))
+        .catch(error => alert('Email e/ou senha incorretos!')); // colocar um erro de pop up
     }
 
     return(

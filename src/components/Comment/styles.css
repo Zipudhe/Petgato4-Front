@@ -87,3 +87,66 @@
     height: 2vw;
     padding-right: .6vw;
 }
+
+@media (max-width: 768px) {
+    .comment {
+        display: grid;
+        grid-template-columns: 20% 80%;
+        margin-top: 5px;
+    }
+    
+    /* Comment image */
+    .comment .user-image {
+        width: 16vw;
+        height: 16vw;
+    }
+
+    /* Comment content */
+    .comment {
+        padding: 2px 0;
+    }
+
+    .comment .content-comment h2 {
+        font-size: 12px;
+        margin: 0;
+    }
+
+    .comment .content-comment i {
+        font-size: 9px;
+        color: #707070;
+    }
+
+    .comment .content-comment p {
+        font-size: 11px;
+    }
+
+    .comment .content-comment .title img {
+        cursor: pointer;
+        width: 15px;
+        height: 15px;
+    }
+
+    .comment .content-comment .title .pet-icon {
+        width: 10px;
+        height: 8.5px;
+        padding-left: 3px;
+    }
+
+    .comment .content-comment .title .report {
+        border: 1px solid #707070;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        font-size: 10px;
+        width: 80px;
+        height: 22px;
+        color: #444143;
+    }
+
+    .comment .content-comment .title .report img {
+        width: 12px;
+        height: 11px;
+        padding-right: 3px;
+    }
+}

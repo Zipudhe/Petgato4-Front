@@ -1,4 +1,4 @@
-import React from 'react';import style from './styles.css';
+import './styles.css';
 import eye_icon from '../../assets/awesome-eye.svg';
 
 const Views = ({ number=0 }) => {

@@ -230,7 +230,7 @@ export default function PaginaPublicacao() {
                     </div>
 
                     <div className="menu-right">
-                        <SearchBar />
+                        <SearchBar handleSubmit={() => history.push('/')} />
                         <h2>Explore essas tags:</h2>
                         {tags.map(tag => (
                             <div className="container-tag" key={tag.id}>

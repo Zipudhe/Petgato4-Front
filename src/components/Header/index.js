@@ -34,8 +34,8 @@ const Header = ({ backoffice=false, atual=1 }) => {
                     {atual === 5 ? (<Link to="/denuncias" className="selected-header">Denúncias</Link>) : (<Link to="/denuncias">Denúncias</Link>)}
                     {atual === 6 ? (<Link to="/mensagens" className="selected-header">Mensagens</Link>) : (<Link to="/mensagens">Mensagens</Link>)}
                     {logged && (<a onClick={logout} >Sair</a>)}
-                    <img onClick={() => changeMenu()} className="menu" src={menu_icon} />
-                    <img onClick={() => changeMenu()} className="exit" src={exit_icon} />
+                    <img onClick={() => changeMenu()} className="menu" src={menu_icon} alt="Menu" />
+                    <img onClick={() => changeMenu()} className="exit" src={exit_icon} alt="Fechar" />
                 </div>
             ) : (
                 <div className="links">
@@ -47,8 +47,8 @@ const Header = ({ backoffice=false, atual=1 }) => {
                         atual === 4 ? (<Link to="/editar-perfil" className="selected-header">Minha Conta</Link>) : (<Link to="/editar-perfil">Minha Conta</Link>)
                     ) : (<Link to="/login">Entrar</Link>)}
                     {logged && (<a onClick={logout} >Sair</a>)}
-                    <img onClick={() => changeMenu()} className="menu" src={menu_icon} />
-                    <img onClick={() => changeMenu()} className="exit" src={exit_icon} />
+                    <img onClick={() => changeMenu()} className="menu" src={menu_icon} alt="Menu" />
+                    <img onClick={() => changeMenu()} className="exit" src={exit_icon} alt="Fechar" />
                 </div>
             )}
         </div>

@@ -14,7 +14,7 @@ export default function Modal({ content, close, styles=0 }){
             <div className="box-modal">
                 <div className="header-modal">
                     <h2 className="a">Mensagem: {content.name}</h2>
-                    <img src={close_icon} onClick={close} />
+                    <img src={close_icon} onClick={close} alt="Fechar" />
                 </div>
 
                 <div className="content-modal">

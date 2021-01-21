@@ -1,8 +1,7 @@
-import React, { useState } from 'react';
 import favorite_icon_enabled from '../../assets/awesome-heart.svg';
 import favorite_icon_disabled from '../../assets/awesome-heart-1.svg';
 
-import style from './styles.css';
+import './styles.css';
 
 const Favorite = ({ number=0, enabled=false }) => {
     return (

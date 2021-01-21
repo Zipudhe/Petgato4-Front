@@ -1,5 +1,6 @@
-import React from 'react';import style from './styles.css';
 import comment_icon from '../../assets/awesome-comment-alt.svg';
+
+import './styles.css';
 
 const CommentIcon = ({ number=0 }) => {
     return (
