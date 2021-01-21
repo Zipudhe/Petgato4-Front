@@ -31,6 +31,7 @@ export default function PaginaPublicacao() {
     const [favorited, setFavorited] = useState(false);
     const [popularPosts, setPopularPosts] = useState([]);
     const [logged, setLogged] = useState(false);
+    const [openResponse, setOpenResponse] = useState(false);
     const location = useParams();
     let history = useHistory();
     let postContent = post.content;
@@ -175,6 +176,15 @@ export default function PaginaPublicacao() {
                         <div className="container-comments">
                             <Comment author={"Rodrigo Barão da Piscadinha"} text="" date={"Publicado em 14 de Janeiro de 2021 às 23h18"} />
                             <Reply author={"Igor Koishikawa"} text="" date={"Publicado em 14 de Janeiro de 2021 às 23h18"} />
+                            
+                            <div className="container-response" onClick={() => setOpenResponse(!openResponse)}>
+                                {openResponse && 
+                                <div>
+                                    oi
+                                </div>}
+                                <Button styles="1">{openResponse ? "FECHAR" : "RESPONDER"}</Button>
+                            </div>
+
                         </div>
                     </div>
 

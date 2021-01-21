@@ -178,3 +178,11 @@
     display: flex;
     justify-content: center;
 }
+
+.container-response {
+    width: 100%;
+}
+
+.container-response button {
+    margin-left: 15%;
+}
