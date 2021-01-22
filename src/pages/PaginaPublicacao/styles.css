@@ -1,7 +1,7 @@
 .container-page-publicacao {
     min-height: 100vh;
     display: grid;
-    width: 100vw;
+    width: 100%;
 }
 
 .header-page-publicacao {
@@ -42,7 +42,7 @@
     display: grid;
     width: 100%;
     grid-template-columns: 75% 25%;
-    margin-top: 1.8vw;
+    margin-top: 1.8vw;  
     word-wrap: normal;
 }
 
