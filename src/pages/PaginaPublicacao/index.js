@@ -58,7 +58,7 @@ export default function PaginaPublicacao() {
         loadComments(location.id);
         setPostComment(!postComment);
 
-        //window.location.reload();
+        window.location.reload();
     }
 
     const changeFavorite = () => {
@@ -159,7 +159,7 @@ export default function PaginaPublicacao() {
 
     return (
         <div className="container-page-publicacao">
-            <Header atual={0} />
+            <div className="header-page-publicacao"><Header atual={0} /></div>
             
             <div className="back-button">
                 <img src={arrow_left} onClick={() => history.goBack()} />
