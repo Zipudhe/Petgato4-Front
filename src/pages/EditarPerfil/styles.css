@@ -58,7 +58,10 @@
 }
 
 .container-user-image img {
-    width: 20vw;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    object-position: center; /* center */
 }
 
 .container-editar-perfil .container-alterar-foto {
