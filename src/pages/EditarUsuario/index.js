@@ -41,7 +41,7 @@ export default function EditarUsuario(){
                     'Authorization': token
                 }
             })
-            .catch(error => history.push("/erro"));
+            //.catch(error => history.push("/erro"));
     }
 
     const loadUser = async () => {
@@ -54,7 +54,7 @@ export default function EditarUsuario(){
                 }
             })
             .then(response => temp_user = response.data)
-            .catch(error => history.push("/erro"));
+            .catch(error => alert('Esse usuário não existe!'));
         
         setUser(temp_user);
         setName(temp_user.name);

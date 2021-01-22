@@ -221,6 +221,11 @@
         font-size: 12px;
     }
 
+    .container-page-publicacao .back-button {
+        width: 100%;
+        height: min-content;
+    }
+
     .container-publicacao {
         display: flex;
         width: 100%;

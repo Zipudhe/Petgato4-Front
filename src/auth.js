@@ -27,7 +27,7 @@ export const isAdmin = async () => {
             }).then((response) => auth = response.data);
     }
 
-    return true;
+    return auth;
 }
 
 export const logout = () => {
