@@ -67,3 +67,11 @@
     color: #444143;
     margin: .5vw 0;
 }
+
+.box-modal .footer-modal {
+    padding: 1vw 1vw;
+    display: flex;
+    justify-content: flex-end;
+    gap: 1vw;
+    border-top: 1px solid #B0B0B0;
+}

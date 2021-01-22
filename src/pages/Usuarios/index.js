@@ -16,6 +16,7 @@ export default function Users({ pageRef=0 }){
     const [loading, setLoading] = useState(true);
     const [totalElements, setTotalElements] = useState(0);
     const [totalPages, setTotalPages] = useState(1);
+    
     let history = useHistory();
 
     const nextPage = () => {

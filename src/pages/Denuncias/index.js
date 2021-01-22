@@ -5,6 +5,7 @@ import { Link, useHistory } from 'react-router-dom';
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
 import Pagination from '../../components/Pagination';
+import Modal from '../../components/Modal';
 import LoadingCat from '../../components/LoadingCat';
 import { convertDate } from '../../functions';
 
@@ -14,8 +15,9 @@ export default function Users({ pageRef=0 }){
     const [page, setPage] = useState(pageRef);
     const [reports, setReports] = useState([]);
     const [loading, setLoading] = useState(true);
-    const [totalElements, setTotalElements] = useState(0);
     const [totalPages, setTotalPages] = useState(1);
+    const [modalStatus, setModalStatus] = useState(false);
+    const [reportValue, setReportValue] = useState('');
     let history = useHistory();
 
     const nextPage = () => {
@@ -52,16 +54,6 @@ export default function Users({ pageRef=0 }){
             .catch((error) => console.error(error));
     }
 
-    const deleteReport = (report_id) => {
-        if(window.confirm("Tem certeza?")){
-            axios.delete(`http://localhost:3000/reports/${report_id}?page=${page}`)
-                .then((response) => response.data)
-                .then((data) => setReports(data))
-                .then(() => loadTotalPages(true))
-                .catch((error) => history.push("/erro"));
-        }
-    }
-
     const loadReports = async () => {
         setLoading(true);
         axios.get(`http://localhost:3000/reports?page=${page}`)
@@ -69,6 +61,31 @@ export default function Users({ pageRef=0 }){
             .then((data) => setReports(data))
             .catch((error) => history.push("/erro"));
         setLoading(false);
+    }
+    
+    const showReport = (report = null) => {
+        if(report){
+            setReportValue(report);
+        }
+        
+        setModalStatus(!modalStatus);
+        
+        document.body.style.overflow = modalStatus ? "visible" : "hidden";
+    }
+
+    const deleteReport = ( report_id ) => {
+        axios.delete(`http://localhost:3000/reports/${report_id}?page=${page}`)
+            .then((response) => setReports(response.data))
+            .then(() => loadTotalPages(true))
+            .then(() => showReport())
+            .catch(error => history.push("/erro"));
+    }
+
+    const deleteComment = ( report_id, comment_id ) => {
+        deleteReport(report_id);
+
+        axios.delete(`http://localhost:3000/comments/${comment_id}?page=${page}`)
+            .catch(error => history.push("/erro"));
     }
 
     useEffect(() => {
@@ -103,9 +120,17 @@ export default function Users({ pageRef=0 }){
                                         <tr key={report.id}>
                                             <td>{report.id}</td>
                                             <td>{convertDate(report.created_at)}</td>
-                                            <td><Link to={`/post/${223}`}>oi ignora isso</Link></td>
-                                            <td>{"João da Quina Santos"}</td>
-                                            <td><a onClick={() => deleteReport(report.id)} >Exibir</a></td>
+                                            <td><Link to={`/post/${223}`}>Publicação</Link></td>
+                                            <td>{"Autor do comentário"}</td>
+                                            <td>
+                                                <a onClick={() => showReport(report)}>Exibir</a>
+                                                <div className={`container-modal ${modalStatus && "on"}`}>
+                                                    <Modal styles={1} content={reportValue}
+                                                    close={showReport}
+                                                    deleteReport={deleteReport}
+                                                    deleteComment={deleteComment} />
+                                                </div>
+                                            </td>
                                         </tr>
                                     )
                                 )}

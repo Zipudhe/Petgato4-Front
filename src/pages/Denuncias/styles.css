@@ -113,3 +113,11 @@
     height: 100%;
     min-height: 20vw;
 }
+
+.container-table-reports .container-modal {
+    display: none;
+}
+
+.container-table-reports .container-modal.on {
+    display: inline;
+}

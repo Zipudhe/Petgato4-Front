@@ -1,7 +1,13 @@
+import axios from 'axios';
+import { useHistory } from 'react-router-dom';
+
+import Button from '../../components/Button';
 import './styles.css';
 import close_icon from '../../assets/close_icon.svg';
 
-export default function Modal({ content, close, styles=0 }){
+export default function Modal({ content, close, styles=0, deleteReport=null, deleteComment=null }){
+    let history = useHistory();
+
     // fecha modal ao clicar fora da div
     const verifyClick = (target) => {
         if(target.className === 'modal'){
@@ -11,19 +17,36 @@ export default function Modal({ content, close, styles=0 }){
 
     return (
         <div className="modal" onClick={e => verifyClick(e.target)}>
-            <div className="box-modal">
-                <div className="header-modal">
-                    <h2 className="a">Mensagem: {content.name}</h2>
-                    <img src={close_icon} onClick={close} alt="Fechar" />
-                </div>
+            {styles === 0 ? (
+                <div className="box-modal">
+                    <div className="header-modal">
+                        <h2 className="a">Mensagem: {content.name}</h2>
+                        <img src={close_icon} onClick={close} alt="Fechar" />
+                    </div>
 
-                <div className="content-modal">
-                    <p><b>Email:</b> {content.email}</p>
-                    <p><b>Mensagem:</b></p>
-                    <p>{content.description}</p>
+                    <div className="content-modal">
+                        <p><b>Email:</b> {content.email}</p>
+                        <p><b>Mensagem:</b></p>
+                        <p>{content.description}</p>
+                    </div>
                 </div>
+            ) : (
+                <div className="box-modal">
+                    <div className="header-modal">
+                    <h2 className="a">Comentário de {content.name}</h2>
+                        <img src={close_icon} onClick={close} alt="Fechar" />
+                    </div>
 
-            </div>
+                    <div className="content-modal">
+                        <p>{content.description}</p>
+                    </div>
+
+                    <div className="footer-modal">
+                        <Button styles="1" onClick={() => deleteReport(content.id)}>IGNORAR DENÚNCIA</Button>
+                        <Button styles="3" onClick={() => deleteComment(content.id, content.comment_id)}>APAGAR COMENTÁRIO</Button>
+                    </div>
+                </div>
+            )}
         </div>
     )
 }

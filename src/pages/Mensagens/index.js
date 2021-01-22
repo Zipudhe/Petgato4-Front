@@ -15,7 +15,6 @@ export default function Mensagens({ pageRef=0 }){
     const [messages, setMessages] = useState([]);
     const [page, setPage] = useState(pageRef);
     const [loading, setLoading] = useState(true);
-    const [totalElements, setTotalElements] = useState(0);
     const [totalPages, setTotalPages] = useState(1);
     const [modalStatus, setModalStatus] = useState(false);
     const [messageValue, setMessageValue] = useState('');
