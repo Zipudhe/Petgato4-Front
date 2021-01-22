@@ -84,6 +84,8 @@ export default function Users({ pageRef=0 }){
     const deleteComment = ( report_id, comment_id ) => {
         deleteReport(report_id);
 
+        // verifica se é comentário ou resposta
+
         axios.delete(`http://localhost:3000/comments/${comment_id}?page=${page}`)
             .catch(error => history.push("/erro"));
     }

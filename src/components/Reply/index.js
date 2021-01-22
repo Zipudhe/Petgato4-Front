@@ -13,13 +13,13 @@ import Axios from 'axios';
 export default function Reply({ reply }){
     const [opened, setOpened] = useState(false);
 
-    const reportReply = async ( id ) => {
-        let replyExist = false;
+    const reportReply = async () => {
+        let reportExist = false;
 
         await axios.get(`http://localhost:3000/isreported/${reply.comment_id}/${reply.reply_id}`)
-                .then(response => replyExist = response.data)
+                .then(response => reportExist = response.data)
             
-        if(replyExist){
+        if(reportExist){
             alert('Este comentário já foi enviado para análise.');
         } else{
 
@@ -30,7 +30,6 @@ export default function Reply({ reply }){
             .then(alert('Sua denúncia foi enviada com sucesso!'))
 
         }
-
     }
     
     return (

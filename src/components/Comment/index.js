@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import axios from 'axios';
 
 import './styles.css';
 import feather_icon from '../../assets/feather-more-horizontal.svg';
@@ -11,8 +12,21 @@ import { convertDateText } from '../../functions';
 export default function Comment({ comment }){
     const [opened, setOpened] = useState(false);
 
-    const reportComment = ( id ) => {
-        console.log(id);
+    const reportComment = async () => {
+        let reportExist = false;
+
+        await axios.get(`http://localhost:3000/isreportedcomment/${comment.comment_id}`)
+                .then(response => reportExist = response.data)
+        
+        if(reportExist){
+            alert('Este comentário já foi enviado para análise.');
+        } else{
+            axios.post(`http://localhost:3000/reports`, {
+                comment_id: comment.comment_id
+                //, reply_id: null
+            })
+            .then(alert('Sua denúncia foi enviada com sucesso!'))
+        }
     }
     
     return (

@@ -1,4 +1,3 @@
-import axios from 'axios';
 import { useHistory } from 'react-router-dom';
 
 import Button from '../../components/Button';
@@ -6,7 +5,6 @@ import './styles.css';
 import close_icon from '../../assets/close_icon.svg';
 
 export default function Modal({ content, close, styles=0, deleteReport=null, deleteComment=null }){
-    let history = useHistory();
 
     // fecha modal ao clicar fora da div
     const verifyClick = (target) => {
