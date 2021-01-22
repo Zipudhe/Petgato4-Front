@@ -121,7 +121,7 @@ export default function Mensagens({ pageRef=0 }){
                                                 <td>
                                                     <a onClick={() => showMessage(message)}>Exibir</a>
                                                     <div className={`container-modal ${modalStatus && "on"}`}>
-                                                        <Modal styles={1} content={messageValue} close={showMessage} />
+                                                        <Modal styles={0} content={messageValue} close={showMessage} />
                                                     </div>
                                                 </td>
                                                 <td><a onClick={() => deleteMessage(message.id)}>Excluir</a></td>

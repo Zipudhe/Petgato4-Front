@@ -81,13 +81,18 @@ export default function Users({ pageRef=0 }){
             .catch(error => history.push("/erro"));
     }
 
-    const deleteComment = ( report_id, comment_id ) => {
-        deleteReport(report_id);
+    const deleteComment = ( comment ) => {
+        deleteReport(comment.id);
 
         // verifica se é comentário ou resposta
-
-        axios.delete(`http://localhost:3000/comments/${comment_id}?page=${page}`)
-            .catch(error => history.push("/erro"));
+        if(comment.tipo_report === "comment"){
+            axios.delete(`http://localhost:3000/comments/${comment.comment_id}?page=${page}`)
+                .catch(error => history.push("/erro"));
+        } else{
+            axios.delete(`http://localhost:3000/replies/${comment.comment_id}?page=${page}`)
+                .catch(error => history.push("/erro"));
+        }
+        
     }
 
     useEffect(() => {
@@ -119,11 +124,11 @@ export default function Users({ pageRef=0 }){
                                 <tbody>
                                 {reports.map((report) => 
                                     (
-                                        <tr key={report.id}>
-                                            <td>{report.id}</td>
+                                        <tr key={report.comment_id}>
+                                            <td>{report.comment_id}</td>
                                             <td>{convertDate(report.created_at)}</td>
-                                            <td><Link to={`/post/${223}`}>Publicação</Link></td>
-                                            <td>{"Autor do comentário"}</td>
+                                            <td><Link to={`/post/${report.post_id}`}>{report.post_name}</Link></td>
+                                            <td>{report.comment_author}</td>
                                             <td>
                                                 <a onClick={() => showReport(report)}>Exibir</a>
                                                 <div className={`container-modal ${modalStatus && "on"}`}>

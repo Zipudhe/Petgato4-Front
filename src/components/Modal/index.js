@@ -29,17 +29,17 @@ export default function Modal({ content, close, styles=0, deleteReport=null, del
             ) : (
                 <div className="box-modal">
                     <div className="header-modal">
-                    <h2 className="a">Comentário de {content.name}</h2>
+                    <h2 className="a">Comentário de {content.comment_author}</h2>
                         <img src={close_icon} onClick={close} alt="Fechar" />
                     </div>
 
                     <div className="content-modal">
-                        <p>{content.description}</p>
+                        <p>{content.comment_description}</p>
                     </div>
 
                     <div className="footer-modal">
                         <Button styles="1" onClick={() => deleteReport(content.id)}>IGNORAR DENÚNCIA</Button>
-                        <Button styles="3" onClick={() => deleteComment(content.id, content.comment_id)}>APAGAR COMENTÁRIO</Button>
+                        <Button styles="3" onClick={() => deleteComment(content)}>APAGAR COMENTÁRIO</Button>
                     </div>
                 </div>
             )}
