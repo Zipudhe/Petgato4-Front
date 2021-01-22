@@ -20,7 +20,7 @@ const Header = ({ backoffice=false, atual=1 }) => {
     useEffect(() => {
         isAuthenticated().then(response => setLogged(response));
         isAdmin().then(response => setAdmin(response));
-    }, [down])
+    }, [down, logged, admin])
 
     return (
         <div className={`header ${down && "on"}`}>
