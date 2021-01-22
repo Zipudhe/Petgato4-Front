@@ -18,6 +18,7 @@ import './styles.css';
 export default function EditarPublicacao(){
     const [title, setTitle] = useState('');
     const [value, setValue] = useState('');
+    const [image, setImage] = useState(null);
     const [tags, setTags] = useState([]);
     const [selectedTags, setSelectedTags] = useState([]);
     const [post, setPost] = useState([]);
@@ -31,7 +32,7 @@ export default function EditarPublicacao(){
     }
 
     const changeFile = ( img ) => {
-        console.log(img);
+        setImage(img);
     }
 
     const changeCheckbox = ( id ) => {
@@ -80,12 +81,20 @@ export default function EditarPublicacao(){
             return;
         }
 
-        // adiciona o título / conteúdo
-        axios.put(`http://localhost:3000/posts/${id}`, {
-                name: title,
-                content: value
-            })
-            .catch(error => history.push("/erro"));
+        const data = new FormData();
+        
+        if(image){ // se tiver imagem, alterá-la
+            data.append('banner', image);
+        }
+        data.append('name', title);
+        data.append('content', value);
+
+        axios.put(`http://localhost:3000/posts/${location.id}`, data, {
+            headers: {
+                "Content-Type": 'multipart/form-data'
+            }
+        })
+        //.catch(error => history.push("/erro"));
 
         // adiciona as tags selecionadas
         axios.put(`http://localhost:3000/edit_tagpost/`, {
@@ -94,8 +103,9 @@ export default function EditarPublicacao(){
             })
             .catch(error => history.push("/erro"));
 
-        // foi publicado com sucesso
-        
+        // foi atualizado com sucesso
+        alert('Publicação atualizada com sucesso!')
+        history.goBack();
     }
 
     const loadTags = async (id) => {

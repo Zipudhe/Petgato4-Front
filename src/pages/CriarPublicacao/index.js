@@ -24,7 +24,6 @@ export default function CriarPublicacao(){
     }
 
     const changeFile = ( img ) => {
-        console.log(img);
         setImage(img);
     }
 
@@ -39,8 +38,7 @@ export default function CriarPublicacao(){
     }
 
     function createPost() {
-
-        return;
+        
         if(title === ''){
             alert('Você precisa definir um título!');
             return;
@@ -56,14 +54,22 @@ export default function CriarPublicacao(){
             return;
         }
         
+        const data = new FormData();
+        
+        if(image){ // se o post tiver imagem
+            data.append('banner', image);
+        }
+
+        data.append('name', title);
+        data.append('content', value);
+
         // cria a publicação
-        axios.post(`http://localhost:3000/posts/`, {
-            name: title,
-            content: value,
-            image: image
+        axios.post(`http://localhost:3000/posts/`, data, {
+                headers: {
+                    "Content-Type": 'multipart/form-data'
+                }
             })
             .then(response => {
-                console.log(response.data);
                 selectedTags.map(id => {
                     axios.post(`http://localhost:3000/tag_posts/`, {
                         post_id: response.data.id,
@@ -71,10 +77,11 @@ export default function CriarPublicacao(){
                     })
                 })
             })
-            //.catch(error => history.push("/erro")); // colocar um erro de pop up
+            .catch(error => history.push("/erro"));
 
         // foi publicado com sucesso
-        
+        alert('Publicação criada com sucesso!')
+        history.goBack();
     }
 
     const loadTags = async () => {

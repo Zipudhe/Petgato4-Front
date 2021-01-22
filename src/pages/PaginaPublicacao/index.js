@@ -6,13 +6,12 @@ import Header from '../../components/Header';
 import Footer from '../../components/Footer';
 import Button from '../../components/Button';
 import TextArea from '../../components/TextArea';
-import Comment from '../../components/Comment';
-import Reply from '../../components/Reply';
 import Views from '../../components/Views';
 import SearchBar from '../../components/SearchBar';
 import Tag from '../../components/Tag';
 import PublicacoesPopulares from '../../components/PublicacoesPopulares';
 import LoadingCat from '../../components/LoadingCat';
+import ListComments from '../../components/ListComments';
 
 import heart_off from '../../assets/awesome-heart-1.svg';
 import heart_on from '../../assets/awesome-heart.svg';
@@ -31,9 +30,9 @@ export default function PaginaPublicacao() {
     const [favorited, setFavorited] = useState(false);
     const [popularPosts, setPopularPosts] = useState([]);
     const [logged, setLogged] = useState(false);
-    const [openResponse, setOpenResponse] = useState(false);
-    const [comment, setComment] = useState('');
-    const [response, setResponse] = useState('');
+    const [comments, setComments] = useState([]);
+    const [comment, setComment] = useState(''); // comentário do usuário
+    const [postComment, setPostComment] = useState(false);
     const location = useParams();
     let history = useHistory();
     let postContent = post.content;
@@ -42,29 +41,24 @@ export default function PaginaPublicacao() {
         setComment(comment);
     }
 
-    const changeResponse = (response) => {
-        setResponse(response);
-    }
-
     const sendComment = () => {
         if(comment === ''){
             alert('Digite algo para poder enviar!');
             return;
         }
         
-        console.log(comment);
-    }
+        axios.post(`http://localhost:3000/comments`, {
+            post_id: location.id,
+            user_id: localStorage.getItem('current_user'),
+            description: comment
+        })
+        .catch((error) => history.push("/erro") );
 
-    const sendResponse = () => {
-        if(response === ''){
-            alert('Digite algo para poder enviar!');
-            return;
-        }
+        setComment('');
+        loadComments(location.id);
+        setPostComment(!postComment);
 
-        console.log(response);
-
-        setResponse('');
-        setOpenResponse(false);
+        //window.location.reload();
     }
 
     const changeFavorite = () => {
@@ -87,6 +81,12 @@ export default function PaginaPublicacao() {
         }
 
         setFavorited(!favorited);
+    }
+
+    const loadComments = async ( id ) => {
+        axios.get(`http://localhost:3000/comments_by_post/${id}`)
+            .then(response => response.data)
+            .then(data => setComments(data.reverse()))
     }
 
     const loadLikes = async ( id ) => {
@@ -144,6 +144,10 @@ export default function PaginaPublicacao() {
     useEffect(() => {
         loadLikes(location.id);
     }, [])
+    
+    useEffect(() => {
+        loadComments(location.id);
+    }, [postComment])
 
     useEffect(() => {
         loadPopularPosts().then(response => setPopularPosts(response));
@@ -176,7 +180,7 @@ export default function PaginaPublicacao() {
                         </div>
                         
                         <div className="post-image">
-                            <img src={default_post_image} />
+                            <img src={post.url ? post.url : default_post_image} />
                         </div>
 
                         <div className="text-publication" dangerouslySetInnerHTML={{__html: post.content.body}} />
@@ -203,39 +207,20 @@ export default function PaginaPublicacao() {
                         </div>
                         
                         <h2>Gostou? Deixe um comentário abaixo:</h2>
-                        {isAuthenticated() ? (
+                        {logged ? (
                             <div className="content-comentario">
-                                <TextArea textholder="Digite aqui seu comentário" handleValue={changeComment} />
+                                {postComment && <TextArea textholder="Digite aqui seu comentário" prevValue={comment} handleValue={changeComment} />}
+                                {!postComment && <TextArea textholder="Digite aqui seu comentário" prevValue={comment} handleValue={changeComment} />}
                                 <div className="send-button"><Button onClick={() => sendComment()} styles="1">ENVIAR</Button></div>
                             </div>
                         ) : (
                             <p><i>Você precisa entrar na sua conta para poder comentar!</i></p>
                         )}
                         
-                        {//se nao tiver comentarios, mostrar mensagem
-                        }
                         <div className="container-comments">
-                            <Comment author={"Rodrigo Barão da Piscadinha"} text="" date={"Publicado em 14 de Janeiro de 2021 às 23h18"} />
-                            <Reply author={"Igor Koishikawa"} text="" date={"Publicado em 14 de Janeiro de 2021 às 23h18"} />
-                            
-                            {logged && // está autenticado para poder responder
-                            <div className="container-response">
-                                {openResponse && 
-                                <TextArea handleValue={changeResponse} textholder="Digite aqui seu comentário..." />
-                                }
-                                <div className="container-buttons">
-                                    {openResponse && 
-                                    <Button styles="3" onClick={() => sendResponse()} >
-                                        ENVIAR
-                                    </Button>
-                                    }
-                                    <Button styles="1" onClick={() => setOpenResponse(!openResponse)} >
-                                        {openResponse ? "FECHAR" : "RESPONDER"}
-                                    </Button> 
-                                </div>
-                            </div>
-                            }
-
+                            {comments.length > 0 && comments.map(comment => 
+                                <ListComments comment={comment} key={comment.comment_id} />
+                            )}
                         </div>
                     </div>
 

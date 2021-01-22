@@ -55,7 +55,7 @@ export default function FaleConosco(){
 
     return (
         <div className="container-fale-conosco">
-            <div><Header atual={3} /></div>
+            <div className="header-fale-conosco"><Header atual={3} /></div>
             <div className="container-enviar-mensagem">
                 <div className="dog-image">
                     <img src={dog_image} />

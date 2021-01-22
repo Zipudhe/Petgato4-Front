@@ -1,18 +1,24 @@
 .container-fale-conosco {
     min-height: 100vh;
     display: grid;
-    grid-template-rows: 10% 80% 10%;
+    grid-template-areas: "header"
+                        "content"
+                        "footer";
+    width: 100%;
 }
 
 .container-fale-conosco .footer-fale-conosco {
-    display: flex;
+    grid-area: footer;
+    align-self: flex-end;
 }
 
-.container-fale-conosco .footer-fale-conosco footer {
-    margin-top: auto;
+.container-fale-conosco .header-fale-conosco {
+    grid-area: header;
+    height: fit-content;
 }
 
 .container-fale-conosco .container-enviar-mensagem {
+    grid-area: content;
     display: grid;
     grid-template-columns: 30% 61%;
     gap: 3%;
@@ -85,4 +91,42 @@
 
 .user-info .container-button button {
     float: right;
+}
+
+@media (max-width: 768px) {
+    .dog-image {
+        display: none;
+    }
+
+    .container-fale-conosco .container-enviar-mensagem {
+        display: flex;
+        margin: 0 6vw;
+    }
+
+    .user-info {
+        width: 100%;
+    }
+
+    .container-enviar-mensagem .user-info h2 {
+        font-size: 11px;
+    }
+    
+    .container-enviar-mensagem .user-info h1 {
+        font-size: 13px;
+    }
+
+    .container-enviar-mensagem .user-info .btn1 {
+        width: 90px;
+        height: 25px;
+        font-size: 10px;
+        padding: 0;
+        margin: 0;
+    }
+
+    .user-info .input-message textarea {
+        width: 100%;
+        padding-top: 3px;
+        font-size: 12px;
+        height: 130px;
+    }
 }

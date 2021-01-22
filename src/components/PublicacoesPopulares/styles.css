@@ -5,6 +5,11 @@
 .content-publicacoes-populares {
     border-bottom: 1px solid #B0B0B0;
     margin-bottom: 1vw;
+    max-width: 20vw;
+}
+
+.content-publicacoes-populares * {
+    word-wrap: break-word;
 }
 
 .content-publicacoes-populares a {
