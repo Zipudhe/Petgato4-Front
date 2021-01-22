@@ -160,7 +160,6 @@ const EditarPerfil = () => {
                         <Input name="Confirme sua senha" password={true} handleValue={changeConfirmNewPassword} styles={1} />
                         <Input name="Senha atual" password={true} styles={1} handleValue={changePassword} />
                         <Button styles={1} onClick={() => saveUser()}>SALVAR</Button>
-
                     </div>
                 </div>
             )}

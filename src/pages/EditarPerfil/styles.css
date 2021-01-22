@@ -16,11 +16,7 @@
     grid-area: footer;
     align-self: flex-end;
 }
-/*
-.container-editar-perfil .content-editar-perfil .file-input {
-    display: none;
-}
-*/
+
 .user-image .file-input::-webkit-file-upload-button {
     width: 1vw;
     visibility: hidden;
@@ -28,6 +24,12 @@
 
 .user-image .file-input::before {
     display: none;
+}
+
+.user-image .file-input {
+    width: min-content;
+    padding-left: 4.2vw;
+    margin-top: 1vw;
 }
 
 .content-editar-perfil {
@@ -187,4 +189,61 @@
     grid-column-end: 2;
     grid-row-start: 5;
     grid-row-end: 6;
+}
+
+@media (max-width: 768px) {
+    .content-editar-perfil {
+        grid-area: content;
+        display: grid;
+        gap: 0;
+    }
+
+    /* Image */
+    .container-user-image {
+        width: 125px;
+        height: 125px;
+    }
+    
+    .container-user-image img {
+        width: 100%;
+    }
+
+    .container-editar-perfil .container-alterar-foto {
+        gap: 8px;
+        margin: 0;
+    }
+    
+    .container-editar-perfil .container-alterar-foto a {
+        font-size: 15px;
+        margin-top: 5px;
+    }
+    
+    .container-editar-perfil .container-alterar-foto img {
+        width: 22px;
+    }
+
+    /* title */
+    .container-editar-perfil .title {
+        display: none;
+    }
+
+    .container-editar-perfil .user-info {
+        height: fit-content;
+        display: flex;
+        width: 90%;
+        margin: 0 5%;
+        flex-direction: column;
+        gap: 5px;
+        margin-bottom: 2vh;
+    }
+
+    .container-editar-perfil .user-info p {
+        font-size: 13px;
+    }
+
+    .user-image .file-input {
+        width: min-content;
+        padding-left: 25px;
+        padding-top: 0;
+    }
 }
