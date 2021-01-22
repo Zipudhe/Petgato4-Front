@@ -44,6 +44,8 @@ export default function ListComments({ comment }) {
         setResponse('');
         setPostResponse(!postResponse);
         setOpenResponse(false);
+
+        window.location.reload();
     }
 
     useEffect(() => {

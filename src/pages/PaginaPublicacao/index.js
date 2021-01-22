@@ -57,6 +57,8 @@ export default function PaginaPublicacao() {
         setComment('');
         loadComments(location.id);
         setPostComment(!postComment);
+
+        //window.location.reload();
     }
 
     const changeFavorite = () => {

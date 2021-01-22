@@ -18,7 +18,7 @@ const EditarPerfil = () => {
     const [password, setPassword] = useState('');
     const [newPassword, setNewPassword] = useState('');
     const [confirmNewPassword, setConfirmNewPassword] = useState('');
-    const [image, setImage] = useState(null);
+    const [image, setImage] = useState(default_user_image);
     const [loading, setLoading] = useState(true);
     let history = useHistory();
 
@@ -54,8 +54,6 @@ const EditarPerfil = () => {
             return;
         }
 
-        // verificação pra adicionar ou não a senha e a imagem
-        /*
         // autenticação da senha atual
         let correct_password = false;
         await axios.post(`http://localhost:3000/auth/login`, {
@@ -71,20 +69,40 @@ const EditarPerfil = () => {
         if(!correct_password){
             return;
         }
-        */
+        
+        let token = localStorage.getItem('token');
         const data = new FormData();
+        let data2 = {};
 
-        data.append('profile_image', image);
+        if(image){ // se tiver imagem para ser enviada
+            data.append('profile_image', image);
+        }
+
+        if(newPassword.length > 0){
+            data.append('password', newPassword);
+            data2["password"] = newPassword;
+        }
+
         data.append('name', name);
+        data2["name"] = name;
 
         axios.put(`http://localhost:3000/users/${localStorage.getItem('current_user')}/`, data, {
                 headers: {
                     "Content-Type": `multipart/form-data; boundary=${data._boundary}`,
+                    "Authorization": token
                 }
             })
             .catch(error => history.push("/erro"));
 
-        return;
+        axios.put(`http://localhost:3000/users/${localStorage.getItem('current_user')}/`, data2, {
+            headers: {
+                "Authorization": token
+            }
+        })
+        .catch(error => history.push("/erro"));
+
+        alert('Dados alterados com sucesso!');
+        window.location.reload();
     }
 
     const loadUser = async () => {
@@ -117,13 +135,15 @@ const EditarPerfil = () => {
                 <div className="content-editar-perfil">
                     <div className="user-image">
                         <div className="container-user-image">
-                            <img src={user.url ? user.url : default_user_image} />
+                            <img src={user.url ? user.url : image} />
                         </div>
-                        <div className="container-alterar-foto" >
-                            <img src={camera_icon} />
-                            <a>Alterar sua foto de perfil</a>
-                        </div>
-                        <input className="file-input" type="file" multiple={false} accept="image/*" onChange={e => changeFile(e.target.files[0])} />
+                        <label htmlFor="file-input-user-image">
+                            <div className="container-alterar-foto" >
+                                <img src={camera_icon} />
+                                <a>Alterar sua foto de perfil</a>
+                            </div>
+                        </label>
+                        <input id="file-input-user-image" className="file-input" type="file" multiple={false} accept="image/*" onChange={e => changeFile(e.target.files[0])} />
                     </div>
 
                     <div className="user-info">

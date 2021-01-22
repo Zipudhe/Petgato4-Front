@@ -24,7 +24,6 @@ export default function CriarPublicacao(){
     }
 
     const changeFile = ( img ) => {
-        console.log(img);
         setImage(img);
     }
 
@@ -71,7 +70,6 @@ export default function CriarPublicacao(){
                 }
             })
             .then(response => {
-                console.log(response.data);
                 selectedTags.map(id => {
                     axios.post(`http://localhost:3000/tag_posts/`, {
                         post_id: response.data.id,
@@ -82,7 +80,8 @@ export default function CriarPublicacao(){
             .catch(error => history.push("/erro"));
 
         // foi publicado com sucesso
-        
+        alert('Publicação criada com sucesso!')
+        history.goBack();
     }
 
     const loadTags = async () => {

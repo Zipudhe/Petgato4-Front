@@ -58,12 +58,11 @@ export default function Cadastro(){
         }
 
         axios.post(`http://localhost:3000/users/`, {
-            "user": {
                 name: name,
                 password: password,
                 password_confirmation: passwordConfirmation,
                 email: email
-            }})
+            })
             .then(response => {
                 alert('Cadastro feito com sucesso! Por favor, entre na sua conta.');
                 history.push("/login");

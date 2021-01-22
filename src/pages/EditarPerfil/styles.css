@@ -16,6 +16,19 @@
     grid-area: footer;
     align-self: flex-end;
 }
+/*
+.container-editar-perfil .content-editar-perfil .file-input {
+    display: none;
+}
+*/
+.user-image .file-input::-webkit-file-upload-button {
+    width: 1vw;
+    visibility: hidden;
+}
+
+.user-image .file-input::before {
+    display: none;
+}
 
 .content-editar-perfil {
     grid-area: content;

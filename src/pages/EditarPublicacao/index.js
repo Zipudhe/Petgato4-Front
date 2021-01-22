@@ -94,14 +94,7 @@ export default function EditarPublicacao(){
                 "Content-Type": 'multipart/form-data'
             }
         })
-        .catch(error => history.push("/erro"));
-
-        // adiciona o título / conteúdo
-        axios.put(`http://localhost:3000/posts/${id}`, {
-                name: title,
-                content: value
-            })
-            .catch(error => history.push("/erro"));
+        //.catch(error => history.push("/erro"));
 
         // adiciona as tags selecionadas
         axios.put(`http://localhost:3000/edit_tagpost/`, {
@@ -110,8 +103,9 @@ export default function EditarPublicacao(){
             })
             .catch(error => history.push("/erro"));
 
-        // foi publicado com sucesso
-        
+        // foi atualizado com sucesso
+        alert('Publicação atualizada com sucesso!')
+        history.goBack();
     }
 
     const loadTags = async (id) => {
