@@ -32,10 +32,10 @@ export default function Tags({ pageRef=0 }){
     }
 
     const specificPage = () => {
-        if(page === 1){
-            setPage(3);
+        if(page === 0){
+            setPage(2);
         } else {
-            setPage(totalPages - 2);
+            setPage(page - 2);
         }
     }
 

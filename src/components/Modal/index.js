@@ -1,5 +1,3 @@
-import { useHistory } from 'react-router-dom';
-
 import Button from '../../components/Button';
 import './styles.css';
 import close_icon from '../../assets/close_icon.svg';
