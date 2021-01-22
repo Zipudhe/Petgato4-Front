@@ -76,6 +76,7 @@
 
 .user-info .input-message textarea {
     width: 100%;
+    min-height: 10vw;
     padding-top: 1vw;
 }
 
@@ -86,7 +87,7 @@
 
 .user-info .container-button {
     width: 100%;
-    margin-top: 3vw;
+    margin-top: 1.2vw;
 }
 
 .user-info .container-button button {
