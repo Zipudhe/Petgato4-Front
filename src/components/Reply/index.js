@@ -1,4 +1,5 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
+import axios from 'axios';
 
 import './styles.css';
 import feather_icon from '../../assets/feather-more-horizontal.svg';
@@ -7,18 +8,35 @@ import paw_icon from '../../assets/paw_icon.png';
 import default_user_image from '../../assets/images/default_user_image.png';
 
 import { convertDateText } from '../../functions';
+import Axios from 'axios';
 
 export default function Reply({ reply }){
     const [opened, setOpened] = useState(false);
 
-    const reportReply = ( id ) => {
-        console.log(id);
+    const reportReply = async ( id ) => {
+        let replyExist = false;
+
+        await axios.get(`http://localhost:3000/isreported/${reply.comment_id}/${reply.reply_id}`)
+                .then(response => replyExist = response.data)
+            
+        if(replyExist){
+            alert('Este comentário já foi enviado para análise.');
+        } else{
+
+            axios.post(`http://localhost:3000/reports`, {
+                comment_id: reply.comment_id,
+                reply_id: reply.reply_id
+            })
+            .then(alert('Sua denúncia foi enviada com sucesso!'))
+
+        }
+
     }
     
     return (
         <div className="reply">
             <div className="user-image">
-                <img src={default_user_image} alt="Imagem do usuário" />
+                <img src={reply.url ? reply.url : default_user_image} alt="Imagem do usuário" />
             </div>
 
             <div className="content-reply">

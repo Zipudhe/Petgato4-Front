@@ -98,8 +98,8 @@
     
     /* reply image */
     .reply .user-image {
-        width: 12vw;
-        height: 12vw;
+        width: 40px;
+        height: 40px;
     }
 
     /* reply content */

@@ -18,7 +18,7 @@ export default function Comment({ comment }){
     return (
         <div className="comment">
             <div className="user-image">
-                <img src={default_user_image} alt="Imagem do usuário" />
+                <img src={comment.url ? comment.url : default_user_image} alt="Imagem do usuário" />
             </div>
 
             <div className="content-comment">
