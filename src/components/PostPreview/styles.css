@@ -22,7 +22,7 @@
 
 .container-post .post-img img {
     width: 100%;
-    height: 15vw;
+    height: 20vw; /* altura */
     object-fit: cover;
     object-position: center;
 }

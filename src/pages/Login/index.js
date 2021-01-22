@@ -4,6 +4,7 @@ import axios from 'axios';
 import Button from '../../components/Button';
 import Input from '../../components/Input';
 import logo_petgato from '../../assets/images/gatinho_petgato.svg';
+import { base_url } from '../../api';
 
 import './styles.css';
 
@@ -21,7 +22,7 @@ export default function Login(){
     }
 
     const userLogin = () => {
-        axios.post(`http://localhost:3000/auth/login`, {
+        axios.post(`${base_url}/auth/login`, {
             email: email,
             password: password
         }).then((response) => {

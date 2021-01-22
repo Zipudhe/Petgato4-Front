@@ -7,6 +7,7 @@ import Footer from '../../components/Footer';
 import Button from '../../components/Button';
 import Pagination from '../../components/Pagination';
 import LoadingCat from '../../components/LoadingCat';
+import { base_url } from '../../api';
 
 import './styles.css';
 
@@ -40,7 +41,7 @@ export default function Tags({ pageRef=0 }){
     }
 
     function loadTotalPages( deleted=false ) {
-        axios.get(`http://localhost:3000/countags/`)
+        axios.get(`${base_url}/countags/`)
             .then((response) => response.data)
             .then((data) => {
                 if(deleted && data > 0 && data % 5 === 0){
@@ -55,7 +56,7 @@ export default function Tags({ pageRef=0 }){
 
     const deleteTag = (tag_id) => {
         if(window.confirm("Tem certeza?")){
-            axios.delete(`http://localhost:3000/tags/${tag_id}?page=${page}`)
+            axios.delete(`${base_url}/tags/${tag_id}?page=${page}`)
                 .then((response) => response.data)
                 .then((data) => setTags(data))
                 .then(() => loadTotalPages(true))
@@ -65,14 +66,14 @@ export default function Tags({ pageRef=0 }){
 
     const loadTags = async () => {
         setLoading(true);
-        axios.get(`http://localhost:3000/tags?page=${page}`)
+        axios.get(`${base_url}/tags?page=${page}`)
             .then((response) => response.data)
             .then((data) => {
                 let tags_posts = [];
 
                 // carrega o número de posts dessa tag
                 data.map(tag => {
-                    axios.get(`http://localhost:3000/countagposts/${tag.id}`)
+                    axios.get(`${base_url}/countagposts/${tag.id}`)
                         .then(post_number => tags_posts.push(post_number.data));
                 
                 //console.log(tags_posts);

@@ -8,6 +8,7 @@ import Pagination from '../../components/Pagination';
 import Modal from '../../components/Modal';
 import LoadingCat from '../../components/LoadingCat';
 import { convertDate } from '../../functions';
+import { base_url } from '../../api';
 
 import './styles.css';
 
@@ -41,7 +42,7 @@ export default function Users({ pageRef=0 }){
     }
 
     function loadTotalPages( deleted=false ) {
-        axios.get(`http://localhost:3000/report_count/`)
+        axios.get(`${base_url}/report_count/`)
             .then((response) => response.data)
             .then((data) => {
                 if(deleted && data > 0 && data % 5 === 0){
@@ -56,7 +57,7 @@ export default function Users({ pageRef=0 }){
 
     const loadReports = async () => {
         setLoading(true);
-        axios.get(`http://localhost:3000/reports?page=${page}`)
+        axios.get(`${base_url}/reports?page=${page}`)
             .then((response) => response.data)
             .then((data) => setReports(data))
             .catch((error) => history.push("/erro"));
@@ -74,7 +75,7 @@ export default function Users({ pageRef=0 }){
     }
 
     const deleteReport = ( report_id ) => {
-        axios.delete(`http://localhost:3000/reports/${report_id}?page=${page}`)
+        axios.delete(`${base_url}/reports/${report_id}?page=${page}`)
             .then((response) => setReports(response.data))
             .then(() => loadTotalPages(true))
             .then(() => showReport())
@@ -86,10 +87,10 @@ export default function Users({ pageRef=0 }){
 
         // verifica se é comentário ou resposta
         if(comment.tipo_report === "comment"){
-            axios.delete(`http://localhost:3000/comments/${comment.comment_id}?page=${page}`)
+            axios.delete(`${base_url}/comments/${comment.comment_id}?page=${page}`)
                 .catch(error => history.push("/erro"));
         } else{
-            axios.delete(`http://localhost:3000/replies/${comment.comment_id}?page=${page}`)
+            axios.delete(`${base_url}/replies/${comment.comment_id}?page=${page}`)
                 .catch(error => history.push("/erro"));
         }
         

@@ -11,6 +11,7 @@ import PostPreview from '../../components/PostPreview';
 import Pagination from '../../components/Pagination';
 import PublicacoesPopulares from '../../components/PublicacoesPopulares';
 import LoadingCat from '../../components/LoadingCat';
+import { base_url } from '../../api';
 
 import './styles.css';
 
@@ -24,7 +25,7 @@ export default function PaginaInicial({ pageRef = 0 }) {
     const [value, setValue] = useState('');
     const [frontValue, setFrontValue] = useState('');
     let history = useHistory();
-    
+
     function changeValue(value) {
         setValue(value);
     }
@@ -50,7 +51,7 @@ export default function PaginaInicial({ pageRef = 0 }) {
     }
 
     function loadTotalPages( deleted=false ) {
-        axios.get(`http://localhost:3000/countposts/`)
+        axios.get(`${base_url}/countposts/`)
             .then((response) => response.data)
             .then((data) => {
                 if(deleted && data > 0 && data % 5 === 0){
@@ -64,14 +65,14 @@ export default function PaginaInicial({ pageRef = 0 }) {
     }
 
     const loadPopularPosts = async () => {
-        axios.get(`http://localhost:3000/popularposts`)
+        axios.get(`${base_url}/popularposts`)
             .then((response) => response.data)
             .then((data) => setPopularPosts(data))
             .catch((error) => history.push("/erro") );
     }
 
     const loadPosts = async () => {
-        axios.get(`http://localhost:3000/posts?page=${page}`)
+        axios.get(`${base_url}/posts?page=${page}`)
             .then((response) => response.data)
             .then((data) => setPosts(data))
             .catch((error) => history.push("/erro") );
@@ -79,7 +80,7 @@ export default function PaginaInicial({ pageRef = 0 }) {
     }
 
     const searchPosts = async () => {
-        axios.get(`http://localhost:3000/searchposts?q=${value}`)
+        axios.get(`${base_url}/searchposts?q=${value}`)
             .then((response) => response.data)
             .then((data) => setPosts(data))
             .catch((error) => history.push("/erro") );

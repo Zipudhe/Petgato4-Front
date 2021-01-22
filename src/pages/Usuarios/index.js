@@ -7,6 +7,7 @@ import Footer from '../../components/Footer';
 import Pagination from '../../components/Pagination';
 import LoadingCat from '../../components/LoadingCat';
 import { convertDate } from '../../functions';
+import { base_url } from '../../api';
 
 import './styles.css';
 
@@ -40,7 +41,7 @@ export default function Users({ pageRef=0 }){
     }
 
     function loadTotalPages( deleted=false ) {
-        axios.get(`http://localhost:3000/users_count/`)
+        axios.get(`${base_url}/users_count/`)
             .then((response) => response.data)
             .then((data) => {
                 if(deleted && data > 0 && data % 5 === 0){
@@ -55,7 +56,7 @@ export default function Users({ pageRef=0 }){
 
     const deleteUser = (user_id) => {
         if(window.confirm("Tem certeza?")){
-            axios.delete(`http://localhost:3000/users/${user_id}?page=${page}`, {
+            axios.delete(`${base_url}/users/${user_id}?page=${page}`, {
                 headers: {
                     'Authorization': localStorage.getItem('token')
                 }
@@ -69,7 +70,7 @@ export default function Users({ pageRef=0 }){
 
     const loadUsers = async () => {
         setLoading(true);
-        axios.get(`http://localhost:3000/users?page=${page}`)
+        axios.get(`${base_url}/users?page=${page}`)
             .then((response) => response.data)
             .then((data) => setUsers(data))
             .catch((error) => history.push("/erro"));

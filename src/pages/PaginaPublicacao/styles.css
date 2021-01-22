@@ -12,6 +12,7 @@
     margin-top: 2vw;
     display: flex;
     align-items: center;
+    max-width: 100vw;
 }
 
 .footer-publicacao footer {
@@ -48,7 +49,6 @@
 .content-publicacao {
     padding: 0 5%;
     border-right: 1px solid #B0B0B0;
-    max-width: 75vw;
     overflow: hidden;
 }
 
@@ -148,7 +148,7 @@
 }
 
 .content-publicacao img {
-    max-width: 100%;
+    width: 100%;
 }
 
 .content-publicacao .send-button {
@@ -202,7 +202,6 @@
     margin-left: 15%;
 }
 .container-response textarea {
-    
     width: 85%;
     padding-top: .8vw;
     margin: 1vw 0;

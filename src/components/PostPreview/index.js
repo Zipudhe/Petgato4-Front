@@ -10,6 +10,7 @@ import Button from '../Button';
 
 import './styles.css';
 import default_post_image from '../../assets/images/default_post_image.jpg';
+import { base_url } from '../../api';
 
 export default function PostPreview({ post }){
     const [tags, setTags] = useState([]);
@@ -18,19 +19,19 @@ export default function PostPreview({ post }){
     let history = useHistory();
 
     const loadCommentNumber = ( id ) => {
-        axios.get(`http://localhost:3000/comments_count/${id}`)
+        axios.get(`${base_url}/comments_count/${id}`)
             .then(response => response.data)
             .then(data => data && setCommentNumber(data.n_comments))
     }
 
     const loadLikes = ( id ) => {
-        axios.get(`http://localhost:3000/countlikespost/${id}`)
+        axios.get(`${base_url}/countlikespost/${id}`)
             .then(response => response.data)
             .then(data => data && setLikes(data))
     }
 
     const loadTags = ( id ) => {
-        axios.get(`http://localhost:3000/tagsbypost/${id}`)
+        axios.get(`${base_url}/tagsbypost/${id}`)
             .then(response => response.data)
             .then(data => setTags(data))
     }

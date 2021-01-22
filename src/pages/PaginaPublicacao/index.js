@@ -21,6 +21,7 @@ import default_post_image from '../../assets/images/default_post_image.jpg';
 import './styles.css';
 import { isAuthenticated } from '../../auth';
 import { convertDateText } from '../../functions'; 
+import { base_url } from '../../api';
 
 export default function PaginaPublicacao() {
     const [post, setPost] = useState('');
@@ -47,7 +48,7 @@ export default function PaginaPublicacao() {
             return;
         }
         
-        axios.post(`http://localhost:3000/comments`, {
+        axios.post(`${base_url}/comments`, {
             post_id: location.id,
             user_id: localStorage.getItem('current_user'),
             description: comment
@@ -67,13 +68,13 @@ export default function PaginaPublicacao() {
         if(favorited){ // remove like
             setLikes(likes - 1);
 
-            axios.delete(`http://localhost:3000/likes/${user_id}/${location.id}`)
+            axios.delete(`${base_url}/likes/${user_id}/${location.id}`)
                 .catch((error) => history.push("/erro") );
             
         } else{ // adiciona like
             setLikes(likes + 1);
 
-            axios.post(`http://localhost:3000/likes`, {
+            axios.post(`${base_url}/likes`, {
                 post_id: location.id,
                 user_id: user_id
             })
@@ -84,20 +85,20 @@ export default function PaginaPublicacao() {
     }
 
     const loadComments = async ( id ) => {
-        axios.get(`http://localhost:3000/comments_by_post/${id}`)
+        axios.get(`${base_url}/comments_by_post/${id}`)
             .then(response => response.data)
             .then(data => setComments(data.reverse()))
     }
 
     const loadLikes = async ( id ) => {
-        axios.get(`http://localhost:3000/countlikespost/${id}`)
+        axios.get(`${base_url}/countlikespost/${id}`)
             .then(response => response.data)
             .then(data => data && setLikes(data))
 
         if(await isAuthenticated()){
             const user_id = localStorage.getItem('current_user');
 
-            axios.get(`http://localhost:3000/likes/${user_id}/${id}`)
+            axios.get(`${base_url}/likes/${user_id}/${id}`)
                 .then(response => response.data)
                 .then(data => {
                     setFavorited(data);
@@ -109,19 +110,19 @@ export default function PaginaPublicacao() {
     }
 
     const loadTags = async (id) => {
-        axios.get(`http://localhost:3000/tagsbypost/${id}`)
+        axios.get(`${base_url}/tagsbypost/${id}`)
             .then(response => response.data)
             .then(data => setTags(data))
     }
 
     const loadPost = async (id) => {
-        axios.get(`http://localhost:3000/posts/${id}`)
+        axios.get(`${base_url}/posts/${id}`)
             .then((response) => response.data)
             .then((data) => {
                 setPost(data);
 
                 // incrementa o número de visualizações
-                axios.put(`http://localhost:3000/posts/${id}`, {
+                axios.put(`${base_url}/posts/${id}`, {
                     views: data.views + 1
                 })
             })
@@ -130,7 +131,7 @@ export default function PaginaPublicacao() {
     }
 
     const loadPopularPosts = async () => {
-        axios.get(`http://localhost:3000/popularposts`)
+        axios.get(`${base_url}/popularposts`)
             .then((response) => response.data)
             .then((data) => setPopularPosts(data))
             .catch((error) => history.push("/erro") );

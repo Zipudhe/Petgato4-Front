@@ -10,6 +10,7 @@ import Button from '../../components/Button';
 import Input from '../../components/Input';
 
 import './styles.css';
+import { base_url } from '../../api';
 
 export default function CriarPublicacao(){
     const [title, setTitle] = useState('');
@@ -64,14 +65,14 @@ export default function CriarPublicacao(){
         data.append('content', value);
 
         // cria a publicação
-        axios.post(`http://localhost:3000/posts/`, data, {
+        axios.post(`${base_url}/posts/`, data, {
                 headers: {
                     "Content-Type": 'multipart/form-data'
                 }
             })
             .then(response => {
                 selectedTags.map(id => {
-                    axios.post(`http://localhost:3000/tag_posts/`, {
+                    axios.post(`${base_url}/tag_posts/`, {
                         post_id: response.data.id,
                         tag_id: id
                     })
@@ -85,7 +86,7 @@ export default function CriarPublicacao(){
     }
 
     const loadTags = async () => {
-        axios.get(`http://localhost:3000/alltags/`)
+        axios.get(`${base_url}/alltags/`)
             .then((response) => response.data)
             .then((data) => setTags(data))
             .catch(error => history.push("/erro"));

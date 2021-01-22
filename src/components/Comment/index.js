@@ -8,6 +8,7 @@ import paw_icon from '../../assets/paw_icon.png';
 import default_user_image from '../../assets/images/default_user_image.png';
 
 import { convertDateText } from '../../functions';
+import { base_url } from '../../api';
 
 export default function Comment({ comment }){
     const [opened, setOpened] = useState(false);
@@ -15,13 +16,13 @@ export default function Comment({ comment }){
     const reportComment = async () => {
         let reportExist = false;
 
-        await axios.get(`http://localhost:3000/isreportedcomment/${comment.comment_id}`)
+        await axios.get(`${base_url}/isreportedcomment/${comment.comment_id}`)
                 .then(response => reportExist = response.data)
         
         if(reportExist){
             alert('Este comentário já foi enviado para análise.');
         } else{
-            axios.post(`http://localhost:3000/reports`, {
+            axios.post(`${base_url}/reports`, {
                 comment_id: comment.comment_id
                 //, reply_id: null
             })

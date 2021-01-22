@@ -6,6 +6,7 @@ import Footer from '../../components/Footer';
 import Button from '../../components/Button';
 import Input from '../../components/Input';
 import TextArea from '../../components/TextArea';
+import { base_url } from '../../api';
 
 import dog_image from '../../assets/images/Imagem de Contato.jpg';
 
@@ -44,7 +45,7 @@ export default function FaleConosco(){
             return;
         }
 
-        axios.post(`http://localhost:3000/messages/`, {
+        axios.post(`${base_url}/messages/`, {
                 name: name,
                 email: email,
                 description: message

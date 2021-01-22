@@ -10,6 +10,7 @@ import Tag from '../../components/Tag';
 import PublicacoesPopulares from '../../components/PublicacoesPopulares';
 import PostPreview from '../../components/PostPreview';
 import LoadingCat from '../../components/LoadingCat';
+import { base_url } from '../../api';
 
 import './styles.css';
 
@@ -23,7 +24,7 @@ export default function PaginaInicial() {
     let history = useHistory();
 
     const loadPopularPosts = async () => {
-        axios.get(`http://localhost:3000/popularposts`)
+        axios.get(`${base_url}/popularposts`)
             .then((response) => response.data)
             .then((data) => setPopularPosts(data))
             .catch((error) => history.push("/erro") );
@@ -31,7 +32,7 @@ export default function PaginaInicial() {
 
     // carerga os posts que tem essa tag
     const loadPosts = async ( id ) => {
-        axios.get(`http://localhost:3000/postsbytag/${id}`)
+        axios.get(`${base_url}/postsbytag/${id}`)
             .then((response) => response.data)
             .then((data) => setPosts(data))
             .catch((error) => history.push("/erro") );
@@ -39,14 +40,14 @@ export default function PaginaInicial() {
     }
     
     const loadTags = async () => {
-        axios.get(`http://localhost:3000/alltags/`)
+        axios.get(`${base_url}/alltags/`)
             .then((response) => response.data)
             .then((data) => setTags(data))
             .catch(error => history.push("/erro"));
     }
 
     const loadTag = async ( id ) => {
-        axios.get(`http://localhost:3000/tags/${id}`)
+        axios.get(`${base_url}/tags/${id}`)
             .then((response) => response.data)
             .then((data) => setTag(data))
             .catch(error => history.push("/erro"));

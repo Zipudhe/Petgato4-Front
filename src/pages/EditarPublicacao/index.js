@@ -12,6 +12,7 @@ import Favorite from '../../components/Favorite';
 import CommentIcon from '../../components/CommentIcon';
 import Views from '../../components/Views';
 import LoadingCat from '../../components/LoadingCat';
+import { base_url } from '../../api';
 
 import './styles.css';
 
@@ -46,13 +47,13 @@ export default function EditarPublicacao(){
     }
 
     const loadLikes = ( id ) => {
-        axios.get(`http://localhost:3000/countlikespost/${id}`)
+        axios.get(`${base_url}/countlikespost/${id}`)
             .then(response => response.data)
             .then(data => setLikes(data))
     }
 
     const loadPost = async (id) => {
-        axios.get(`http://localhost:3000/posts/${id}`)
+        axios.get(`${base_url}/posts/${id}`)
             .then((response) => response.data)
             .then((data) => {
                 setPost(data);
@@ -89,7 +90,7 @@ export default function EditarPublicacao(){
         data.append('name', title);
         data.append('content', value);
 
-        axios.put(`http://localhost:3000/posts/${location.id}`, data, {
+        axios.put(`${base_url}/posts/${location.id}`, data, {
             headers: {
                 "Content-Type": 'multipart/form-data'
             }
@@ -97,7 +98,7 @@ export default function EditarPublicacao(){
         //.catch(error => history.push("/erro"));
 
         // adiciona as tags selecionadas
-        axios.put(`http://localhost:3000/edit_tagpost/`, {
+        axios.put(`${base_url}/edit_tagpost/`, {
                 post_id: id,
                 tags: selectedTags.toString()
             })
@@ -109,14 +110,14 @@ export default function EditarPublicacao(){
     }
 
     const loadTags = async (id) => {
-        axios.get(`http://localhost:3000/alltags/`)
+        axios.get(`${base_url}/alltags/`)
             .then((response) => response.data)
             .then((data) => setTags(data))
             .catch(error => history.push("/erro"));
     }
 
     const loadSelectedTags = async (id) => {
-        await axios.get(`http://localhost:3000/tagsbypost/${id}`)
+        await axios.get(`${base_url}/tagsbypost/${id}`)
             .then(response => response.data)
             .then(data => {
                 data.map(tag => selectedTags.push(tag.id));

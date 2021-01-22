@@ -9,6 +9,7 @@ import Button from '../../components/Button';
 
 import './styles.css';
 import { isAuthenticated } from '../../auth';
+import { base_url } from '../../api';
 
 export default function ListComments({ comment }) {
     const [logged, setLogged] = useState(false);
@@ -19,7 +20,7 @@ export default function ListComments({ comment }) {
     let history = useHistory();
 
     const loadReplies = async ( id ) => {
-        axios.get(`http://localhost:3000/replies_by_comment/${id}`)
+        axios.get(`${base_url}/replies_by_comment/${id}`)
             .then(response => response.data)
             .then(data => setReplies(data))
     }
@@ -34,7 +35,7 @@ export default function ListComments({ comment }) {
             return;
         }
 
-        axios.post(`http://localhost:3000/replies`, {
+        axios.post(`${base_url}/replies`, {
             comment_id: comment.comment_id,
             user_id: localStorage.getItem('current_user'),
             description: response

@@ -7,6 +7,7 @@ import Footer from '../../components/Footer';
 import Input from '../../components/Input';
 import Button from '../../components/Button';
 import LoadingCat from '../../components/LoadingCat';
+import { base_url } from '../../api';
 
 import './styles.css';
 
@@ -36,7 +37,7 @@ export default function EditarTag(){
             return;
         }
 
-        axios.put(`http://localhost:3000/tags/${id}`, {
+        axios.put(`${base_url}/tags/${id}`, {
             name: name,
             description: description
         })
@@ -45,7 +46,7 @@ export default function EditarTag(){
     }
 
     const loadTag = async (id) => {
-        axios.get(`http://localhost:3000/tags/${id}`)
+        axios.get(`${base_url}/tags/${id}`)
         .then(response => response.data)
         .then(data => {
             setName(data.name);
