@@ -23,30 +23,30 @@ const Header = ({ backoffice=false, atual=1 }) => {
     }, [down, logged, admin])
 
     return (
-        <div className={`header ${down && "on"}`}>
-            <Link to="/"><img alt="PetGatô" src={petgato_icon}/></Link>
+        <div className={`header ${down && "on"}`} href="/#">
+            <Link to="/" href="/#"><img alt="PetGatô" src={petgato_icon}/></Link>
             {backoffice ? (
                 <div className="links">
-                    <Link to="/">Página Inicial</Link>
-                    {atual === 2 ? (<Link to="/publicacoes" className="selected-header">Publicações</Link>) : (<Link to="/publicacoes">Publicações</Link>)}
-                    {atual === 3 ? (<Link to="/tags" className="selected-header">Tags</Link>) : (<Link to="/tags">Tags</Link>)}
-                    {atual === 4 ? (<Link to="/usuarios" className="selected-header">Usuários</Link>) : (<Link to="/usuarios">Usuários</Link>)}
-                    {atual === 5 ? (<Link to="/denuncias" className="selected-header">Denúncias</Link>) : (<Link to="/denuncias">Denúncias</Link>)}
-                    {atual === 6 ? (<Link to="/mensagens" className="selected-header">Mensagens</Link>) : (<Link to="/mensagens">Mensagens</Link>)}
-                    {logged && (<a onClick={logout} >Sair</a>)}
+                    <Link to="/" href="/#">Página Inicial</Link>
+                    {atual === 2 ? (<Link to="/publicacoes" href="/#" className="selected-header">Publicações</Link>) : (<Link to="/publicacoes">Publicações</Link>)}
+                    {atual === 3 ? (<Link to="/tags" href="/#" className="selected-header">Tags</Link>) : (<Link to="/tags">Tags</Link>)}
+                    {atual === 4 ? (<Link to="/usuarios" href="/#" className="selected-header">Usuários</Link>) : (<Link to="/usuarios">Usuários</Link>)}
+                    {atual === 5 ? (<Link to="/denuncias" href="/#"className="selected-header">Denúncias</Link>) : (<Link to="/denuncias">Denúncias</Link>)}
+                    {atual === 6 ? (<Link to="/mensagens" href="/#" className="selected-header">Mensagens</Link>) : (<Link to="/mensagens">Mensagens</Link>)}
+                    {logged && (<a href="/#" onClick={logout} >Sair</a>)}
                     <img onClick={() => changeMenu()} className="menu" src={menu_icon} alt="Menu" />
                     <img onClick={() => changeMenu()} className="exit" src={exit_icon} alt="Fechar" />
                 </div>
             ) : (
                 <div className="links">
-                    {atual === 1 ? (<Link to="/" className="selected-header">Página Inicial</Link>) : (<Link to="/">Página Inicial</Link>)}
-                    {atual === 2 ? (<Link to="/sobre" className="selected-header">Sobre Nós</Link>) : (<Link to="/sobre">Sobre Nós</Link>)}
-                    {atual === 3 ? (<Link to="/contato" className="selected-header">Fale Conosco</Link>) : (<Link to="/contato">Fale Conosco</Link>)}
-                    {admin && (<Link to="/publicacoes">Backoffice</Link>)}
+                    {atual === 1 ? (<Link to="/" href="/#" className="selected-header">Página Inicial</Link>) : (<Link to="/">Página Inicial</Link>)}
+                    {atual === 2 ? (<Link to="/sobre" href="/#" className="selected-header">Sobre Nós</Link>) : (<Link to="/sobre">Sobre Nós</Link>)}
+                    {atual === 3 ? (<Link to="/contato" href="/#" className="selected-header">Fale Conosco</Link>) : (<Link to="/contato">Fale Conosco</Link>)}
+                    {admin && (<Link to="/publicacoes" href="/#">Backoffice</Link>)}
                     {logged ? (
-                        atual === 4 ? (<Link to="/editar-perfil" className="selected-header">Minha Conta</Link>) : (<Link to="/editar-perfil">Minha Conta</Link>)
-                    ) : (<Link to="/login">Entrar</Link>)}
-                    {logged && (<a onClick={logout} >Sair</a>)}
+                        atual === 4 ? (<Link to="/editar-perfil" href="/#" className="selected-header">Minha Conta</Link>) : (<Link to="/editar-perfil">Minha Conta</Link>)
+                    ) : (<Link to="/login" href="/#">Entrar</Link>)}
+                    {logged && (<a onClick={logout} href="/#" >Sair</a>)}
                     <img onClick={() => changeMenu()} className="menu" src={menu_icon} alt="Menu" />
                     <img onClick={() => changeMenu()} className="exit" src={exit_icon} alt="Fechar" />
                 </div>

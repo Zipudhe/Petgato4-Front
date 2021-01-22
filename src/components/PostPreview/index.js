@@ -18,28 +18,28 @@ export default function PostPreview({ post }){
     const [commentNumber, setCommentNumber] = useState(0);
     let history = useHistory();
 
-    const loadCommentNumber = ( id ) => {
-        axios.get(`${base_url}/comments_count/${id}`)
+    const loadCommentNumber = () => {
+        axios.get(`${base_url}/comments_count/${post.id}`)
             .then(response => response.data)
             .then(data => data && setCommentNumber(data.n_comments))
     }
 
-    const loadLikes = ( id ) => {
-        axios.get(`${base_url}/countlikespost/${id}`)
+    const loadLikes = () => {
+        axios.get(`${base_url}/countlikespost/${post.id}`)
             .then(response => response.data)
             .then(data => data && setLikes(data))
     }
 
-    const loadTags = ( id ) => {
-        axios.get(`${base_url}/tagsbypost/${id}`)
+    const loadTags = () => {
+        axios.get(`${base_url}/tagsbypost/${post.id}`)
             .then(response => response.data)
             .then(data => setTags(data))
     }
 
     useEffect(() => {
-        loadCommentNumber(post.id);
-        loadLikes(post.id);
-        loadTags(post.id);
+        loadCommentNumber();
+        loadLikes();
+        loadTags();
     }, [])
 
     return (

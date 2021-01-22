@@ -22,9 +22,9 @@ export default function PerfilHome({text, link, path}){
             </p>
 
             <div className="social-media-icons">
-                <a href="https://www.facebook.com" target="_blank"><img alt="Facebook" src={facebook_icon} /></a>
-                <a href="https://www.instagram.com" target="_blank"><img alt="Instagram" src={instagram_icon} /></a>
-                <a href="https://www.twitter.com" target="_blank"><img alt="Twitter" src={twitter_icon} /></a>
+                <a href="https://www.facebook.com" target="_blank" rel="noreferrer"><img alt="Facebook" src={facebook_icon} /></a>
+                <a href="https://www.instagram.com" target="_blank" rel="noreferrer"><img alt="Instagram" src={instagram_icon} /></a>
+                <a href="https://www.twitter.com" target="_blank" rel="noreferrer"><img alt="Twitter" src={twitter_icon} /></a>
             </div>
         </div>
     )

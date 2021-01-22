@@ -117,6 +117,7 @@ export default function EditarPublicacao(){
     }
 
     const loadSelectedTags = async (id) => {
+        setSelectedTags([]);
         await axios.get(`${base_url}/tagsbypost/${id}`)
             .then(response => response.data)
             .then(data => {

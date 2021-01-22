@@ -19,8 +19,8 @@ export default function ListComments({ comment }) {
     const [postResponse, setPostResponse] = useState(false);
     let history = useHistory();
 
-    const loadReplies = async ( id ) => {
-        axios.get(`${base_url}/replies_by_comment/${id}`)
+    const loadReplies = async () => {
+        axios.get(`${base_url}/replies_by_comment/${comment.comment_id}`)
             .then(response => response.data)
             .then(data => setReplies(data))
     }
@@ -54,7 +54,7 @@ export default function ListComments({ comment }) {
     }, [logged])
 
     useEffect(() => {
-        loadReplies(comment.comment_id);
+        loadReplies();
     }, [postResponse])
 
     return (
