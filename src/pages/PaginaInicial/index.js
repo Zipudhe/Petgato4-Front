@@ -8,23 +8,59 @@ import Button from '../../components/Button';
 import SearchBar from '../../components/SearchBar';
 import PerfilHome from '../../components/PerfilHome';
 import PostPreview from '../../components/PostPreview';
+import Pagination from '../../components/Pagination';
 import PublicacoesPopulares from '../../components/PublicacoesPopulares';
 import LoadingCat from '../../components/LoadingCat';
 
 import './styles.css';
 
-export default function PaginaInicial() {
+export default function PaginaInicial({ pageRef = 0 }) {
+    const [page, setPage] = useState(pageRef);
     const [posts, setPosts] = useState([]);
     const [popularPosts, setPopularPosts] = useState([]);
+    const [totalPages, setTotalPages] = useState(1);
     const [loading, setLoading] = useState(true);
     const [search, setSearch] = useState(false);
     const [value, setValue] = useState('');
     const [frontValue, setFrontValue] = useState('');
     let history = useHistory();
-    const page = 0;
     
     function changeValue(value) {
         setValue(value);
+    }
+
+    const nextPage = () => {
+        if(page < totalPages){
+            setPage(page + 1);
+        }
+    }
+
+    const prevPage = () => {
+        if(page > 0){
+            setPage(page - 1);
+        }
+    }
+
+    const specificPage = () => {
+        if(page === 1){
+            setPage(3);
+        } else {
+            setPage(totalPages - 2);
+        }
+    }
+
+    function loadTotalPages( deleted=false ) {
+        axios.get(`http://localhost:3000/countposts/`)
+            .then((response) => response.data)
+            .then((data) => {
+                if(deleted && data > 0 && data % 5 === 0){
+                    setPage(page - 1);
+                    setTotalPages(totalPages - 1);
+                } else{
+                    setTotalPages(Math.ceil(data / 5));
+                }
+            })
+            .catch((error) => console.error(error));
     }
 
     const loadPopularPosts = async () => {
@@ -65,7 +101,8 @@ export default function PaginaInicial() {
     useEffect(() => {
         loadPosts();
         loadPopularPosts();
-    }, []);
+        loadTotalPages();
+    }, [page]);
 
     /* Pesquisa em tempo real (consome muito)
     useEffect(() => {
@@ -116,6 +153,10 @@ export default function PaginaInicial() {
                     )
                     
                 )}
+
+                <div className="menu">
+                    <Pagination actualPage={page+1} totalPages={totalPages} previous={() => prevPage()} next={() => nextPage()} specific={() => specificPage()} />
+                </div>
             </div>
 
             <div className="homepage-footer"><Footer /></div>
