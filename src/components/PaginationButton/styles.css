@@ -25,3 +25,9 @@
     color: white;
     cursor: alias;
 }
+
+@media (max-width: 768px) {
+    .pagination-button {
+        font-size: 16px;
+    }
+}

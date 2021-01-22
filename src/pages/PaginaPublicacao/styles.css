@@ -1,13 +1,18 @@
 .container-page-publicacao {
     min-height: 100vh;
     display: grid;
-    width: 100vw;
+    width: 100%;
+}
+
+.header-page-publicacao {
+    max-width: 100vw;
 }
 
 .footer-publicacao {
     margin-top: 2vw;
     display: flex;
     align-items: center;
+    max-width: 100vw;
 }
 
 .footer-publicacao footer {
@@ -37,14 +42,13 @@
     display: grid;
     width: 100%;
     grid-template-columns: 75% 25%;
-    margin-top: 1.8vw;
+    margin-top: 1.8vw;  
     word-wrap: normal;
 }
 
 .content-publicacao {
     padding: 0 5%;
     border-right: 1px solid #B0B0B0;
-    max-width: 75vw;
     overflow: hidden;
 }
 
@@ -144,7 +148,7 @@
 }
 
 .content-publicacao img {
-    max-width: 100%;
+    width: 100%;
 }
 
 .content-publicacao .send-button {
@@ -198,7 +202,6 @@
     margin-left: 15%;
 }
 .container-response textarea {
-    
     width: 85%;
     padding-top: .8vw;
     margin: 1vw 0;
@@ -212,6 +215,15 @@
 
     .content-publicacao {
         max-width: 100vw;
+    }
+
+    .container-publicacao .text-publication {
+        font-size: 12px;
+    }
+
+    .container-page-publicacao .back-button {
+        width: 100%;
+        height: min-content;
     }
 
     .container-publicacao {

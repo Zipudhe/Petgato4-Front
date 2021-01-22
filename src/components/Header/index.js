@@ -13,14 +13,14 @@ const Header = ({ backoffice=false, atual=1 }) => {
     const [down, setDown] = useState(false);
 
     const changeMenu = () => {
-        document.body.style.overflow = down ? "visible" : "hidden";
+        document.body.style.overflow = "visible";
         setDown(!down);
     }
 
     useEffect(() => {
         isAuthenticated().then(response => setLogged(response));
         isAdmin().then(response => setAdmin(response));
-    }, [down])
+    }, [down, logged, admin])
 
     return (
         <div className={`header ${down && "on"}`}>

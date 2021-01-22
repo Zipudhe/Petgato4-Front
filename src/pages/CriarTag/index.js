@@ -8,6 +8,7 @@ import Input from '../../components/Input';
 import Button from '../../components/Button';
 
 import './styles.css';
+import { base_url } from '../../api';
 
 export default function CriarTag(){
     const [name, setName] = useState('');
@@ -33,7 +34,7 @@ export default function CriarTag(){
             return;
         }
 
-        axios.post(`http://localhost:3000/tags/`, {
+        axios.post(`${base_url}/tags/`, {
             name: name,
             description: description
         })

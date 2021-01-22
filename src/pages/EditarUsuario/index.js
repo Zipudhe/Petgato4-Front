@@ -8,6 +8,7 @@ import Input from '../../components/Input';
 import Button from '../../components/Button';
 import LoadingCat from '../../components/LoadingCat';
 import { convertDate } from '../../functions';
+import { base_url } from '../../api';
 
 import './styles.css';
 
@@ -32,7 +33,7 @@ export default function EditarUsuario(){
         
         const token = localStorage.getItem('token');
 
-        axios.put(`http://localhost:3000/users/${location.id}`, {
+        axios.put(`${base_url}/users/${location.id}`, {
                 name: name,
                 is_admin: isAdmin
             }, {
@@ -40,20 +41,20 @@ export default function EditarUsuario(){
                     'Authorization': token
                 }
             })
-            .catch(error => history.push("/erro"));
+            //.catch(error => history.push("/erro"));
     }
 
     const loadUser = async () => {
         const token = localStorage.getItem('token');
         let temp_user = {};
 
-        await axios.get(`http://localhost:3000/users/${location.id}`, {
+        await axios.get(`${base_url}/users/${location.id}`, {
                 headers: {
                     'Authorization': token
                 }
             })
             .then(response => temp_user = response.data)
-            .catch(error => history.push("/erro"));
+            .catch(error => alert('Esse usuário não existe!'));
         
         setUser(temp_user);
         setName(temp_user.name);

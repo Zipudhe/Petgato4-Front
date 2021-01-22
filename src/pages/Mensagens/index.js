@@ -8,6 +8,7 @@ import Pagination from '../../components/Pagination';
 import Modal from '../../components/Modal';
 import LoadingCat from '../../components/LoadingCat';
 import { convertDate } from '../../functions';
+import { base_url } from '../../api';
 
 import './styles.css';
 
@@ -51,7 +52,7 @@ export default function Mensagens({ pageRef=0 }){
     }
 
     function loadTotalPages( deleted=false ) {
-        axios.get(`http://localhost:3000/messages_count/`)
+        axios.get(`${base_url}/messages_count/`)
             .then((response) => response.data)
             .then((data) => {
                 if(deleted && data > 0 && data % 5 === 0){
@@ -66,7 +67,7 @@ export default function Mensagens({ pageRef=0 }){
 
     const deleteMessage = (id) => {
         if(window.confirm("Tem certeza?")){
-            axios.delete(`http://localhost:3000/messages/${id}?page=${page}`)
+            axios.delete(`${base_url}/messages/${id}?page=${page}`)
                 .then((response) => response.data)
                 .then((data) => setMessages(data))
                 .then(() => loadTotalPages(true))
@@ -76,7 +77,7 @@ export default function Mensagens({ pageRef=0 }){
 
     const loadMessages = async () => {
         setLoading(true);
-        axios.get(`http://localhost:3000/messages?page=${page}`)
+        axios.get(`${base_url}/messages?page=${page}`)
             .then((response) => response.data)
             .then((data) => setMessages(data))
             .catch((error) => history.push("/erro"));

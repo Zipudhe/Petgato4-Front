@@ -8,6 +8,7 @@ import Button from '../../components/Button';
 import Pagination from '../../components/Pagination';
 import LoadingCat from '../../components/LoadingCat';
 import { convertDate } from '../../functions';
+import { base_url } from '../../api';
 
 import './styles.css';
 
@@ -39,7 +40,7 @@ export default function Publicacoes({ pageRef=0 }){
     }
 
     function loadTotalPages( deleted=false ) {
-        axios.get(`http://localhost:3000/countposts/`)
+        axios.get(`${base_url}/countposts/`)
             .then((response) => response.data)
             .then((data) => {
                 if(deleted && data > 0 && data % 5 === 0){
@@ -54,7 +55,7 @@ export default function Publicacoes({ pageRef=0 }){
 
     function deletePost(post_id){
         if(window.confirm("Tem certeza?")){
-            axios.delete(`http://localhost:3000/posts/${post_id}?page=${page}`)
+            axios.delete(`${base_url}/posts/${post_id}?page=${page}`)
                 .then((response) => response.data)
                 .then((data) => setPosts(data))
                 .then(() => loadTotalPages(true))
@@ -64,7 +65,7 @@ export default function Publicacoes({ pageRef=0 }){
 
     const loadPosts = async () => {
         setLoading(true);
-        await axios.get(`http://localhost:3000/posts?page=${page}`)
+        await axios.get(`${base_url}/posts?page=${page}`)
             .then((response) => response.data)
             .then((data) => {
                 setPosts(data);

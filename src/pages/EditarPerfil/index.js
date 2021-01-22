@@ -7,6 +7,7 @@ import Footer from '../../components/Footer';
 import Button from '../../components/Button';
 import Input from '../../components/Input';
 import LoadingCat from '../../components/LoadingCat';
+import { base_url } from '../../api';
 
 import "./styles.css";
 import camera_icon from "../../assets/awesome-camera.svg";
@@ -56,7 +57,7 @@ const EditarPerfil = () => {
 
         // autenticação da senha atual
         let correct_password = false;
-        await axios.post(`http://localhost:3000/auth/login`, {
+        await axios.post(`${base_url}/auth/login`, {
                 email: user.email,
                 password: password
             }).then((response) => {
@@ -86,7 +87,7 @@ const EditarPerfil = () => {
         data.append('name', name);
         data2["name"] = name;
 
-        axios.put(`http://localhost:3000/users/${localStorage.getItem('current_user')}/`, data, {
+        axios.put(`${base_url}/users/${localStorage.getItem('current_user')}/`, data, {
                 headers: {
                     "Content-Type": `multipart/form-data; boundary=${data._boundary}`,
                     "Authorization": token
@@ -94,7 +95,7 @@ const EditarPerfil = () => {
             })
             .catch(error => history.push("/erro"));
 
-        axios.put(`http://localhost:3000/users/${localStorage.getItem('current_user')}/`, data2, {
+        axios.put(`${base_url}/users/${localStorage.getItem('current_user')}/`, data2, {
             headers: {
                 "Authorization": token
             }
@@ -109,7 +110,7 @@ const EditarPerfil = () => {
         const token = localStorage.getItem('token');
         let temp_user = {};
         
-        await axios.get(`http://localhost:3000/users/${localStorage.getItem('current_user')}`, {
+        await axios.get(`${base_url}/users/${localStorage.getItem('current_user')}`, {
                 headers: {
                     'Authorization': token
                 }

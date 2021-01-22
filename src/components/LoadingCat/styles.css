@@ -11,3 +11,10 @@
     width: 9.8vw;
     height: 12.5vw;
 }
+
+@media (max-width: 768px) {
+    .loading-cat img {
+        width: 100px;
+        height: 125px;
+    }
+}

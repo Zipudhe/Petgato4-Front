@@ -6,6 +6,7 @@ import Input from '../../components/Input';
 
 import './styles.css';
 import logo_petgato from '../../assets/images/gatinho_petgato.svg';
+import { base_url } from '../../api';
 
 export default function Cadastro(){
     const [name, setName] = useState("");
@@ -57,7 +58,7 @@ export default function Cadastro(){
             return;
         }
 
-        axios.post(`http://localhost:3000/users/`, {
+        axios.post(`${base_url}/users/`, {
                 name: name,
                 password: password,
                 password_confirmation: passwordConfirmation,
