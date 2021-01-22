@@ -61,7 +61,8 @@
     height: 100%;
     display: -webkit-box;
     -webkit-line-clamp: 4; /* max: 4 lines */
-    -webkit-box-orient: vertical; 
+    -webkit-box-orient: vertical;
+    overflow: hidden;
 }
 
 .post-content .post-description img {

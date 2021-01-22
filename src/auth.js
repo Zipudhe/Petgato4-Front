@@ -12,7 +12,7 @@ export const isAuthenticated = async () => {
         }).then((response) => auth = response.data);
     }
 
-    return true;
+    return auth;
 }
 
 export const isAdmin = async () => {
