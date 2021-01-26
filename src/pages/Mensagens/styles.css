@@ -18,12 +18,12 @@
 }
 
 .backoffice-messages {
-    font-family: 'Montserrat';
+    font-family: 'Montserrat', sans-serif;
     margin: 0 5%;
 }
 
 .backoffice-messages h2 {
-    font-weight: 100;
+    font-weight: 300;
     color: #444143;
     margin: 3vw 0 0 0;
     font-size: 1.8vw;
@@ -58,7 +58,7 @@
 }
 
 .all-messages {
-    font-family: 'Montserrat';
+    font-family: 'Montserrat', sans-serif;
     border-collapse: collapse;
     font-size: 1.2vw;
     color: #707070;

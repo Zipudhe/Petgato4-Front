@@ -42,7 +42,7 @@
 
 .tagpage-info h4 {
     font-size: 1.6vw;
-    font-weight: 100;
+    font-weight: 300;
     color: #444143;
     margin: 2vw 0;
 }
@@ -97,7 +97,7 @@
 
 .container-tagpage .tagpage-posts i {
     color: #707070;
-    font-weight: 100;
+    font-weight: 300;
 }
 
 .container-tagpage .tagpage-posts h1 {
@@ -110,7 +110,7 @@
 
 .container-tagpage .tagpage-posts h2 {
     font-size: 1.2vw;
-    font-weight: 100;
+    font-weight: 300;
     color: #606060;
     margin-top: 5px;
     margin-bottom: 20px;
@@ -125,7 +125,7 @@
 
 .container-tagpage .tagpage-posts .tags-subtitle {
     font-size: 1.4vw;
-    font-weight: 100;
+    font-weight: 300;
     color: #606060;
     margin: 0;
     padding: 0;

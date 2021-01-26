@@ -23,7 +23,7 @@
 }
 
 .backoffice-editar-publicacao {
-    font-family: 'Montserrat';
+    font-family: 'Montserrat', sans-serif;
     margin: 0 5%;
     width: 90%;
 }
@@ -55,7 +55,7 @@
 }
 
 .backoffice-editar-publicacao h2 {
-    font-weight: 100;
+    font-weight: 300;
     color: #444143;
     margin: 3vw 0 0 0;
     font-size: 1.8vw;
@@ -101,7 +101,7 @@
     -webkit-user-select: none;
     cursor: pointer;
     color: #444143;
-    font-weight: 100;
+    font-weight: 300;
     font-size: 1.2vw;
 }
 
@@ -146,7 +146,7 @@
 /* Mobile */
 @media (max-width: 768px) {
     .backoffice-editar-publicacao h2 {
-        font-weight: 100;
+        font-weight: 300;
         color: #444143;
         margin: 10px 0 2px 0;
         font-size: 13px;
@@ -192,7 +192,7 @@
         -webkit-user-select: none;
         cursor: pointer;
         color: #444143;
-        font-weight: 100;
+        font-weight: 300;
         font-size: 12px;
     }
 

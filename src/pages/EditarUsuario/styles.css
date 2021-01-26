@@ -65,7 +65,7 @@
 .input-editar-usuario .role-selector select {
     height: 3.6vw;
     width: 100%;
-    font-family: 'Montserrat';
+    font-family: 'Montserrat', sans-serif;
     font-size: 1.4vw;
     font-weight: 300;
     color: #707070;
@@ -99,12 +99,12 @@
 }
 
 .backoffice-editar-usuario {
-    font-family: 'Montserrat';
+    font-family: 'Montserrat', sans-serif;
     margin: 0 5%;
 }
 
 .backoffice-editar-usuario h2 {
-    font-weight: 100;
+    font-weight: 300;
     color: #444143;
     margin: 3vw 0 0 0;
     font-size: 1.8vw;

@@ -60,7 +60,7 @@
 
 .container-homepage .homepage-posts h2 {
     font-size: 1.2vw;
-    font-weight: 100;
+    font-weight: 300;
     color: #606060;
     margin-top: 5px;
     margin-bottom: 20px;
@@ -87,7 +87,7 @@
 }
 
 .container-homepage .homepage-posts h4 {
-    font-weight: 100;
+    font-weight: 300;
     color: #444143;
     font-size: 1.4vw;
 }
