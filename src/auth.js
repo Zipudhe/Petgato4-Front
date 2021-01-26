@@ -32,5 +32,4 @@ export const isAdmin = async () => {
 
 export const logout = () => {
     localStorage.clear();
-    window.location.reload();
 }

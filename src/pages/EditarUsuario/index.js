@@ -41,7 +41,6 @@ export default function EditarUsuario(){
                     'Authorization': token
                 }
             })
-            //.catch(error => history.push("/erro"));
     }
 
     const loadUser = async () => {

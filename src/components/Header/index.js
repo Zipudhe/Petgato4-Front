@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { isAuthenticated, isAdmin, logout } from '../../auth';
 
 import "./style.css";
@@ -11,6 +11,7 @@ const Header = ({ backoffice=false, atual=1 }) => {
     const [logged, setLogged] = useState(false);
     const [admin, setAdmin] = useState(false);
     const [down, setDown] = useState(false);
+    let history = useHistory();
 
     const changeMenu = () => {
         document.body.style.overflow = "visible";
@@ -33,7 +34,10 @@ const Header = ({ backoffice=false, atual=1 }) => {
                     {atual === 4 ? (<Link to="/usuarios" className="selected-header">Usuários</Link>) : (<Link to="/usuarios">Usuários</Link>)}
                     {atual === 5 ? (<Link to="/denuncias" className="selected-header">Denúncias</Link>) : (<Link to="/denuncias">Denúncias</Link>)}
                     {atual === 6 ? (<Link to="/mensagens" className="selected-header">Mensagens</Link>) : (<Link to="/mensagens">Mensagens</Link>)}
-                    {logged && (<a onClick={logout} >Sair</a>)}
+                    {logged && (<a onClick={() => {
+                        logout();
+                        history.push("/");
+                    }} >Sair</a>)}
                     <img onClick={() => changeMenu()} className="menu" src={menu_icon} alt="Menu" />
                     <img onClick={() => changeMenu()} className="exit" src={exit_icon} alt="Fechar" />
                 </div>
@@ -46,7 +50,10 @@ const Header = ({ backoffice=false, atual=1 }) => {
                     {logged ? (
                         atual === 4 ? (<Link to="/editar-perfil" className="selected-header">Minha Conta</Link>) : (<Link to="/editar-perfil">Minha Conta</Link>)
                     ) : (<Link to="/login">Entrar</Link>)}
-                    {logged && (<a onClick={logout} >Sair</a>)}
+                    {logged && (<a onClick={() => {
+                        logout();
+                        history.push("/");
+                    }} >Sair</a>)}
                     <img onClick={() => changeMenu()} className="menu" src={menu_icon} alt="Menu" />
                     <img onClick={() => changeMenu()} className="exit" src={exit_icon} alt="Fechar" />
                 </div>
